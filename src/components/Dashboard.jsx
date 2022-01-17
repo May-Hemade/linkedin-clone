@@ -27,9 +27,9 @@ const Dashboard = () => {
             <Table bordered hover variant="dark" className="border-rounded ">{/* table-responsive */}
                 <tbody>
                     <tr>
-                        <td className="text-left"> <span className="font-weight-light text-primary display-4">169</span><br />Who viewed your profile</td>
-                        <td className="text-left"> <span className="font-weight-light text-primary display-4">27</span><br />Post views</td>
-                        <td className="text-left"> <span className="font-weight-light text-primary display-4">98</span><br />Search appearance</td>
+                        <td className="text-left"> <span className="font-weight-light text-primary display-4">169</span><br /> <span className="text-secondary"> Who viewed your profile </span></td>
+                        <td className="text-left"> <span className="font-weight-light text-primary display-4">27</span><br /><span className="text-secondary"> Post views&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></td>
+                        <td className="text-left"> <span className="font-weight-light text-primary display-4">98</span><br /><span className="text-secondary"> Search appearance </span></td>
                     </tr>    
                 </tbody>
             </Table>
@@ -45,16 +45,16 @@ const Dashboard = () => {
                 <tr>
                     <td className="text-left align-middle pr-0"><BsBroadcastPin/></td>
                     
-                    <td className="text-left"> Creator Mode: <span> Off </span><br /><small> Get Discovered, showcase content on you profile, and get access to creator tools </small></td>
+                    <td className="text-left"> Creator Mode: <span> Off </span><br /><small className="text-secondary"> Get Discovered, showcase content on you profile, and get access to creator tools </small></td>
                 </tr>
                 <tr>
                     <td className="text-left align-middle pr-0"><BsPeopleFill/></td>
-                    <td className="text-left"> My Network <br /> <small> Manage your conections, events and interest. </small></td>
+                    <td className="text-left"> My Network <br /> <small className="text-secondary"> Manage your conections, events and interest. </small></td>
                     
                 </tr>
                 <tr>
                     <td className="text-left align-middle pr-0"><BsBookmarkFill/></td>
-                    <td className="text-left"> My items <br /> <small> Keep track of your jobs, courses and articles </small></td>
+                    <td className="text-left"> My items <br /> <small className="text-secondary"> Keep track of your jobs, courses and articles </small></td>
                     
                     
                 </tr>
