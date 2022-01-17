@@ -1,0 +1,13 @@
+.body {
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.card-image {
+  max-height: 75px;
+}
+
+.border-experience {
+  border-bottom: solid 0.02px rgb(95, 94, 94) !important;
+  width: 100%;
+}

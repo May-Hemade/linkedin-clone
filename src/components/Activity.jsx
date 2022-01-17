@@ -19,7 +19,7 @@ export default function Activity() {
               <SingleActivity
                 activity={{
                   text: "Happy to share that module 4 is in the pocket! Let's hope the pocket does not have any holes 😁",
-                  img: "https://place-hold.it/100x100",
+                  img: "https://place-puppy.com/130x130",
                   author: "May",
                 }}
               ></SingleActivity>
@@ -28,7 +28,7 @@ export default function Activity() {
               <SingleActivity
                 activity={{
                   text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates, magnam? Magnam rem, illum, aut exercitationem earum quod nihil eveniet itaque reiciendis officia suscipit numquam voluptas ea perspiciatis cumque repellendus nobis.",
-                  img: "https://place-hold.it/100x100",
+                  img: "https://place-puppy.com/120x120",
                   author: "May",
                 }}
               ></SingleActivity>

@@ -42,8 +42,7 @@ class ReadMore extends Component {
           lines={!expanded && lines}
           ellipsis={
             <span>
-              ...{" "}
-              <a href="#" onClick={this.toggleLines}>
+              <a href="#" className="text-light" onClick={this.toggleLines}>
                 {more}
               </a>
             </span>
@@ -60,7 +59,7 @@ class ReadMore extends Component {
 
 ReadMore.defaultProps = {
   lines: 3,
-  more: "See more",
+  more: "...See more",
   less: "Show less",
 }
 
