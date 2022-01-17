@@ -4,11 +4,11 @@ import "./CentralAvatar.css"
 
 const CentralAvatar = (/* { profile } */) => {
     return (
-        <Container className="central_avatar">
-            
+        <Container className="central_avatar p-0">
+            <div className="imagess">
             <Image src="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png" rounded  className="background_avatar"/>
             <Image src="https://profilemagazine.com/wp-content/uploads/2020/04/Ajmere-Dale-Square-thumbnail.jpg" roundedCircle alt="" className="avatar"/>
-            
+            </div>
             <div className="central_avatar_info text-left  ml-4">
                 <h4 className="text-white">
                     Pablo Villegas Martin
@@ -19,7 +19,7 @@ const CentralAvatar = (/* { profile } */) => {
                 <span className="central_avatar_city mr-1">
                     <small>Barcelona, Cataluña, España</small>
                 </span>
-                <span className="central_avatar_city_dot align-top">
+                <span className="central_avatar_city_dot align-top text-light">
                  &bull;
                 </span>
                 <span>
@@ -35,7 +35,8 @@ const CentralAvatar = (/* { profile } */) => {
                 <Button variant="outline-light mr-3">More</Button>
                 
             </div>
-            
+
+
 
         </Container>
     )
