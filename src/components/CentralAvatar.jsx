@@ -1,12 +1,13 @@
 import { Container, Image, Button } from "react-bootstrap"
 import "./CentralAvatar.css"
-/* import { BsFillLockFill } from "react-icons/bs"; */
+import { BsCameraFill } from "react-icons/bs";
+import { Pen } from "react-bootstrap-icons"
 
 const CentralAvatar = (/* { profile } */) => {
     return (
         <Container className="central_avatar p-0">
             <div className="imagess">
-            <Button className="edit_image_button" variant="primary text-dark mr-3">Open to</Button>
+            <Button className="edit_image_button align-middle" variant="light"> <BsCameraFill className="align-baseline text-start"/> </Button>
             <Image src="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png" rounded  className="background_avatar"/>
             <Image src="https://profilemagazine.com/wp-content/uploads/2020/04/Ajmere-Dale-Square-thumbnail.jpg" roundedCircle alt="" className="avatar"/>
             </div>
@@ -31,9 +32,15 @@ const CentralAvatar = (/* { profile } */) => {
                         <small><b>182</b> contacts</small>
                     </p>
                 </div>
-                <div className="schools ml-auto mr-auto text-light">
+                <div className="schools_container ml-auto  text-light d-flex justify-content-between">
+                    
+                    <div className="schools " >
                     <Image className="schools_logos" src="https://i.ibb.co/VmRnRdG/106021628-677337352815317-3039720649727959783-n.png"/> <span> Strive School </span>
-                </div>
+                    </div>
+                    
+                </div><div className="linkedin-icon ml-auto mr-4">
+                        <Pen className="" />
+                    </div>
             </div>
             <div className="central_avatar_options text-left ml-4 pb-4">
                 <Button className="menu_button" variant="primary text-dark mr-3">Open to</Button>
