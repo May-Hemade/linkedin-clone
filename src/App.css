@@ -1,38 +1,29 @@
+body {
+  background-color: black !important;
+  height: 100% !important;
+}
+
 .App {
-  text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.linkedin-card {
+  background-color: #1d2226;
+  margin: 1ch;
   color: white;
+  padding: 16px;
+  border-radius: 10px;
+  border: 0.1rem solid rgba(0, 0, 0, 0.6);
 }
 
-.App-link {
-  color: #61dafb;
+.linkedin-card-header {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.42857;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.linkedin-card-body {
+  margin-top: 1ch;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.42857;
 }
