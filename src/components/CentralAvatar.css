@@ -15,7 +15,7 @@
   .central_avatar {
     border: 1 px solid lightgrey;
     border-radius: 10px;
-    background-color: white;
+    background-color: #1d2226;;
     height: fit-content;
     
   }
@@ -27,19 +27,15 @@
     transform: translate(-11px,5px);
   }
 
-  .central_avatar_info {
+ /*  .central_avatar_info {
     transform: translateY(-80px);
-  }
+  } */
 
   .central_avatar_city {
     color: rgb(156, 151, 151);
-    
   }
 
-  .central_avatar_city_dot {
-    color: rgb(156, 151, 151);
-    transform: translateY(-10px);
-  }
+  
 
   .contacts_central{
     color: rgb(156, 151, 151); 

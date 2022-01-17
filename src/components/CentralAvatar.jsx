@@ -1,19 +1,19 @@
 import { Container, Image, Button } from "react-bootstrap"
 import "./CentralAvatar.css"
-import { IconName } from "react-icons/bs";
+/* import { BsFillLockFill } from "react-icons/bs"; */
 
 const CentralAvatar = (/* { profile } */) => {
     return (
         <Container className="central_avatar">
-            <div className="central_avatar_imgs">
-                <Image src="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png" rounded  className="background_avatar"/>
-                <Image src="https://profilemagazine.com/wp-content/uploads/2020/04/Ajmere-Dale-Square-thumbnail.jpg" roundedCircle alt="" className="avatar"/>
-            </div>
-            <div className="central_avatar_info text-left ml-4">
-                <h4>
+            
+            <Image src="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png" rounded  className="background_avatar"/>
+            <Image src="https://profilemagazine.com/wp-content/uploads/2020/04/Ajmere-Dale-Square-thumbnail.jpg" roundedCircle alt="" className="avatar"/>
+            
+            <div className="central_avatar_info text-left  ml-4">
+                <h4 className="text-white">
                     Pablo Villegas Martin
                 </h4>
-                <h6>
+                <h6 className="text-white">
                     Data Science
                 </h6>
                 <span className="central_avatar_city mr-1">
@@ -30,10 +30,12 @@ const CentralAvatar = (/* { profile } */) => {
                 </p>
             </div>
             <div className="central_avatar_options text-left ml-4 pb-4">
-                <Button variant="primary mr-3">Conect</Button>
-                <Button variant="outline-secondary mr-3">Send message</Button>    
-                <Button variant="outline-secondary mr-3">More</Button>
+                <Button variant="primary text-dark mr-3">Open to</Button>
+                <Button variant="outline-light mr-3">{/* <BsFillLockFill/> */}Add Section</Button>    
+                <Button variant="outline-light mr-3">More</Button>
+                
             </div>
+            
 
         </Container>
     )
