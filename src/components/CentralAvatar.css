@@ -1,0 +1,48 @@
+.avatar {
+     vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; 
+    
+    
+    transform: translate(-430px, -120px);
+    border-color: white;
+    border: 10px;
+    z-index: 3;
+    
+  }
+
+  .central_avatar {
+    border: 1 px solid lightgrey;
+    border-radius: 10px;
+    background-color: white;
+    height: fit-content;
+    
+  }
+
+  .background_avatar {
+    width: 59vw;
+    height: 300px;
+    object-fit: cover;
+    transform: translate(-11px,5px);
+  }
+
+  .central_avatar_info {
+    transform: translateY(-80px);
+  }
+
+  .central_avatar_city {
+    color: rgb(156, 151, 151);
+    
+  }
+
+  .central_avatar_city_dot {
+    color: rgb(156, 151, 151);
+    transform: translateY(-10px);
+  }
+
+  .contacts_central{
+    color: rgb(156, 151, 151); 
+  }
+
+ 
