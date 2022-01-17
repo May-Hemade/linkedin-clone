@@ -1,3 +1,4 @@
+
 import "./App.css"
 import About from "./components/About"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -7,13 +8,19 @@ import Experience from "./components/Experience"
 import Education from "./components/Education"
 import Skills from "./components/Skills"
 import Interests from "./components/Interests"
+import CentralAvatar from './components/CentralAvatar'
+import Dashboard from './components/Dashboard';
+
 
 function App() {
   return (
     <div className="App">
+
       <Container>
         <Row>
           <Col>
+            <CentralAvatar/>
+            <Dashboard/>
             <About />
             <Activity />
             <Experience />
@@ -24,6 +31,7 @@ function App() {
           <Col md={3}></Col>
         </Row>
       </Container>
+
     </div>
   )
 }

@@ -1,0 +1,57 @@
+.avatar {
+    border: 5px solid black;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; 
+    position: absolute;
+    left: 50px;
+    bottom: -50px;
+  /*   transform: translate(-430px, -120px); */
+   
+   
+    z-index: 3;
+    
+  }
+
+.imagess {
+    position: relative ;
+    margin-bottom: 70px;
+}
+
+  .central_avatar {
+    border-radius: 10px;
+    
+    background-color: #1d2226;;
+    height: fit-content;
+    margin-bottom: 10px;
+  }
+
+  .background_avatar {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    position: relative;
+  }
+
+ /*  .central_avatar_info {
+    transform: translateY(-80px);
+  } */
+
+  .central_avatar_city {
+    color: rgb(156, 151, 151);
+  }
+
+  
+
+  .contacts_central{
+    color: rgb(156, 151, 151); 
+  }
+
+  .schools_logos {
+    height: 40px;
+    width: 40px; 
+
+  }
+ 
