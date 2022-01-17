@@ -6,6 +6,7 @@ const CentralAvatar = (/* { profile } */) => {
     return (
         <Container className="central_avatar p-0">
             <div className="imagess">
+            <Button className="edit_image_button" variant="primary text-dark mr-3">Open to</Button>
             <Image src="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png" rounded  className="background_avatar"/>
             <Image src="https://profilemagazine.com/wp-content/uploads/2020/04/Ajmere-Dale-Square-thumbnail.jpg" roundedCircle alt="" className="avatar"/>
             </div>
@@ -35,9 +36,9 @@ const CentralAvatar = (/* { profile } */) => {
                 </div>
             </div>
             <div className="central_avatar_options text-left ml-4 pb-4">
-                <Button variant="primary text-dark mr-3">Open to</Button>
-                <Button variant="outline-light mr-3">{/* <BsFillLockFill/> */}Add Section</Button>    
-                <Button variant="outline-light mr-3">More</Button>
+                <Button className="menu_button" variant="primary text-dark mr-3">Open to</Button>
+                <Button className="menu_button" variant="outline-light mr-3">{/* <BsFillLockFill/> */}Add Section</Button>    
+                <Button className="menu_button" variant="outline-light mr-3">More</Button>
                 
             </div>
             <div>
