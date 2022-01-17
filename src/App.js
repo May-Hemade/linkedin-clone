@@ -3,6 +3,10 @@ import './App.css';
 import Header from './components/Header/Header';
 import SideBar from './components/SideBar/Sidebar';
 
+import About from "./components/About"
+
+import { Col, Container, Row } from "react-bootstrap"
+import Activity from "./components/Activity"
 
 function App() {
   return (
@@ -14,8 +18,17 @@ function App() {
         <SideBar />
        </div> 
       </header>
+      <Container>
+        <Row>
+          <Col>
+            <About></About>
+            <Activity></Activity>
+          </Col>
+          <Col md={3}></Col>
+        </Row>
+      </Container>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
