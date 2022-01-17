@@ -9,7 +9,7 @@ export default class About extends Component {
   expand = () => {}
   render() {
     return (
-      <div className="linkedin-card">
+      <div className="linkedin-card p-3">
         <div className="linkedin-card-header d-flex justify-content-between">
           <div>About</div>
           <Pen className="icon" />
