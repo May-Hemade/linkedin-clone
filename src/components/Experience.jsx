@@ -53,11 +53,10 @@ export default function Experience() {
     watch,
     formState: { errors },
   } = useForm()
-  const onSubmit = (data) => console.log(data)
 
-  console.log(watch("example")) // watch input value by passing the name of it
-
-  //
+  const submitForm = (data) => {
+    console.log(data)
+  }
 
   return (
     <div>
@@ -67,9 +66,7 @@ export default function Experience() {
             Experience
           </div>
           <div className="linkedin-icon display-3 mr-2">
-            <Plus style={{ cursor: "pointer" }} onClick={handleShow}>
-              {" "}
-            </Plus>
+            <Plus style={{ cursor: "pointer" }} onClick={handleShow} />
             <Modal show={show} onHide={handleClose}>
               <Modal.Header
                 className="modal_add_experience justify-between-content"
@@ -80,46 +77,44 @@ export default function Experience() {
               <Modal.Body className="modal_add_experience">
                 <form
                   onSubmit={handleSubmit((data) => {
-                    console.log(data)
+                    submitForm(data)
                   })}
                 >
-                  {/* register your input into the hook by invoking the "register" function */}
-
                   <div className="form-group d-flex flex-column">
-                    <label for="role">Role*</label>
+                    <label htmlFor="role">Role*</label>
                     <input
                       id="role"
-                      defaultValue="role..."
+                      placeholder="role..."
                       className="modal_input"
                       {...register("role", { required: true, minLength: 4 })}
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
-                    <label for="company">Company*</label>
+                    <label htmlFor="company">Company*</label>
                     <input
                       id="company"
-                      defaultValue="company..."
+                      placeholder="company..."
                       className="modal_input"
                       {...register("company", { required: true, minLength: 4 })}
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
-                    <label for="area">Area</label>
+                    <label htmlFor="area">Area</label>
                     <input
                       id="area"
-                      defaultValue="area..."
+                      placeholder="area..."
                       className="modal_input"
                       {...register("area", { required: true, minLength: 2 })}
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
-                    <label for="description">Description</label>
+                    <label htmlFor="description">Description</label>
                     <textarea
-                      id="area"
-                      defaultValue="description..."
+                      id="description"
+                      placeholder="description..."
                       className="modal_input"
                       rows="3"
                       {...register("description", {
@@ -130,15 +125,14 @@ export default function Experience() {
                   </div>
 
                   <div className="form-group d-flex flex-column">
-                    <label for="start">Start date:</label>
+                    <label htmlFor="start">Start date:</label>
 
                     <input
                       type="date"
                       id="start"
                       name="trip-start"
                       className="modal_input"
-                      value="yyyy-MM-dd"
-                      /* min="2018-01-01" max="2018-12-31" */ defaultValue="test"
+                      placeholder="yyyy-MM-dd"
                       {...register("startDate", { required: true })}
                     />
                   </div>
@@ -148,21 +142,20 @@ export default function Experience() {
                       className="form-check-input modal_input"
                       id="exampleCheck1"
                     />
-                    <label className="form-check-label" for="exampleCheck1">
+                    <label className="form-check-label" htmlFor="exampleCheck1">
                       I am currently working in this role
                     </label>
                   </div>
 
                   <div className="form-group d-flex flex-column mt-2">
-                    <label for="end">End date:</label>
+                    <label htmlFor="end">End date:</label>
 
                     <input
                       type="date"
                       id="end"
                       name="trip-start"
                       className="modal_input"
-                      value="yyyy-MM-dd"
-                      defaultValue="test"
+                      placeholder="yyyy-MM-dd"
                       {...register("endDate")}
                       /* min="2018-01-01" max="2018-12-31" */
                     />
