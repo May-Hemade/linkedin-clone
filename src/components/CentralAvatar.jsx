@@ -2,15 +2,29 @@ import { Container, Image, Button } from "react-bootstrap"
 import "./CentralAvatar.css"
 import { BsCameraFill } from "react-icons/bs";
 import { Pen } from "react-bootstrap-icons"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 const CentralAvatar = (/* { profile } */) => {
     
+    /* const [profile,setProfile] = useState(null)
     
     
-    
-    
+    useEffect(()=>{
+        const fetchData = async () => {
+            try {
+                let response= await fetch("https://striveschool-api.herokuapp.com/api/profile/", 
+                {
+                    "method": "GET",
+                    "headers":
+                    {
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI0MjQwMDMsImV4cCI6MTY0MzYzMzYwM30.aOY-uPSppDD89sNNx6VBmXmXKUtU4uhItN20JnED7Gs",
+                        "Content-type": "application/json",
+                    }
+                })
+            }
+        }
+    }) */
     
     return (
         <Container className="central_avatar p-0">
