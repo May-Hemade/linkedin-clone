@@ -24,20 +24,20 @@ function App() {
 
           <Container>
             <Row>
-              <Col>
-                <CentralAvatar/>
-                <Dashboard/>
-                <About />
-                <Activity />
-                <Experience />
-                <Education />
-                <Skills />
-                <Interests />
-              </Col>
+                    <Col xs={9}>
+                      <CentralAvatar/>
+                      <Dashboard/>
+                      <About />
+                      <Activity />
+                      <Experience />
+                      <Education />
+                      <Skills />
+                      <Interests />
+                    </Col>
               
-              <Col md={3}>
-                <RightSideBar/>
-              </Col>
+                    <Col xs={3}>
+                      <RightSideBar/>
+                    </Col>
             </Row>
           </Container>
   </div>

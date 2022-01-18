@@ -15,15 +15,12 @@ import GridOnIcon from '@material-ui/icons/GridOn';
 const Header = () => {
     return(
         <div className="header">
-                
-
                 <div className="header_left">
                     <img src="./Assets/Linkedin-logo.png" alt=""/>
                         <div className="header_search">
                             <SearchIcon/>
                             <input type= "text" className="search_Bar_input"/>
                         </div>
-                        <i class="bi bi-house-door"></i>
                 </div>
 
                 <div className="header_right">

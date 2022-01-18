@@ -5,8 +5,7 @@ import { FaRegQuestionCircle } from 'react-icons/fa';
 
 
 const RightSideBar = () => {
-
-
+   
     return(
 
         <div className="SideBar">
@@ -16,9 +15,8 @@ const RightSideBar = () => {
                             <p>Edit public profile & URL <FaRegQuestionCircle/></p>
                     </Row>
 
-                    <Row  className="content-Row">
+                    <Row className="content-Row">
                         <p>Add profile in another language <FaRegQuestionCircle/></p>
-                        
                     </Row>
                 </Col>
             </div>
@@ -30,8 +28,11 @@ const RightSideBar = () => {
                             <img className= "pro-pic" src="./Assets/Ubeyt_Demir.jpg" alt="pro-pic"/>
                         </Col>
                         <Col> 
+                        <button onClick={get_Profiles}> button </button>
                             <p className= "profile-name">Ubeyt Demir</p>
+                            
                             <p className= "profile-summary">Fullstack Developer && Teaching Staff @ Strive School (YC S20)</p>
+                            
                         </Col>
                     </Row>
                 </Col>
@@ -40,7 +41,6 @@ const RightSideBar = () => {
         <hr className="horizontal-row"/>
     </div>
     )
-
 }
 // return(
 //     <div className="SideBar">

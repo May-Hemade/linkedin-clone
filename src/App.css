@@ -38,7 +38,6 @@
 }
 
 .app_body {
-  display: flex;
   background-color: #1d2226 !important;
   height: 100% !important;
 }
