@@ -11,3 +11,39 @@
   border-bottom: solid 0.02px rgb(95, 94, 94) !important;
   width: 100%;
 }
+
+
+.modal_save_button {
+  border-color: black;
+  color: black;
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius:23px;
+  background-color: #70b5f9;
+}
+.modal_save_button:hover {
+  background-color: black;
+  color: white;
+}
+
+.modal_add_experience {
+  color: white;
+  background-color: #1d2226;
+ 
+}
+
+.modal_input {
+  background-color: transparent;
+  color: lightgray;
+  border-color: white;
+  border-radius: 5px;
+}
+
+.close {
+  color: white !important;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
