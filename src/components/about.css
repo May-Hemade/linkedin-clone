@@ -1,0 +1,11 @@
+.icon {
+  font-size: medium;
+  z-index: 1;
+}
+
+.icon:hover {
+  background: #cc000000;
+  border-radius: 50%;
+  padding: 1ch;
+  z-index: 0;
+}

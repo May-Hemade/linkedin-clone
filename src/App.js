@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+
+import "./App.css"
+import About from "./components/About"
+import "bootstrap/dist/css/bootstrap.min.css"
+import { Col, Container, Row } from "react-bootstrap"
+import Activity from "./components/Activity"
+import Experience from "./components/Experience"
+import Education from "./components/Education"
+import Skills from "./components/Skills"
+import Interests from "./components/Interests"
+import CentralAvatar from './components/CentralAvatar'
+import Dashboard from './components/Dashboard';
+import Footer from "./components/Footer"
+import RightSideBar from "./components/RightSideBar"
+import Header from "./components/Header"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Header/>
+      <Container className="mt-4 pt-32">
+        <Row>
+          <Col>
+            <CentralAvatar/>
+            <Dashboard/>
+            <About />
+            <Activity />
+            <Experience />
+            <Education />
+            <Skills />
+            <Interests />
+          </Col>
+          <Col md={3}>
+          <RightSideBar/>
+          </Col>
+        </Row>
+      </Container>
+      <Footer/>
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

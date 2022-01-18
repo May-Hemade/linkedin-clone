@@ -1,0 +1,10 @@
+.add-skill {
+  font-size: 16px;
+
+  padding: 0.4rem !important;
+}
+
+.add-skill:hover {
+  background-color: rgb(95, 94, 94);
+  border-radius: 2px;
+}
