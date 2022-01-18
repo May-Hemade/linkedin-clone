@@ -10,6 +10,7 @@ import Skills from "./components/Skills"
 import Interests from "./components/Interests"
 import CentralAvatar from './components/CentralAvatar'
 import Dashboard from './components/Dashboard';
+import Footer from "./components/Footer"
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Col md={3}></Col>
         </Row>
       </Container>
+      <Footer/>
 
     </div>
   )

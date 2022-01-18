@@ -1,7 +1,21 @@
 .dashboard-container {
     
     border-radius: 10px;
-    background-color: #1d2226;;
+    background-color: #555b61;;
     height: fit-content;
     
   }
+.table {
+    border-radius: 10px;
+    background-color: black;
+}
+
+.dashboard_number {
+  color: #70b5f9 ;
+}
+
+.dashboard_link:hover {
+  
+  text-decoration-color: #70b5f9;
+  color: #70b5f9;
+}
