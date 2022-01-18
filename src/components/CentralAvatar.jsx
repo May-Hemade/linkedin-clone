@@ -2,8 +2,16 @@ import { Container, Image, Button } from "react-bootstrap"
 import "./CentralAvatar.css"
 import { BsCameraFill } from "react-icons/bs";
 import { Pen } from "react-bootstrap-icons"
+import React, { useEffect } from 'react'
+
 
 const CentralAvatar = (/* { profile } */) => {
+    
+    
+    
+    
+    
+    
     return (
         <Container className="central_avatar p-0">
             <div className="imagess">
@@ -49,7 +57,7 @@ const CentralAvatar = (/* { profile } */) => {
                 
             </div>
             <div>
-                <h1 className="text-light">HERE GOES THE CAROUSEL</h1>
+               {/*  <h1 className="text-light">HERE GOES THE CAROUSEL</h1> */}
             </div>
 
 

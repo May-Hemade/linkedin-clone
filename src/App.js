@@ -11,13 +11,15 @@ import Interests from "./components/Interests"
 import CentralAvatar from './components/CentralAvatar'
 import Dashboard from './components/Dashboard';
 import Footer from "./components/Footer"
-
+import RightSideBar from "./components/RightSideBar"
+import Header from "./components/Header"
 
 function App() {
   return (
     <div className="App">
 
-      <Container>
+      <Header/>
+      <Container className="mt-4 pt-32">
         <Row>
           <Col>
             <CentralAvatar/>
@@ -29,7 +31,9 @@ function App() {
             <Skills />
             <Interests />
           </Col>
-          <Col md={3}></Col>
+          <Col md={3}>
+          <RightSideBar/>
+          </Col>
         </Row>
       </Container>
       <Footer/>
