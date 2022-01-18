@@ -5,8 +5,8 @@ const SideBar = () => {
     return(
         <div className="sidebar">
             <div className="sidebar_top">
-                <img src="" alt=""/>
-                <Avatar/>
+                <img src="https://wallpaperaccess.com/full/7030222.png" alt="cover-pic"/>
+                <Avatar className='sidebar_avatar'/>
                 <h2>Reid Hoffman</h2>
                 <h4>reidhoffman@gmail.com</h4>
             </div>

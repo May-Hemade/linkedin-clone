@@ -30,17 +30,16 @@
     transform: rotate(360deg);
   }
 } */
-.App-header {
+.App {
   background-color: black;
+}
+.App-header {
+  background-color: #1d2226;
 }
 .app_body {
   display: flex;
-
-  background-color: black !important;
+  background-color: #1d2226 !important;
   height: 100% !important;
-}
-
-.App {
 }
 
 .linkedin-card {

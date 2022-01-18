@@ -1,0 +1,44 @@
+.content-div1 {
+  margin-top: 10px;
+  background-color: #1d2226;
+  color: white;
+  width: 100%;
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: -18px;
+  padding-left: 10px;
+}
+.content-Row {
+  color: white;
+}
+
+.horizontal-row {
+  color: gray;
+}
+.pro-pic {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+}
+.content-Col2 {
+  background-color: #1d2226;
+  margin-left: 12px;
+  margin-top: 10px;
+  height: 500px;
+  width: 100%;
+  color: white;
+  border-radius: 10px;
+  padding-top: 10px;
+  margin-left: -18px;
+}
+.viewers {
+}
+.profile-name {
+  margin-left: -60px;
+}
+.profile-summary {
+  font-size: 12px;
+  margin-left: -60px;
+  margin-top: -11px;
+}

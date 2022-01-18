@@ -1,12 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from './components/Header/Header';
-import SideBar from './components/SideBar/Sidebar';
-
 import About from "./components/About"
-
 import { Col, Container, Row } from "react-bootstrap"
 import Activity from "./components/Activity"
+import RightSideBar from './components/RightSideBar/RightSideBar'
 
 function App() {
   return (
@@ -15,8 +13,10 @@ function App() {
        
        <div className="app_body">
         <Header className="Navbar"/>
-        <SideBar />
+         
        </div> 
+              
+       
       </header>
       <Container>
         <Row>
@@ -24,7 +24,10 @@ function App() {
             <About></About>
             <Activity></Activity>
           </Col>
-          <Col md={3}></Col>
+          <Col md={3}>
+            <RightSideBar/>
+            
+          </Col>
         </Row>
       </Container>
     </div>
