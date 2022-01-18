@@ -1,9 +1,45 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import { Plus, ChevronDown } from "react-bootstrap-icons"
 import SingleExperience from "./SingleExperience"
 
 export default function Experience() {
+  const [experiences, setExperiences] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [hasError, setHasError] = useState(false)
+
+  useEffect(() => {
+    getExperiences()
+  }, [])
+
+  const getExperiences = async () => {
+    setIsLoading(true)
+
+    const response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences",
+      {
+        method: "GET",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
+          "Content-Type": "application/json",
+        },
+      }
+    )
+
+    if (response.ok) {
+      const exp = await response.json()
+      const sortedExperiences = exp.sort(
+        (a, b) => new Date(b.startDate) - new Date(a.startDate)
+      )
+      setExperiences(sortedExperiences)
+      setIsLoading(false)
+    } else {
+      setIsLoading(false)
+      setHasError(true)
+    }
+  }
+
   return (
     <div>
       <div className="linkedin-card-top pt-3 pb-4">
@@ -15,35 +51,17 @@ export default function Experience() {
             <Plus> </Plus>
           </div>
         </div>
-        <SingleExperience
-          experience={{
-            title: "Business Development Manager",
-            image: "https://place-puppy.com/105x100",
-            time: "full time",
-            company: "CodeScraper",
-            duration: "Apr 2019 - Present",
-            years: "2 yrs 10 mos",
-            location: "Dubai, United Arab Emirates",
-            info: `✯ Creator of Know.me SOS bracelet.\n✯ Product Owner from inception to release\n✯ Market research and lead generation \n✯ Partnership opportunities to expand the business\nFor inquiries about our product: info@codescraper.com `,
-          }}
-          showBorder={true}
-        ></SingleExperience>
-        <SingleExperience
-          experience={{
-            title: "Business Development Manager",
-            image: "https://place-puppy.com/100x102",
-            time: "full time",
-            company: "TeepeeTale",
-            duration: "Apr 2019 - Present",
-            years: "2 yrs 10 mos",
-            location: "Dubai, United Arab Emirates",
-            info: `✯ Handle social media campaigns
-✯ Create deals and offers
-✯ Communicate with leads and customers
-✯ Source products and services`,
-          }}
-          showBorder={false}
-        ></SingleExperience>
+
+        {!isLoading &&
+          !hasError &&
+          experiences.map((experience, index) => (
+            <SingleExperience
+              key={experience._id}
+              experience={experience}
+              showBorder={index == experiences.length - 1 ? false : true}
+            ></SingleExperience>
+          ))}
+
         <span className="mt-4 ml-2 more-experiences">
           Show more experiences <ChevronDown />
         </span>
