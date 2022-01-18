@@ -17,7 +17,7 @@ const CentralAvatar = (/* { profile } */) => {
             <div className="imagess">
             <Button className="edit_image_button align-middle" variant="light"> <BsCameraFill className="align-baseline text-start"/> </Button>
             <Image src="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png" rounded  className="background_avatar"/>
-            <Image src="https://profilemagazine.com/wp-content/uploads/2020/04/Ajmere-Dale-Square-thumbnail.jpg" roundedCircle alt="" className="avatar"/>
+            <Image src="https://place-puppy.com/300x300" roundedCircle alt="" className="avatar"/>
             </div>
             <div className="d-flex">
                 <div className="central_avatar_info text-left  ml-4">
