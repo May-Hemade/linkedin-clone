@@ -24,7 +24,7 @@ const Dashboard = () => {
             
            
             
-            <Table bordered hover variant="dark" className="table">{/* table-responsive */}
+            <Table bordered hover variant="dark" className="table-fixed">{/* table-responsive */}
                 <tbody>
                     <tr>
                         <td className="text-left"> <a href="" className="dashboard_link"> <span className="font-weight-light  display-4 dashboard_number">169</span><br /> <span className="text-secondary"> Who viewed your profile </span></a></td>
