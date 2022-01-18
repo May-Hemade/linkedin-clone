@@ -1,19 +1,10 @@
-.icon:before {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  top: -6px;
-  left: -6px;
-  border-radius: 100%;
-  border: 2px solid #fff;
-  display: none;
-  content: "";
+.icon {
+  font-size: medium;
+  z-index: 1;
 }
-.icon:hover:before {
-  display: block;
-}
+
 .icon:hover {
-  background: grey;
+  background: #cc000000;
   border-radius: 50%;
   padding: 1ch;
   z-index: 0;

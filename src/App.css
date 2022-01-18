@@ -36,6 +36,7 @@
 .App-header {
   background-color: #1d2226;
 }
+
 .app_body {
   display: flex;
   background-color: #1d2226 !important;
@@ -46,9 +47,24 @@
   background-color: #1d2226;
   margin: 1ch;
   color: white;
-
   border-radius: 10px;
   border: 0.1rem solid rgba(0, 0, 0, 0.6);
+}
+
+.linkedin-card-top {
+  background-color: #1d2226;
+  margin: 1ch 1ch 0 1ch;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.linkedin-card-bottom {
+  background-color: #1d2226;
+  margin: 0 1ch 1ch 1ch;
+  color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .linkedin-card-header {
@@ -79,4 +95,78 @@
   color: #70b5f9 !important;
   font-size: 14px;
   font-weight: 400;
+}
+
+.linkedin-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+}
+
+.linkedin-icon-a {
+  display: inline-block;
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.linkedin-icon-a:hover {
+  background-color: rgb(100, 100, 100);
+  border-radius: 50%;
+}
+
+.linkedin-icon:hover {
+  background-color: rgb(100, 100, 100);
+  border-radius: 50%;
+}
+
+.linkedin-divider-top {
+  border-top: solid 0.02px rgb(95, 94, 94) !important;
+}
+
+.linkedin-divider-bottom {
+  border-bottom: solid 0.02px rgb(95, 94, 94) !important;
+}
+
+.sub-title {
+  font-size: 14px;
+  color: #beb8b8e6;
+  text-decoration-color: #70b5f9 !important;
+}
+
+.title {
+  font-size: 16px;
+  color: white !important;
+  text-decoration-color: #70b5f9 !important;
+}
+
+.experience-container {
+  position: relative;
+}
+
+.experience-container:hover .experience-icons {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 100;
+}
+
+.experience-icons {
+  display: none;
+}
+
+.more-experiences {
+  padding: 10px !important;
+}
+
+.more-experiences:hover {
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.card-image-small {
+  width: 65px;
+  height: 65px;
 }
