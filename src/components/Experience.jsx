@@ -37,35 +37,35 @@ export default function Experience() {
                 
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
-                <form onSubmit={handleSubmit((data) => { console.log(data);})}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   {/* register your input into the hook by invoking the "register" function */}
                   
                   <div className="form-group d-flex flex-column">
                   <label for="role">Role*</label>
-                  <input id="role" defaultValue="role..." className="modal_input" {...register("role", {required:true, minLength: 4})} />
+                  <input id="role" placeholder="role..." className="modal_input" {...register("role", {required:true, minLength: 4})} />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                   <label for="company">Company*</label>
-                  <input id="company" defaultValue="company..." className="modal_input" {...register("company", {required:true, minLength: 4})} />
+                  <input id="company" placeholder="company..." className="modal_input" {...register("company", {required:true, minLength: 4})} />
                   </div>
                   
                   <div className="form-group d-flex flex-column">
                   <label for="area">Area</label>
-                  <input id="area" defaultValue="area..." className="modal_input" {...register("area", {required:true, minLength: 2})} />
+                  <input id="area" placeholder="area..." className="modal_input" {...register("area", {required:true, minLength: 2})} />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                   <label for="description">Description</label>
-                  <textarea id="area" defaultValue="description..." className="modal_input" rows="3" {...register("description", {required:true, minLength: 4})} />
+                  <textarea id="area" placeholder="description..." className="modal_input" rows="3" {...register("description", {required:true, minLength: 4})} />
                   </div>
                   
                 <div className="form-group d-flex flex-column">
                   <label for="start">Start date:</label>
 
                   <input type="date" id="start" name="trip-start" className="modal_input"
-                        value="yyyy-MM-dd"
-                        /* min="2018-01-01" max="2018-12-31" */ defaultValue="test" {...register("startDate", {required:true})}/>
+                        placeholder="yyyy-MM-dd"
+                        /* min="2018-01-01" max="2018-12-31" */ placeholder="test" {...register("startDate", {required:true})}/>
                   </div>
                   <div className="form-check">
                     <input type="checkbox" className="form-check-input modal_input" id="exampleCheck1"/>
@@ -76,7 +76,7 @@ export default function Experience() {
                     <label for="end">End date:</label>
 
                     <input type="date" id="end" name="trip-start" className="modal_input"
-                          value="yyyy-MM-dd" defaultValue="test" {...register("endDate")}
+                          placeholder="yyyy-MM-dd" placeholder="test" {...register("endDate")}
                           /* min="2018-01-01" max="2018-12-31" *//>
                   </div>
                   
