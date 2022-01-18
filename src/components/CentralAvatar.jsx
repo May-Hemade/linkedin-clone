@@ -22,11 +22,11 @@ const CentralAvatar = (/* { profile } */) => {
                     <span className="central_avatar_city mr-1">
                         <small>Barcelona, Cataluña, España</small>
                     </span>
-                    <span className="central_avatar_city_dot align-top text-light text-secondary">
+                    <span className="central_avatar_city_dot align-top text-secondary text-secondary">
                     &bull;
                     </span>
                     <span>
-                        <small><a href="" className="ml-1">Contact information</a></small>
+                        <small><a href="" className="ml-1 central_avatar_contact">Contact information</a></small>
                     </span>
                     <p className="contacts_central mt-3">
                         <small><b>182</b> contacts</small>
@@ -43,8 +43,8 @@ const CentralAvatar = (/* { profile } */) => {
                     </div>
             </div>
             <div className="central_avatar_options text-left ml-4 pb-4">
-                <Button className="menu_button" variant="primary text-dark mr-3">Open to</Button>
-                <Button className="menu_button" variant="outline-light mr-3">{/* <BsFillLockFill/> */}Add Section</Button>    
+                <Button className="menu_button_open" variant=" text-dark mr-3">Open to</Button>
+                <Button className="menu_button" variant="outline-light mr-3">Add Section</Button>    
                 <Button className="menu_button" variant="outline-light mr-3">More</Button>
                 
             </div>

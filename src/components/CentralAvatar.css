@@ -72,4 +72,22 @@
     padding-left: 8.5px;
 }
 
+.menu_button_open {
+  background-color: #70b5f9;
+  border-radius:23px !important;
+}
+
+.menu_button_open:hover {
+  color: white !important;
+  background-color: black;
+}
+
+.central_avatar_contact {
+  color: #70b5f9;
+}
+
+.central_avatar_contact:hover {
+  color: #70b5f9;
+  text-decoration-color: #70b5f9;
+}
 

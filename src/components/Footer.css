@@ -7,3 +7,30 @@
     padding: 0px !important;
 }
 
+#dropdown-basic-button {
+    background-color: transparent !important;
+    border-color: white;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 10px;
+    padding-left: 4px;
+}
+
+.footer_link {
+    color: lightgray !important;
+}
+
+.footer_link:hover {
+    color: white !important;
+    text-decoration-color: #70b5f9;
+}
+
+.footer_label {
+    color: lightgray;
+    font-weight: 2;
+    font-size: 14px;
+}
+
+.dropdown-toggle::after {
+    margin-left: 5em;
+}
