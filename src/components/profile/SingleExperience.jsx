@@ -29,7 +29,7 @@ export default function SingleExperience({ experience, showBorder }) {
   reset(register);
 },[register])  */
   
-//Delete button function
+
 
   
   const getDuration = () => {
@@ -119,14 +119,14 @@ export default function SingleExperience({ experience, showBorder }) {
 //Delete button function
 const DeleteExperience = async () => {
       try { 
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId" /* + {experience._id} */, { //:userId/experience/:expId
+        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences/"+experience._id, {/* +  */  //:userId/experience/:expId
         method: 'DELETE',
-        body: JSON.stringify(register),
+        
         headers: {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
           'Content-Type': 'application/json',
         }
-    })
+      })
     console.log(response)
     if (response.ok) {
         alert('Experience was deleted')
@@ -142,7 +142,7 @@ const DeleteExperience = async () => {
     } else {
         alert('There was a problem deleting your experience')
     }
-    } catch (error) {
+   } catch (error) {
     console.log(error)
     }
 }
@@ -238,7 +238,7 @@ const DeleteExperience = async () => {
                   {/* errors will return when field validation fails  */}
                   {errors.exampleRequired && <span>This field is required</span>}
                   <Modal.Footer>
-                    <Button className="modal_delete_button" variant="danger" onClick={DeleteExperience}>Delete</Button>
+                    <Button className="modal_delete_button" variant="danger" onClick={DeleteExperience, handleClose}>Delete</Button>
                    <input type="submit" value={"Save"} className="modal_save_button mt-3" onClick={handleClose} /> 
                    
                    </Modal.Footer>

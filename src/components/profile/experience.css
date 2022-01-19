@@ -39,6 +39,7 @@
   color: lightgray;
   border-color: white;
   border-radius: 5px;
+  border: solid;
 }
 
 .close {
