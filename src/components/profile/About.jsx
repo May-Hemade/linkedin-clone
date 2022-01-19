@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Pen } from "react-bootstrap-icons"
-import ReadMore from "./ReadMore"
+import ReadMore from "../ReadMore"
 import "./about.css"
 
 export default class About extends Component {
