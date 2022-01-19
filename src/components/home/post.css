@@ -1,0 +1,69 @@
+.linkedin-post-header {
+  padding: 0.5ch;
+}
+
+.linkedin-user-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin: 1ch;
+  object-fit: cover;
+}
+
+.linkedin-user-name {
+  font-size: 14px;
+  color: #ffffffe6;
+  font-weight: bold;
+}
+
+.linkedin-user-title {
+  font-size: 12px;
+  color: #ffffff99;
+  font-weight: 400;
+}
+
+.linkedin-post-date {
+  font-size: 12px;
+  color: #ffffff99;
+  font-weight: 400;
+}
+
+.linkedin-post-body {
+  font-size: 14px;
+  color: #ffffffe6;
+  padding: 1ch 2ch 1ch 2ch;
+}
+
+.linkedin-post-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 1ch;
+  margin-left: 1ch;
+  padding-top: 0.5ch;
+  padding-bottom: 0.5ch;
+}
+
+.linkedin-post-button {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding-top: 1.5ch;
+  padding-bottom: 1.5ch;
+}
+
+.linkedin-post-button:hover {
+  background-color: rgb(66, 66, 66) !important;
+  border-color: transparent !important;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.rotate-icon {
+  transform: rotate(-30deg) translate(0%, -10%);
+}
