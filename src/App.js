@@ -4,7 +4,7 @@ import Profile from "./components/profile/Profile"
 import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Header from "./components/Header"
-import Postinput from "./components/PostInput"
+import Postinput from "./components/home/PostInput"
 
 function App() {
   return (
