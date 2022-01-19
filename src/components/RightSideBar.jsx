@@ -1,7 +1,8 @@
 import React,{Component} from 'react'
 import './RightSideBar.css'
-import {Col, Row,} from 'react-bootstrap'
+import {Col, Container, Row,} from 'react-bootstrap'
 import { FaRegQuestionCircle } from 'react-icons/fa';
+import {FiPlus} from "react-icons/fi"
 
 
 
@@ -14,9 +15,6 @@ class RightSideBar extends Component {
         profiles:[]
         }
     }
-  
-
-
     componentDidMount= async()=>
     {
     let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", 
@@ -38,7 +36,7 @@ class RightSideBar extends Component {
         render(){
         return(
     
-        <div className="SideBar">
+        <Container className="RideSideBar">
             <div className="content-div1">
                 <Col className="content-Col">
                     <Row className="content-Row">
@@ -50,20 +48,30 @@ class RightSideBar extends Component {
                     </Row>
                 </Col>
             </div>
-            <div className="content-Col2">
+            <div className="viewer-profiles">
                 <Col>
                     <p>People also viewed</p>
                     <ul>
                         {this.state.profiles.map((profile) => {
                                     return (
                                     <Row className="viewers">
-                                                <Col>
+                                                <Col className="viewer-picture align-items-center" sm={2}>
                                                     <img className= "pro-pic" src= {profile.image} alt="pro-pic"/>
                                                 </Col>
-                                                <Col> 
-                                                    <p className= "profile-name">{profile.name}</p>
-                                                    <p className= "profile-summary">{profile.bio}</p>
+                                                <Col className="viewer-job-description justify-content-left" sm={10}> 
+                                                    <Row>
+                                                        <Col sm={12}>
+                                                            <span className= "profile-name">{profile.name}</span>
+                                                        </Col>
+                                                    
+                                                        <Col sm={12}>
+                                                            <span className= "job-title">{profile.title}</span>
+                                                        </Col>
+                                                        
+                                                    </Row>
+                                                <button className="follow"><FiPlus/> Follow</button>
                                                 </Col>
+
                                             </Row>  
                                     )
                                     })}
@@ -72,7 +80,7 @@ class RightSideBar extends Component {
             </div>
         
             <hr className="horizontal-row"/>
-        </div>
+        </Container>
      
     )
         }
@@ -80,5 +88,15 @@ class RightSideBar extends Component {
 export default RightSideBar
 
 
-
- 
+// <Container>
+//     <Row>
+//         <Col>Profile Picture</Col>
+//         <Col>
+//         <div>
+//             Profile Name
+//             Job Title
+//         </div>
+//         </Col>
+//         <Button>Follow</Button>
+//     </Row>
+// </Container>
