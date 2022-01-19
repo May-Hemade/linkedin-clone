@@ -13,15 +13,20 @@ import Dashboard from './components/Dashboard';
 import Footer from "./components/Footer"
 import RightSideBar from "./components/RightSideBar"
 import Header from "./components/Header"
+import Postinput from "./components/PostInput"
 
 function App() {
   return (
     <div className="App">
 
       <Header/>
+      
+      
+      
       <Container className="mt-4 pt-32">
         <Row>
           <Col>
+            <Postinput/>
             <CentralAvatar/>
             <Dashboard/>
             <About />
@@ -36,6 +41,7 @@ function App() {
           </Col>
         </Row>
       </Container>
+      
       <Footer/>
 
     </div>

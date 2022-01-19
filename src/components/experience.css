@@ -45,6 +45,15 @@
   color: white !important;
 }
 
+.modal_delete_button {
+  font-weight: 600;
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius:23px;
+  margin-top: 15px;
+}
+
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }

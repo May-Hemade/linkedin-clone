@@ -59,7 +59,7 @@ const CentralAvatar = (/* { profile } */) => {
                     &bull;
                     </span>
                     <span>
-                        <small><a href="" className="ml-1 central_avatar_contact">Contact information</a></small>
+                        <small><a href="" className="ml-1 central_avatar_contact">{profile.email}</a></small>
                     </span>
                     <p className="contacts_central mt-3">
                         <small>{profile.bio}</small>
