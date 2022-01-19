@@ -2,15 +2,38 @@ import { Container, Image, Button } from "react-bootstrap"
 import "./CentralAvatar.css"
 import { BsCameraFill } from "react-icons/bs";
 import { Pen } from "react-bootstrap-icons"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 const CentralAvatar = (/* { profile } */) => {
     
+    const [profile,setProfile] = useState(null)
     
     
-    
-    
+    useEffect(()=>{
+        const fetchData = async () => {
+            try {
+                let response= await fetch("https://striveschool-api.herokuapp.com/api/profile/me", 
+                {
+                    "method": "GET",
+                    "headers":
+                    {
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+                        "Content-type": "application/json",
+                    }
+                })  
+                if (response.ok) {
+                    let data = await response.json()
+                    console.log('DATA', data)
+                    // now I want to safely store these details in my state!
+                    setProfile(data)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchData()
+    }, [])
     
     return (
         <Container className="central_avatar p-0">
@@ -20,26 +43,30 @@ const CentralAvatar = (/* { profile } */) => {
             <Image src="https://place-puppy.com/300x300" roundedCircle alt="" className="avatar"/>
             </div>
             <div className="d-flex">
+                {
+                    profile && (
                 <div className="central_avatar_info text-left  ml-4">
                     <h4 className="text-white">
-                        Pablo Villegas Martin
+                        {profile.name}{profile.surname}
                     </h4>
                     <h6 className="text-white">
-                        Data Science
+                        {profile.title}
                     </h6>
                     <span className="central_avatar_city mr-1">
-                        <small>Barcelona, Cataluña, España</small>
+                        <small>{profile.area}</small>
                     </span>
                     <span className="central_avatar_city_dot align-top text-secondary text-secondary">
                     &bull;
                     </span>
                     <span>
-                        <small><a href="" className="ml-1 central_avatar_contact">Contact information</a></small>
+                        <small><a href="" className="ml-1 central_avatar_contact">{profile.email}</a></small>
                     </span>
                     <p className="contacts_central mt-3">
-                        <small><b>182</b> contacts</small>
+                        <small>{profile.bio}</small>
                     </p>
                 </div>
+                    )
+                }
                 <div className="schools_container ml-auto  text-light d-flex justify-content-between">
                     
                     <div className="schools " >

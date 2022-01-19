@@ -50,10 +50,50 @@ export default function Experience() {
   const {
     register,
     handleSubmit,
-    watch,
+    watch, reset,
     formState: { errors },
   } = useForm()
 
+  //POST HANDLESUBMIT
+  const onSubmit = async (e, data) => {
+    console.log(data);
+     
+    e.preventDefault()
+    try { 
+      let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:61e566c373d5cb0015395aa6/experiences", { //:userId/experience
+      method: 'POST',
+      body: JSON.stringify(register),
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+        'Content-Type': 'application/json',
+      }
+  })
+  console.log(response)
+  if (response.ok) {
+      alert('Experience was saved')
+      
+      /* setregister({
+          role: '',
+          company: '',
+          area: '',
+          description: '',
+          startDate: '',
+          endDate: '',
+      }) */
+  } else {
+      alert('There was a problem saving your experience')
+  }
+} catch (error) {
+  console.log(error)
+}
+}
+
+//Reset register when state is updated 
+useEffect(() => {
+  reset(register);
+},[register]) 
+  
+  
   const submitForm = (data) => {
     console.log(data)
   }
@@ -76,7 +116,7 @@ export default function Experience() {
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
                 <form
-                  onSubmit={handleSubmit((data) => {
+                  onSubmit={handleSubmit((onSubmit),(data) => {
                     submitForm(data)
                   })}
                 >
