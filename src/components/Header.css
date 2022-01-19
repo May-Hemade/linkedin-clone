@@ -32,7 +32,8 @@
   height: 40px;
 }
 .search_Bar_input {
-  color: white;
+  background-color: darkgray !important;
+  border-radius: 15px;
 }
 
 .header_right {
