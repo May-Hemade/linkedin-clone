@@ -11,9 +11,15 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import DropDownIcon from './DropDownIcon.jsx'
-
+import { Link,  useLocation, useNavigate } from 'react-router-dom'
 const Header = () => {
- 
+    
+    
+    const location = useLocation()
+
+    const navigate = useNavigate()
+
+
     return(
         <div className="header">
                 <div className="header_left">
@@ -27,11 +33,16 @@ const Header = () => {
                 <div className="header_right">
                    
                 <Nav>     
-                    <Nav.Item>
-                        <Nav.Link href="/home">
+                    
+                    
+                        {/* <div className={location.pathname === '/menu' ? 'nav-link active' : 'nav-link'}>Menu</div> */}
+                    <Link to="/">
+                        <div className={location.pathname === '/' ? 'nav-link active' : 'nav-link'}><HeaderOption Icon={HomeIcon} title='Home'/></div>
+                     </Link>
+                        {/* <Nav.Link href="/home">
                             <HeaderOption Icon={HomeIcon} title='Home'/>
-                        </Nav.Link>
-                    </Nav.Item>           
+                        </Nav.Link> */}
+                              
                     <Nav.Item>
                         <Nav.Link href="/home">
                             <HeaderOption Icon={SupervisorIcon} title='My Network'/>
@@ -53,10 +64,13 @@ const Header = () => {
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="link-2">
+                        
+                        <Link to='/profile'>
+                            <div className={location.pathname === '/profile' ? 'nav-link active' : 'nav-link'}><HeaderOption avatar='./Assets/Profile-picture.jpg' title='Me'/></div>
+                        {/* <Nav.Link eventKey="link-2">
                             <HeaderOption avatar='./Assets/Profile-picture.jpg' title='Me'/>
-                        </Nav.Link>
-                      
+                        </Nav.Link> */}
+                        </Link>
                     </Nav.Item>
                    
                     <Nav.Item>
