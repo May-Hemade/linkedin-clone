@@ -5,6 +5,7 @@ import Footer from "../Footer"
 import RightSideBar from "../RightSideBar"
 import { css } from "@emotion/react"
 import Post from "./Post"
+import Postinput from "./PostInput"
 
 const loadingStyle = css`
   display: block;
@@ -51,6 +52,7 @@ export default function Home() {
           <Col md={2}></Col>
 
           <Col>
+            <Postinput/>
             <GridLoader
               size={10}
               loading={isLoading}

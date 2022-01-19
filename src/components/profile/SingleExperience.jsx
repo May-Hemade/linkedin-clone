@@ -187,7 +187,7 @@ const DeleteExperience = async () => {
                   
                   <div className="form-group d-flex flex-column">
                   <label for="role">Role*</label>
-                  <input id="role" value={experience.title} /* placeholder="role..." */ className="modal_input" {...register("role", {required:true, minLength: 4})} />
+                  <input id="role" value={experience.role} /* placeholder="role..." */ className="modal_input" {...register("role", {required:true, minLength: 4})} />
                   </div>
 
                   <div className="form-group d-flex flex-column">
