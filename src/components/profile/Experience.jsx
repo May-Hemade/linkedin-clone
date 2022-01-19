@@ -176,16 +176,7 @@ export default function Experience() {
                       {...register("startDate", { required: true })}
                     />
                   </div>
-                  <div className="form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input modal_input"
-                      id="exampleCheck1"
-                    />
-                    <label className="form-check-label" htmlFor="exampleCheck1">
-                      I am currently working in this role
-                    </label>
-                  </div>
+                  
 
                   <div className="form-group d-flex flex-column mt-2">
                     <label htmlFor="end">End date:</label>

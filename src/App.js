@@ -11,6 +11,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
+          
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="profile" element={<Profile />}></Route>

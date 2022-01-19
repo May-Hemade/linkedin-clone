@@ -46,12 +46,12 @@
 }
 
 .modal_delete_button {
-  font-weight: 600;
-  padding: 5px;
-  padding-left: 30px;
-  padding-right: 30px;
-  border-radius:23px;
-  margin-top: 15px;
+  font-weight: 600 !important;
+  padding: 5px !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  border-radius:23px !important;
+  margin-top: 15px !important;
 }
 
 ::-webkit-calendar-picker-indicator {
