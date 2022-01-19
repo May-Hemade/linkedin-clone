@@ -54,8 +54,8 @@ export default function Interests() {
       </div>
       <div className="linkedin-divider-bottom px-4">
         <Row>
-          {interests.map((interest) => (
-            <Col md={6}>
+          {interests.map((interest, index) => (
+            <Col md={6} key={`interest-${index}`}>
               <SingleInterest interest={interest} />
             </Col>
           ))}
