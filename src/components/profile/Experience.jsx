@@ -116,7 +116,7 @@ export default function Experience() {
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
                 <form
-                  onSubmit={handleSubmit(onSubmit,(data) => {
+                  onSubmit={handleSubmit((onSubmit),(data) => {
                     submitForm(data)
                   })}
                 >

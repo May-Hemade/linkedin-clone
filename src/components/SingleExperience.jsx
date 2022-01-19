@@ -1,13 +1,15 @@
 import React from "react"
 import "./experience.css"
 import { Pen, List } from "react-bootstrap-icons"
-import { format, differenceInMonths } from "date-fns"
 import {Modal, Button} from "react-bootstrap"
 
 import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form";
 
+
+
 export default function SingleExperience({ experience, showBorder }) {
+  
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -91,125 +93,9 @@ const DeleteExperience = async () => {
     console.log(error)
     }
 }
+
   
-  const getDuration = () => {
-    const startDate = new Date(experience.startDate)
-    const endDate =
-      experience.endDate == null ? new Date() : new Date(experience.endDate)
-    const months = differenceInMonths(endDate, startDate)
-
-    const years = Math.floor(months / 12)
-    const remaining = months % 12
-
-    const yearsString =
-      years > 0 ? (years > 1 ? `${years} years` : `${years} year`) : ""
-    const monthsString =
-      remaining > 0
-        ? remaining > 1
-          ? `${remaining} mos`
-          : `${remaining} mo`
-        : ""
-
-    return `${yearsString} ${monthsString}`
-  }
-
-  const getStartEnd = () => {
-    const startDate = new Date(experience.startDate)
-
-    let startEnd = format(startDate, "MMM yyyy")
-
-    if (experience.endDate != null) {
-      const endDate = new Date(experience.endDate)
-      startEnd += ` - ${format(endDate, "MMM yyyy")}`
-    } else {
-      startEnd += " - Present"
-    }
-
-    return startEnd
-  }
-
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  //REACT FORM
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  /* const onSubmit = data => console.log(data); */
-
-  console.log(watch("example")); // watch input value by passing the name of it
   
- 
-  
-  //
-  //PUT HANDLESUBMIT
-  const onSubmit = async (e, data) => {
-    console.log(data);
-    e.preventDefault()
-    try { 
-      let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:61e566c373d5cb0015395aa6/experiences", { //:userId/experience
-      method: 'PUT',
-      body: JSON.stringify(register),
-      headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
-        'Content-Type': 'application/json',
-      }
-  })
-  console.log(response)
-  if (response.ok) {
-      alert('Experience was saved')
-      
-      /* setregister({
-          role: '',
-          company: '',
-          area: '',
-          description: '',
-          startDate: '',
-          endDate: '',
-      }) */
-  } else {
-      alert('There was a problem saving your experience')
-  }
-} catch (error) {
-  console.log(error)
-}
-}
-
-//Reset register when state is updated 
-/* useEffect(() => {
-  reset(register);
-},[register])  */
-  
-//Delete button function
-const DeleteExperience = async () => {
-      try { 
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId" /* + {experience._id} */, { //:userId/experience/:expId
-        method: 'DELETE',
-        body: JSON.stringify(register),
-        headers: {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
-          'Content-Type': 'application/json',
-        }
-    })
-    console.log(response)
-    if (response.ok) {
-        alert('Experience was deleted')
-        
-        /* setregister({
-            role: '',
-            company: '',
-            area: '',
-            description: '',
-            startDate: '',
-            endDate: '',
-        }) */
-    } else {
-        alert('There was a problem deleting your experience')
-    }
-    } catch (error) {
-    console.log(error)
-    }
-}
-
   return (
     <div>
       <div className="d-flex inline pt-3">
@@ -220,17 +106,19 @@ const DeleteExperience = async () => {
           }`}
         >
           <a href="#" className="sub-title ">
-            <h3 className="title">{experience.role}</h3>
+            <h3 className="title">{experience.title}</h3>
             <div className="sub-title">
               <span> {experience.company}</span>
+              <span>. </span>
+              <span>{experience.time}</span>
             </div>
             <div className="sub-title">
-              <span>{getStartEnd()}</span>
-              <span> . </span>
-              <span>{getDuration()}</span>
+              <span>{experience.duration}</span>
+              <span>. </span>
+              <span>{experience.years}</span>
             </div>
             <div className="sub-title">
-              <span>{experience.area}</span>
+              <span>{experience.location}</span>
             </div>
           </a>
           <div className="body mt-2 ">
@@ -238,6 +126,8 @@ const DeleteExperience = async () => {
           </div>
           <div className="p-2 experience-icons">
             <div className="mr-2 linkedin-icon">
+              
+              
               <Pen style={{cursor:'pointer'}} onClick={handleShow}/>
               <Modal show={show} onHide={handleClose} >
               <Modal.Header  className="modal_add_experience justify-between-content" closeButton>

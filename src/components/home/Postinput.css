@@ -1,0 +1,45 @@
+.postinput_container {
+    background-color: #384046;
+    color: white;
+    
+    border-radius: 10px;
+    
+    
+    height: fit-content;
+    margin-bottom: 10px;
+    
+
+}
+/* .postInput > form {
+    display: flex;
+    width: 100%;
+}
+
+.postInput > form > input {
+    border: none;
+    flex: 1;
+    margin-left: 10px;
+    outline-width: 0;
+    font-weight: 600;
+} */
+
+/* .input-group-prepend {
+    
+} */
+
+.input-group-text{
+    background-color: white;
+    border-right: none;
+}
+
+.form-control {
+    border-left: none;
+}
+
+.input-group {
+    border-radius: 23px;
+}
+
+.postinput_submit {
+    background-color: white;
+}
