@@ -62,24 +62,24 @@
 }
 
 .edit_image_button {
-    border-radius: 50%;
+    border-radius: 50% !important;
     width: 35px;
     height: 35px;
     position: absolute;
     z-index: 4;
     top: 20px;
     right: 20px;
-    padding-left: 8.5px;
+    padding-left: 8.5px !important;
 }
 
 .menu_button_open {
-  background-color: #70b5f9;
+  background-color: #70b5f9 !important;
   border-radius:23px !important;
 }
 
 .menu_button_open:hover {
   color: white !important;
-  background-color: black;
+  background-color: black !important;
 }
 
 .central_avatar_contact {
