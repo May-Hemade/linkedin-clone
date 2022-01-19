@@ -3,7 +3,6 @@ import "./experience.css"
 import { Pen, List } from "react-bootstrap-icons"
 import { format, differenceInMonths } from "date-fns"
 import {Modal, Button} from "react-bootstrap"
-
 import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form";
 
@@ -64,7 +63,7 @@ export default function SingleExperience({ experience, showBorder }) {
 //Delete button function
 const DeleteExperience = async () => {
       try { 
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId" /* + {experience._id} */, { //:userId/experience/:expId
+        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/" /* + {experience._id} */, { //:userId/experience/:expId
         method: 'DELETE',
         body: JSON.stringify(register),
         headers: {
