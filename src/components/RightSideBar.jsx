@@ -3,6 +3,7 @@ import './RightSideBar.css'
 import {Col, Container, Row,} from 'react-bootstrap'
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import {FiPlus} from "react-icons/fi"
+// import {Footer} from './profile/Footer.jsx'
 
 
 
@@ -80,7 +81,12 @@ class RightSideBar extends Component {
             </div>
         
             <hr className="horizontal-row"/>
+          
+          {/* <div>
+            <Footer/>
+        </div> */}
         </Container>
+        
      
     )
         }
