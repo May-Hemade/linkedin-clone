@@ -22,38 +22,7 @@ export default function SingleExperience({ experience, showBorder }) {
  
   
   //
-  //PUT HANDLESUBMIT
-  const onSubmit = async (e, data) => {
-    console.log(data);
-    e.preventDefault()
-    try { 
-      let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:61e566c373d5cb0015395aa6/experiences", { //:userId/experience
-      method: 'PUT',
-      body: JSON.stringify(register),
-      headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
-        'Content-Type': 'application/json',
-      }
-  })
-  console.log(response)
-  if (response.ok) {
-      alert('Experience was saved')
-      
-      /* setregister({
-          role: '',
-          company: '',
-          area: '',
-          description: '',
-          startDate: '',
-          endDate: '',
-      }) */
-  } else {
-      alert('There was a problem saving your experience')
-  }
-} catch (error) {
-  console.log(error)
-}
-}
+  
 
 //Reset register when state is updated 
 /* useEffect(() => {
@@ -61,35 +30,7 @@ export default function SingleExperience({ experience, showBorder }) {
 },[register])  */
   
 //Delete button function
-const DeleteExperience = async () => {
-      try { 
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/" /* + {experience._id} */, { //:userId/experience/:expId
-        method: 'DELETE',
-        body: JSON.stringify(register),
-        headers: {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
-          'Content-Type': 'application/json',
-        }
-    })
-    console.log(response)
-    if (response.ok) {
-        alert('Experience was deleted')
-        
-        /* setregister({
-            role: '',
-            company: '',
-            area: '',
-            description: '',
-            startDate: '',
-            endDate: '',
-        }) */
-    } else {
-        alert('There was a problem deleting your experience')
-    }
-    } catch (error) {
-    console.log(error)
-    }
-}
+
   
   const getDuration = () => {
     const startDate = new Date(experience.startDate)
@@ -127,12 +68,9 @@ const DeleteExperience = async () => {
     return startEnd
   }
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  
   //REACT FORM
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
   /* const onSubmit = data => console.log(data); */
 
   console.log(watch("example")); // watch input value by passing the name of it
