@@ -5,6 +5,7 @@ import Footer from "../Footer"
 import RightSideBar from "../RightSideBar"
 import { css } from "@emotion/react"
 import Post from "./Post"
+import PostArea from "../profile/PostArea"
 
 const loadingStyle = css`
   display: block;
@@ -46,6 +47,7 @@ export default function Home() {
 
   return (
     <div>
+      <PostArea></PostArea>
       <Container className="mt-4 pt-32">
         <Row>
           <Col md={2}></Col>
@@ -61,6 +63,7 @@ export default function Home() {
             {!isLoading &&
               !hasError &&
               posts
+                .reverse()
                 .slice(0, 100)
                 .map((post) => <Post key={post._id} post={post} />)}
           </Col>
