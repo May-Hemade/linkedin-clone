@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react"
 import { Modal, Button } from "react-bootstrap"
 import { Plus, ChevronDown } from "react-bootstrap-icons"
 import SingleExperience from "./SingleExperience"
-import { useForm } from "react-hook-form"
-
+import { useForm, Controller, ErrorMessage } from "react-hook-form"
+import ReactDatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css";
+import Cleave from "cleave.js/dist/cleave-react";
+import DatePicker from "react-multi-date-picker";
 
 export default function Experience() {
   const [experiences, setExperiences] = useState([])
@@ -16,29 +19,32 @@ export default function Experience() {
 
   const getExperiences = async () => {
     setIsLoading(true)
-
-    const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences",
-      {
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
-          "Content-Type": "application/json",
-        },
-      }
-    )
-
-    if (response.ok) {
-      const exp = await response.json()
-      const sortedExperiences = exp.sort(
-        (a, b) => new Date(b.startDate) - new Date(a.startDate)
+    try {
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences",
+        {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
+            "Content-Type": "application/json",
+          },
+        }
       )
-      setExperiences(sortedExperiences)
-      setIsLoading(false)
-    } else {
-      setIsLoading(false)
-      setHasError(true)
+
+      if (response.ok) {
+        const exp = await response.json()
+        const sortedExperiences = exp.sort(
+          (a, b) => new Date(b.startDate) - new Date(a.startDate)
+        )
+        setExperiences(sortedExperiences)
+        setIsLoading(false)
+      } else {
+        setIsLoading(false)
+        setHasError(true)
+      }
+    } catch (e) {
+      console.log(e)
     }
   }
 
@@ -51,52 +57,48 @@ export default function Experience() {
   const {
     register,
     handleSubmit,
-    watch, reset,
+
+    watch, reset, control,
     formState: { errors },
   } = useForm()
 
+  console.log(watch("startDate"));
+  console.log(errors)
+
+  const [startDate, setStarDate] = useState(null)
+
+  const dateReceived = watch("startDate");
     //POST HANDLESUBMIT
-    const onSubmit = async (e, data) => {
-      console.log(data);
-       
-      e.preventDefault()
+  const submitForm = async (data) => {
       try { 
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:61e566c373d5cb0015395aa6/experiences", { //:userId/experience
+        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences", { //:userId/experience
         method: 'POST',
-        body: JSON.stringify(register),
+        body: JSON.stringify(data),
         headers: {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
           'Content-Type': 'application/json',
         }
     })
     console.log(response)
     if (response.ok) {
         alert('Experience was saved')
-        
-        /* setregister({
-            role: '',
-            company: '',
-            area: '',
-            description: '',
-            startDate: '',
-            endDate: '',
-        }) */
     } else {
         alert('There was a problem saving your experience')
+    }  
+    } catch (error) {
+      console.log(error)
     }
-  } catch (error) {
-    console.log(error)
-  }
-  }
-  
-  //Reset register when state is updated 
-  useEffect(() => {
-    reset(register);
-  },[register]) 
+  }}
 
-  const submitForm = (data) => {
+
+
+
+  const onSubmit = (data, e) => {
     console.log(data)
+    submitForm(data)
+    e.target.reset()
   }
+  //
 
   return (
     <div>
@@ -116,88 +118,145 @@ export default function Experience() {
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
                 <form
-                  onSubmit={handleSubmit((onSubmit),(data) => {
-                    submitForm(data)
-                  })}
-                >
+
+                  onSubmit={handleSubmit(onSubmit)}>
+
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="role">Role*</label>
                     <input
+                      {...register("role", { required: true, minLength: 4 })}
                       id="role"
                       placeholder="role..."
                       className="modal_input"
-                      {...register("role", { required: true, minLength: 4 })}
+                      
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="company">Company*</label>
                     <input
+                      {...register("company", { required: true, minLength: 4 })}
                       id="company"
                       placeholder="company..."
                       className="modal_input"
-                      {...register("company", { required: true, minLength: 4 })}
+                      
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="area">Area</label>
+                    
                     <input
+                      {...register("area", { required: true, minLength: 2 })}
                       id="area"
                       placeholder="area..."
                       className="modal_input"
-                      {...register("area", { required: true, minLength: 2 })}
+                      
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="description">Description</label>
                     <textarea
+                     {...register("description", {
+                      required: true,
+                      minLength: 4,
+                    })}
                       id="description"
                       placeholder="description..."
                       className="modal_input"
                       rows="3"
-                      {...register("description", {
-                        required: true,
-                        minLength: 4,
-                      })}
+                      
                     />
                   </div>
 
-                  <div className="form-group d-flex flex-column">
+                  <div className="form-group d-flex justify-content-between">
+                    
+                  <div className="d-flex flex-column ">
                     <label htmlFor="start">Start date:</label>
-
-                    <input
-                      type="date"
-                      id="start"
-                      name="trip-start"
-                      className="modal_input"
-                      placeholder="yyyy-MM-dd"
-                      {...register("startDate", { required: true })}
+                    <Controller className="modal_input"
+                      control={control}
+                      name="startDate"
+                      rules={{ required: true }} //optional
+                      render={({
+                        field: { onChange, name, value },
+                        fieldState: { invalid, isDirty }, //optional
+                        formState: { errors }, //optional, but necessary if you want to show an error message
+                      }) => (
+                        <>
+                          <DatePicker
+                            value={value || ""}
+                            onChange={(startDate) => {
+                              onChange(startDate?.isValid ? startDate : "");
+                            }}
+                            format={"YYYY/MM/DD"}
+                          />
+                          {errors && errors[name] && errors[name].type === "required" && (
+                            //if you want to show an error message
+                            <span>your error message !</span>
+                          )}
+                        </>
+                      )}
                     />
+                    {/* < errors={errors} name="startDate" as="p" /> */}
+                    </div>
+                    <div className="d-flex flex-column">
+                    <label htmlFor="end">End date:</label>          
+                    <Controller className="modal_input"
+                      control={control}
+                      name="endDate"
+                      rules={{ required: true }} //optional
+                      render={({
+                        field: { onChange, name, value },
+                        fieldState: { invalid, isDirty }, //optional
+                        formState: { errors }, //optional, but necessary if you want to show an error message
+                      }) => (
+                        <>
+                          <DatePicker
+                            value={value || ""}
+                            onChange={(endDate) => {
+                              onChange(endDate?.isValid ? endDate : "");
+                            }}
+                            format={"yyyy/MM/dd"}
+                          />
+                          {errors && errors[name] && errors[name].type === "required" && (
+                            //if you want to show an error message
+                            <span>your error message !</span>
+                          )}
+                        </>
+                      )}
+                    />
+                    </div>
                   </div>
-                  
 
-                  <div className="form-group d-flex flex-column mt-2">
+                  {/* <div className="form-group d-flex flex-column mt-2">
                     <label htmlFor="end">End date:</label>
 
                     <input
+                    {...register("endDate")}
                       type="date"
                       id="end"
                       name="trip-start"
                       className="modal_input"
                       placeholder="yyyy-MM-dd"
-                      {...register("endDate")}
-                      /* min="2018-01-01" max="2018-12-31" */
+                     
+                      
                     />
-                  </div>
+                  </div> */}
 
                   {/* include validation with required or other standard HTML validation rules */}
                   {/* <input {...register("exampleRequired", { required: true })} /> */}
                   {/* errors will return when field validation fails  */}
-                  {errors.exampleRequired && (
-                    <span>This field is required</span>
-                  )}
+
+                  <label for="file-upload" className="modal_save_button mb-3">
+                      <input type="file" 
+                      id="file-upload" name="experience_image"
+                      accept="image/png, image/jpeg"/>
+                      + Add media
+                  </label>
+                 
+                  
+                  
                   <Modal.Footer>
                     <input
                       type="submit"
@@ -205,6 +264,7 @@ export default function Experience() {
                       className="modal_save_button mt-3"
                       onClick={handleClose}
                     />
+                    
                   </Modal.Footer>
                 </form>
               </Modal.Body>
