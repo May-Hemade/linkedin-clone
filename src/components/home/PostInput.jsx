@@ -5,7 +5,19 @@ import { useState } from 'react'
 
 const Postinput = () => {
     
-    const [postComment, setPostComment] = useState('')
+    const [postComment, setPostComment] = useState({
+        text: '',
+    })
+    
+    
+    const handleInput = (property, value) => {
+        
+
+        setPostComment({
+            ...postComment,
+            [property]: value
+        })
+    }
     
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -14,14 +26,16 @@ const Postinput = () => {
             method: 'POST',
             body: JSON.stringify(postComment),
             headers: {
-              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
               'Content-Type': 'application/json',
             }
         })
         console.log(response)
         if (response.ok) {
             alert('Your post was send')
-            setPostComment('')
+            setPostComment({
+                text: ''
+            })
             
         } else {
             alert('There was a problem sending your post')
@@ -39,7 +53,7 @@ const Postinput = () => {
             <button className='postinput_send_button' type="submit">Send</button> */}
             <InputGroup className="mb-2 input-group-lg">
                 <InputGroup.Prepend>
-                <InputGroup.Text required value={postComment} onChange={(e)=> {setPostComment(e.target.value)}}><BsFillPenFill/></InputGroup.Text>
+                <InputGroup.Text required value={postComment.text} onChange={(e)=> {handleInput('text', e.target.value)}}><BsFillPenFill/></InputGroup.Text>
                 </InputGroup.Prepend>
                     <  FormControl  id="inlineFormInputGroup"  />
                 <InputGroup.Append>

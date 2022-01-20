@@ -36,9 +36,10 @@
 
 .modal_input {
   background-color: transparent;
-  color: lightgray;
+  color: lightgray !important;
   border-color: white;
   border-radius: 5px;
+  border: solid;
 }
 
 .close {
@@ -56,4 +57,14 @@
 
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
+}
+
+
+.rmdp-input {
+  color: black !important;
+}
+
+
+#file-upload {
+  display: none;
 }
