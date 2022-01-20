@@ -55,11 +55,11 @@ export default function Experience() {
     formState: { errors },
   } = useForm()
 
+  console.log(watch("startDate"));
+  console.log(errors)
+
     //POST HANDLESUBMIT
-    const submitForm = async (data) => {
-      
-       
-      
+  const submitForm = async (data) => {
       try { 
         let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/61e566c373d5cb0015395aa6/experiences", { //:userId/experience
         method: 'POST',
@@ -72,15 +72,6 @@ export default function Experience() {
     console.log(response)
     if (response.ok) {
         alert('Experience was saved')
-        
-        /* setregister({
-            role: '',
-            company: '',
-            area: '',
-            description: '',
-            startDate: '',
-            endDate: '',
-        }) */
     } else {
         alert('There was a problem saving your experience')
     }
@@ -88,17 +79,13 @@ export default function Experience() {
     console.log(error)
   }
   }
-  
-  //Reset register when state is updated 
-  /* useEffect(() => {
-    reset(register);
-  },[register])  */
 
   const onSubmit = (data, e) => {
     console.log(data)
     submitForm(data)
     e.target.reset()
   }
+  //
 
   return (
     <div>
@@ -117,7 +104,7 @@ export default function Experience() {
                 <Modal.Title>Add experience</Modal.Title>
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
-                <Form
+                <form
                   onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="role">Role*</label>
@@ -200,19 +187,18 @@ export default function Experience() {
                   {/* include validation with required or other standard HTML validation rules */}
                   {/* <input {...register("exampleRequired", { required: true })} /> */}
                   {/* errors will return when field validation fails  */}
-                  {errors.exampleRequired && (
-                    <span>This field is required</span>
-                  )}
+                  
                   
                   <Modal.Footer>
                     <input
                       type="submit"
                       value={"Save"}
                       className="modal_save_button mt-3"
-                      /* onClick={handleClose} */
+                      onClick={handleClose}
                     />
+                    
                   </Modal.Footer>
-                </Form>
+                </form>
               </Modal.Body>
               {/* <Modal.Footer>
                 

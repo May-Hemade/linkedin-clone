@@ -7,31 +7,16 @@ import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form";
 
 export default function SingleExperience({ experience, showBorder }) {
+  
+  
+  //modal
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
-
-  //REACT FORM
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  /* const onSubmit = data => console.log(data); */
-
-  console.log(watch("example")); // watch input value by passing the name of it
-  
- 
-  
   //
-  
 
-//Reset register when state is updated 
-/* useEffect(() => {
-  reset(register);
-},[register])  */
-  
-
-
-  
+  //years dif
   const getDuration = () => {
     const startDate = new Date(experience.startDate)
     const endDate =
@@ -67,23 +52,24 @@ export default function SingleExperience({ experience, showBorder }) {
 
     return startEnd
   }
-
-  
-  //REACT FORM
-
-  /* const onSubmit = data => console.log(data); */
-
-  console.log(watch("example")); // watch input value by passing the name of it
-  
- 
-  
   //
+
+  //REACT FORM
+  
+  const { register, handleSubmit, watch, formState: { errors } } = useForm(); 
+  // const onSubmit = data => console.log(data);
+
+
+   
+
+  //console.log(watch("example")); // watch input value by passing the name of it
+  
   //PUT HANDLESUBMIT
   const onSubmit = async (e, data) => {
     console.log(data);
     e.preventDefault()
     try { 
-      let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:61e566c373d5cb0015395aa6/experiences", { //:userId/experience
+      let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/61e566c373d5cb0015395aa6/experiences"+experience._id, { //:userId/experience
       method: 'PUT',
       body: JSON.stringify(register),
       headers: {
@@ -183,26 +169,26 @@ const DeleteExperience = async () => {
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  {/* register your input into the hook by invoking the "register" function */}
+                  
                   
                   <div className="form-group d-flex flex-column">
                   <label for="role">Role*</label>
-                  <input id="role" value={experience.role} /* placeholder="role..." */ className="modal_input" {...register("role", {required:true, minLength: 4})} />
+                  <input id="role" value={experience.role}  className="modal_input" {...register("role", {required:true, minLength: 4})} />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                   <label for="company">Company*</label>
-                  <input id="company" value={experience.company} /* placeholder="company..." */ className="modal_input" {...register("company", {required:true, minLength: 4})} />
+                  <input id="company" value={experience.company}  className="modal_input" {...register("company", {required:true, minLength: 4})} />
                   </div>
                   
                   <div className="form-group d-flex flex-column">
                   <label for="area">Area</label>
-                  <input id="area" value={experience.area} /* placeholder="area..." */ className="modal_input" {...register("area", {required:true, minLength: 2})} />
+                  <input id="area" value={experience.area}  className="modal_input" {...register("area", {required:true, minLength: 2})} />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                   <label for="description">Description</label>
-                  <textarea id="description" value={experience.description} /* placeholder="description..." */ className="modal_input" rows="3" {...register("description", {required:true, minLength: 4})} />
+                  <textarea id="description" value={experience.description}  className="modal_input" rows="3" {...register("description", {required:true, minLength: 4})} />
                   </div>
                   
                 <div className="form-group d-flex flex-column">
@@ -210,32 +196,18 @@ const DeleteExperience = async () => {
 
                   <input type="date" id="start" name="trip-start" className="modal_input"
                         placeholder="yyyy-MM-dd"
-                        /* min="2018-01-01" max="2018-12-31" */ value={experience.startDate} /* placeholder="test" */ {...register("startDate", {required:true})}/>
+                        /* min="2018-01-01" max="2018-12-31" */ value={experience.startDate} {...register("startDate", {required:true})}/>
                   </div>
-                  {/* <div className="form-check">
-                    <input type="checkbox" className="form-check-input modal_input" id="exampleCheck1"/>
-                    <label className="form-check-label" for="exampleCheck1">I am currently working in this role</label>
-                  </div> */}
+                  
                   
                   <div className="form-group d-flex flex-column mt-2">
                     <label for="end">End date:</label>
 
                     <input type="date" id="end" name="trip-start" className="modal_input"
-                          placeholder="yyyy-MM-dd" value={experience.endDate} /* placeholder="test" */ {...register("endDate")}
+                          placeholder="yyyy-MM-dd" value={experience.endDate}  {...register("endDate")}
                           /* min="2018-01-01" max="2018-12-31" *//>
                   </div>
                   
-
-                  
-
-
-
-                  
-                  
-                  
-                  {/* include validation with required or other standard HTML validation rules */}
-                  {/* <input {...register("exampleRequired", { required: true })} /> */}
-                  {/* errors will return when field validation fails  */}
                   {errors.exampleRequired && <span>This field is required</span>}
                   <Modal.Footer>
                     <Button className="modal_delete_button" variant="danger" onClick={DeleteExperience, handleClose}>Delete</Button>
@@ -245,12 +217,7 @@ const DeleteExperience = async () => {
                 </form>
 
               </Modal.Body>
-              {/* <Modal.Footer>
-                
-                <Button variant="primary" type="submit" onClick={handleClose}>
-                  Save
-                </Button>
-              </Modal.Footer> */}
+              
             </Modal>
             </div>
             <div className="linkedin-icon">
