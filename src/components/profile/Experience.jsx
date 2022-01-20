@@ -86,7 +86,7 @@ export default function Experience() {
         alert('There was a problem saving your experience')
 
     }
-  }
+  }}
 
 
   const onSubmit = (data, e) => {
