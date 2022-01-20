@@ -84,9 +84,13 @@ export default function Experience() {
         alert('Experience was saved')
     } else {
         alert('There was a problem saving your experience')
-
+    }  
+    } catch (error) {
+      console.log(error)
     }
   }}
+
+
 
 
   const onSubmit = (data, e) => {
