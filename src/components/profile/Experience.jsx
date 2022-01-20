@@ -8,7 +8,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Cleave from "cleave.js/dist/cleave-react";
 import DatePicker from "react-multi-date-picker";
 
-
 export default function Experience() {
   const [experiences, setExperiences] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -20,29 +19,32 @@ export default function Experience() {
 
   const getExperiences = async () => {
     setIsLoading(true)
-
-    const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences",
-      {
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
-          "Content-Type": "application/json",
-        },
-      }
-    )
-
-    if (response.ok) {
-      const exp = await response.json()
-      const sortedExperiences = exp.sort(
-        (a, b) => new Date(b.startDate) - new Date(a.startDate)
+    try {
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences",
+        {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
+            "Content-Type": "application/json",
+          },
+        }
       )
-      setExperiences(sortedExperiences)
-      setIsLoading(false)
-    } else {
-      setIsLoading(false)
-      setHasError(true)
+
+      if (response.ok) {
+        const exp = await response.json()
+        const sortedExperiences = exp.sort(
+          (a, b) => new Date(b.startDate) - new Date(a.startDate)
+        )
+        setExperiences(sortedExperiences)
+        setIsLoading(false)
+      } else {
+        setIsLoading(false)
+        setHasError(true)
+      }
+    } catch (e) {
+      console.log(e)
     }
   }
 
@@ -55,6 +57,7 @@ export default function Experience() {
   const {
     register,
     handleSubmit,
+
     watch, reset, control,
     formState: { errors },
   } = useForm()
@@ -81,11 +84,10 @@ export default function Experience() {
         alert('Experience was saved')
     } else {
         alert('There was a problem saving your experience')
+
     }
-  } catch (error) {
-    console.log(error)
   }
-  }
+
 
   const onSubmit = (data, e) => {
     console.log(data)
@@ -112,7 +114,9 @@ export default function Experience() {
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
                 <form
+
                   onSubmit={handleSubmit(onSubmit)}>
+
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="role">Role*</label>
                     <input
@@ -220,7 +224,6 @@ export default function Experience() {
                     />
                     </div>
                   </div>
-                  
 
                   {/* <div className="form-group d-flex flex-column mt-2">
                     <label htmlFor="end">End date:</label>
