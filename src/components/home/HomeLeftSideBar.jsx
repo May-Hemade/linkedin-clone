@@ -1,11 +1,20 @@
 import React from 'react';
 import {Avatar} from '@material-ui/core';
 import {Link} from 'react-router-dom'
+import './HomeLeftSideBar.css';
+const HomeLeftSideBar = () => {
 
-import './LeftSideBar.css';
-const LeftSideBar = () => {
+    const recentItem = (topic) => {
+        return(
+        <div className="sidebar_recentItem">
+            <span className="sidebar_hash">#</span>
+            <p>{topic}</p>
+        </div>
+        )
+    }
     return(
         <Link to="/home">
+            <>
         <div className="sidebar">
             <div className="sidebar_top">
                 <img src="https://wallpaperaccess.com/full/7030222.png" alt="cover-pic"/>
@@ -30,9 +39,17 @@ const LeftSideBar = () => {
 
             <div className="sidebar_bottom">
                 <p>Recent</p>
+                {recentItem('reactjs')}
+                {recentItem('programming')}
+                {recentItem('softwareEngineering')}
+                {recentItem('motivationalQuotes')}
+                {recentItem('striveschoolCareerHub')}
             </div>
         </div>
-        </Link>
+        </>
+        
+       </Link> 
     )
+    
 }
-export default LeftSideBar;
+export default HomeLeftSideBar;
