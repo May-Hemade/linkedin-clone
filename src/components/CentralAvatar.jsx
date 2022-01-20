@@ -9,36 +9,45 @@ import { useForm } from "react-hook-form"
 import { Form, FormControl, InputGroup, Modal } from "react-bootstrap"
 
 const CentralAvatar = (/* { profile } */) => {
+  const [profile, setProfile] = useState(null)
 
-    
-    const [profile,setProfile] = useState(null)
-    
-    
-    useEffect(()=>{
-        const fetchData = async () => {
-            try {
-                let response= await fetch("https://striveschool-api.herokuapp.com/api/profile/me", 
-                {
-                    "method": "GET",
-                    "headers":
-                    {
-                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
-                        "Content-type": "application/json",
-                    }
-                })  
-                if (response.ok) {
-                    let data = await response.json()
-                    console.log('DATA', data)
-                    // now I want to safely store these details in my state!
-                    setProfile(data)
-                }
-            } catch (error) {
-                console.log(error)
-            }
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+  const [show, setShow] = useState(false)
+  const [hasError, setHasError] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  const fetchData = async () => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/me",
+        {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+            "Content-type": "application/json",
+          },
         }
-        fetchData()
-    }, [])
-    
+      )
+      if (response.ok) {
+        let data = await response.json()
+        console.log("DATA", data)
+        // now I want to safely store these details in my state!
+        setProfile(data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     fetchData()
   }, [])
