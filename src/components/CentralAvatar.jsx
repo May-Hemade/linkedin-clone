@@ -4,37 +4,58 @@ import { BsCameraFill } from "react-icons/bs"
 import { Pen } from "react-bootstrap-icons"
 import React, { useEffect, useState } from "react"
 import UploadImage from "./profile/UploadImage"
+import { useForm } from "react-hook-form"
+
+import { Form, FormControl, InputGroup, Modal } from "react-bootstrap"
 
 const CentralAvatar = (/* { profile } */) => {
   const [profile, setProfile] = useState(null)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/profile/me",
-          {
-            method: "GET",
-            headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
-              "Content-type": "application/json",
-            },
-          }
-        )
-        if (response.ok) {
-          let data = await response.json()
-          console.log("DATA", data)
-          // now I want to safely store these details in my state!
-          setProfile(data)
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+  const [show, setShow] = useState(false)
+  const [hasError, setHasError] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  const fetchData = async () => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/me",
+        {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+            "Content-type": "application/json",
+          },
         }
-      } catch (error) {
-        console.log(error)
+      )
+      if (response.ok) {
+        let data = await response.json()
+        console.log("DATA", data)
+        // now I want to safely store these details in my state!
+        setProfile(data)
       }
+    } catch (error) {
+      console.log(error)
     }
+  }
+
+  useEffect(() => {
     fetchData()
   }, [])
 
+  const onUploadImage = () => {
+    setShow(false)
+    fetchData()
+  }
   return (
     <Container className="central_avatar p-0">
       <div className="imagess">
@@ -47,8 +68,36 @@ const CentralAvatar = (/* { profile } */) => {
           className="background_avatar"
         />
         {profile && (
-          <Image src={profile.image} roundedCircle alt="" className="avatar" />
+          <Image
+            onClick={() => setShow(true)}
+            src={profile.image}
+            roundedCircle
+            alt=""
+            className="avatar"
+          />
         )}
+
+        <Modal
+          show={show}
+          onHide={() => setShow(false)}
+          aria-labelledby="example-custom-modal-styling-title"
+        >
+          <Modal.Header closeButton className="linkedin-modal">
+            <Modal.Title
+              id="example-custom-modal-styling-title"
+              className="modal-dropdown"
+            >
+              Upload Image
+            </Modal.Title>
+          </Modal.Header>
+          {profile && (
+            <UploadImage
+              property="profile"
+              url={`https://striveschool-api.herokuapp.com/api/profile/${profile._id}/picture`}
+              onSuccess={onUploadImage}
+            />
+          )}
+        </Modal>
       </div>
       <div className="d-flex">
         {profile && (
@@ -99,15 +148,6 @@ const CentralAvatar = (/* { profile } */) => {
         <Button className="menu_button" variant="outline-light mr-3">
           More
         </Button>
-        <Button className="menu_button" variant="outline-light mr-3">
-          Image
-        </Button>
-        {profile && (
-          <UploadImage
-            property="profile"
-            url={`https://striveschool-api.herokuapp.com/api/profile/${profile._id}/picture`}
-          />
-        )}
       </div>
       <div>{/*  <h1 className="text-light">HERE GOES THE CAROUSEL</h1> */}</div>
     </Container>
