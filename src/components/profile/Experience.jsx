@@ -90,7 +90,7 @@ export default function Experience() {
   const onSubmit = (data, e) => {
     console.log(data)
     submitForm(data)
-    /* e.target.reset() */
+    e.target.reset()
   }
   //
 
