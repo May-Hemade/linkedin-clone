@@ -88,7 +88,7 @@ export default function Experience() {
     } catch (error) {
       console.log(error)
     }
-  }}
+  }
 
 
 
@@ -295,3 +295,4 @@ export default function Experience() {
     </div>
   )
 }
+
