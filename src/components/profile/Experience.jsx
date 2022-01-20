@@ -248,7 +248,7 @@ export default function Experience() {
                   {/* <input {...register("exampleRequired", { required: true })} /> */}
                   {/* errors will return when field validation fails  */}
 
-                  <label for="file-upload" className="modal_save_button mb-3">
+                  <label htmlfor="file-upload" className="modal_save_button mb-3">
                       <input type="file" 
                       id="file-upload" name="experience_image"
                       accept="image/png, image/jpeg"/>

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 import { useForm, Controller } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-multi-date-picker";
+import UploadImage from "./UploadImage"
 
 
 export default function SingleExperience({ experience, showBorder }) {
@@ -73,7 +74,7 @@ export default function SingleExperience({ experience, showBorder }) {
   }); 
   // const onSubmit = data => console.log(data);
 
-
+  
    
 
   //console.log(watch("example")); // watch input value by passing the name of it
@@ -144,6 +145,32 @@ const DeleteExperience = async () => {
     
     handleClose()
 }
+
+//upload pic function
+
+/* const [picture,setPicture] = useState('')
+
+const submitPicture = async (data, e) => {
+  e.preventdefault()
+  const formData = new FormData()
+  formData.append(picture, data.picture[0])
+
+  const res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences/${experience._id}/picture`, {
+    method: "POST",
+    body: formData
+  }).then(res => res.json())
+  alert(JSON.stringify(res))
+}
+ */
+const onUploadImage = () => {
+  setShow(false)
+  
+}
+
+
+
+
+
 
   return (
     <div>
@@ -220,7 +247,7 @@ const DeleteExperience = async () => {
                   
 
                   <div className="form-group d-flex flex-column">
-                  <label for="description">Description</label>
+                  <label htmlfor="description">Description</label>
                   <textarea id="description" name="description" className="modal_input" rows="3" {...register("description", {required:true, minLength: 4})} />
                   </div>
                   
@@ -288,6 +315,31 @@ const DeleteExperience = async () => {
                    </Modal.Footer>
                 </form>
 
+                
+                 {/* <form onSubmit={submitPicture}>               
+                
+                
+                <label htmlfor="file-updload" className=" mb-3"> */}
+                <UploadImage
+                  property="experience"
+                  url={`https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences/${experience._id}/picture`}
+                  onSuccess={onUploadImage}
+                />
+                      {/* 
+                      <input type="file" value={picture}
+                onChange={(e) =>
+                  setPicture(
+                    e.target.value,
+                  )}
+                      id="file-updload" name="experience_image"
+                      accept="image/png, image/jpeg"/>
+                      
+                      
+
+                </label>
+                <input type="submit" value="Submit" /> */}
+
+                
               </Modal.Body>
               
             </Modal>
