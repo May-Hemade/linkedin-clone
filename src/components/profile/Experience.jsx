@@ -4,7 +4,6 @@ import { Plus, ChevronDown } from "react-bootstrap-icons"
 import SingleExperience from "./SingleExperience"
 import { useForm } from "react-hook-form"
 
-
 export default function Experience() {
   const [experiences, setExperiences] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -16,29 +15,32 @@ export default function Experience() {
 
   const getExperiences = async () => {
     setIsLoading(true)
-
-    const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences",
-      {
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
-          "Content-Type": "application/json",
-        },
-      }
-    )
-
-    if (response.ok) {
-      const exp = await response.json()
-      const sortedExperiences = exp.sort(
-        (a, b) => new Date(b.startDate) - new Date(a.startDate)
+    try {
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences",
+        {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
+            "Content-Type": "application/json",
+          },
+        }
       )
-      setExperiences(sortedExperiences)
-      setIsLoading(false)
-    } else {
-      setIsLoading(false)
-      setHasError(true)
+
+      if (response.ok) {
+        const exp = await response.json()
+        const sortedExperiences = exp.sort(
+          (a, b) => new Date(b.startDate) - new Date(a.startDate)
+        )
+        setExperiences(sortedExperiences)
+        setIsLoading(false)
+      } else {
+        setIsLoading(false)
+        setHasError(true)
+      }
+    } catch (e) {
+      console.log(e)
     }
   }
 
@@ -51,28 +53,34 @@ export default function Experience() {
   const {
     register,
     handleSubmit,
-    watch, reset,
+    watch,
+    reset,
     formState: { errors },
   } = useForm()
 
-    //POST HANDLESUBMIT
-    const onSubmit = async (e, data) => {
-      console.log(data);
-       
-      e.preventDefault()
-      try { 
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:61e566c373d5cb0015395aa6/experiences", { //:userId/experience
-        method: 'POST',
-        body: JSON.stringify(register),
-        headers: {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
-          'Content-Type': 'application/json',
+  //POST HANDLESUBMIT
+  const onSubmit = async (e, data) => {
+    console.log(data)
+
+    e.preventDefault()
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/:61e566c373d5cb0015395aa6/experiences",
+        {
+          //:userId/experience
+          method: "POST",
+          body: JSON.stringify(register),
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+            "Content-Type": "application/json",
+          },
         }
-    })
-    console.log(response)
-    if (response.ok) {
-        alert('Experience was saved')
-        
+      )
+      console.log(response)
+      if (response.ok) {
+        alert("Experience was saved")
+
         /* setregister({
             role: '',
             company: '',
@@ -81,18 +89,18 @@ export default function Experience() {
             startDate: '',
             endDate: '',
         }) */
-    } else {
-        alert('There was a problem saving your experience')
+      } else {
+        alert("There was a problem saving your experience")
+      }
+    } catch (error) {
+      console.log(error)
     }
-  } catch (error) {
-    console.log(error)
   }
-  }
-  
-  //Reset register when state is updated 
+
+  //Reset register when state is updated
   useEffect(() => {
-    reset(register);
-  },[register]) 
+    reset(register)
+  }, [register])
 
   const submitForm = (data) => {
     console.log(data)
@@ -116,7 +124,7 @@ export default function Experience() {
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
                 <form
-                  onSubmit={handleSubmit((onSubmit),(data) => {
+                  onSubmit={handleSubmit(onSubmit, (data) => {
                     submitForm(data)
                   })}
                 >
@@ -176,7 +184,6 @@ export default function Experience() {
                       {...register("startDate", { required: true })}
                     />
                   </div>
-                  
 
                   <div className="form-group d-flex flex-column mt-2">
                     <label htmlFor="end">End date:</label>
