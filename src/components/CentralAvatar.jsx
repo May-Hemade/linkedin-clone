@@ -39,8 +39,11 @@ const CentralAvatar = (/* { profile } */) => {
         <Container className="central_avatar p-0">
             <div className="imagess">
             <Button className="edit_image_button align-middle" variant="light"> <BsCameraFill className="align-baseline text-start"/> </Button>
+            
             <Image src="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png" rounded  className="background_avatar"/>
-            <Image src="https://place-puppy.com/300x300" roundedCircle alt="" className="avatar"/>
+            <div className="avatar_container">
+            <Image src="https://place-puppy.com/300x300" roundedCircle alt="" className="avatar"></Image>
+            </div>
             </div>
             <div className="d-flex">
                 {

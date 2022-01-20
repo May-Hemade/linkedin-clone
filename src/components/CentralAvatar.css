@@ -3,14 +3,18 @@
     width: 150px;
     height: 150px;
     border-radius: 50%; 
-    position: absolute;
-    left: 25px;
-    bottom: -50px;
+    
   /*   transform: translate(-430px, -120px); */
    
    
     z-index: 3;
     
+  }
+
+  .avatar_container{
+    position: absolute;
+    left: 25px;
+    bottom: -50px;
   }
 
 .imagess {
