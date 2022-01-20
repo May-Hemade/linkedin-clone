@@ -4,143 +4,100 @@ import {
   Col,
   Image,
   Dropdown,
-  DropdownButton,
+  ButtonGroup,
+  Button
 } from "react-bootstrap"
 import image from "../assets/linkedinlogo.png"
 import "./HomeFooter.css"
-import { BsQuestionCircleFill, BsFillGearFill } from "react-icons/bs"
+import { MdKeyboardArrowDown } from "react-icons/md"
+// import AdminNavbar from './AdminNavbar'
 
 const HomeFooter = () => {
   return (
-    <footer className="text-white py-4">
-      <Container>
-        <div className="row">
-          <Image src={image} className="footer_logo ml-4" />
-        </div>
-        <Row className="pt-2 pl-4">
-          <ul className="col-2 list-unstyled">
-            <li>
-              {" "}
-              <a href="" className="footer_link">
+    <footer className="text-white">
+      <Container className="footer-container">
+        
+        <Row className="content">
+          <Row className="Row1">
+          <Col>
+          <a href="" className="footer_link">
                 About
-              </a>{" "}
-            </li>
-            <li>
-              <a href="" className="footer_link">
-                Community Guidelines
               </a>
-            </li>
-            <li>
-              {" "}
-              <a href="" className="footer_link">
-                Privacy &amp; Terms
-              </a>
-            </li>
-            <li>
-              {" "}
-              <a href="" className="footer_link">
-                Sales Solutions
-              </a>
-            </li>
-            <li>
-              <a href="" className="footer_link">
-                Safety Center
-              </a>
-            </li>
-          </ul>
-          <ul className="col-2 list-unstyled">
-            <li>
-              {" "}
-              <a href="" className="footer_link">
+          </Col>
+          <Col>
+          <a href="" className="footer_link">
                 Accessibility
-              </a>{" "}
-            </li>
-            <li>
-              <a href="" className="footer_link">
-                Careers
               </a>
-            </li>
-            <li>
-              {" "}
-              <a href="" className="footer_link">
+          </Col>
+          <Col>
+          <a href="" className="footer_link">
+                Help Center
+              </a>
+          </Col>
+          </Row>
+
+          <Row className="Row2">
+            <Col>
+            
+            <Dropdown as={ButtonGroup}>
+              <Button variant="Secondary" className="footer_link_Button">Privacy & Terms <MdKeyboardArrowDown/></Button>
+
+              <Dropdown.Toggle className="keyboard_arrow_down" variant="Secondary" />
+
+              <Dropdown.Menu variant="Secondary">
+                <Dropdown.Item href="#/action-1">Privacy Policy</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">User Agreement</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Cookie Policy</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">CopyRight Policy</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>         
+            {/* <button className="btn-fullscreen" onClick={this.props.goFull}>
+                {!this.props.isFull ? (
+                  <i className="fa fa-expand-arrows-alt"></i>
+                ) : (
+                  <i className="fa compress-arrows-alt"></i>
+                )}
+              </button> */}
+            </Col>
+            <Col>
+            <a href="" className="footer_link">
                 Ad Choices
               </a>
-            </li>
-            <li>
-              {" "}
-              <a href="" className="footer_link">
-                Mobile
-              </a>
-            </li>
-          </ul>
-          <ul className="col-2 list-unstyled">
-            <li>
-              {" "}
-              <a href="" className="footer_link">
-                Talent Solutions
-              </a>{" "}
-            </li>
-            <li>
-              <a href="" className="footer_link">
-                Marketing Solutions
-              </a>
-            </li>
-            <li>
-              {" "}
-              <a href="" className="footer_link">
+            </Col>
+          </Row>
+
+          <Row className="Row3">
+            <Col>
+            <a href="" className="footer_link">
                 Advertising
               </a>
-            </li>
-            <li>
-              {" "}
-              <a href="" className="footer_link">
-                Small bussiness
+            </Col>
+            <Col>
+            <a href="" className="footer_link">
+                Business Services
               </a>
-            </li>
-          </ul>
-          <Col xs={4}>
-            <ul className="list-unstyled">
-              <li>
-                <BsQuestionCircleFill />{" "}
-                <a href="" className="pl-1 footer_link">
-                  {" "}
-                  Questions?
-                </a>{" "}
-                <br />{" "}
-                <span className="footer_label pl-4">
-                  Visit our help center
-                </span>{" "}
-              </li>
-              <li>
-                <BsFillGearFill />{" "}
-                <a href="" className="pl-1 footer_link">
-                  {" "}
-                  Manage your account and privacy
-                </a>{" "}
-                <br />{" "}
-                <span className="footer_label pl-4">
-                  Go to your Settings
-                </span>{" "}
-              </li>
-            </ul>
-          </Col>
-          <Col xs={2}>
-            <label htmlFor="language" className="footer_label">
-              Select Language
-            </label>
-            <DropdownButton
-              name="language"
-              id="dropdown-basic-button"
-              title="English (English)"
-              className="footer_dropdown"
-            >
-              <Dropdown.Item href="#/action-1">Spanish</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Indian</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Lebanese</Dropdown.Item>
-            </DropdownButton>
-          </Col>
+            </Col>
+          </Row>
+
+          <Row className="Row4">
+            <Col>
+            <a href="" className="footer_link">
+                Get the Linkedin app
+              </a>
+            </Col>
+            <Col>
+            <a href="" className="footer_link">
+                More
+              </a>
+            </Col>
+          </Row>
+          
+          
         </Row>
-        <p className="footer_label ml-4">Linkedin Corporation @ 2022</p>
+        
+          
+        
+        <p className="footer_label copy-right"><Image src={image} className="footer_logo" />  Linkedin Corporation @ 2022</p>
       </Container>
     </footer>
   )

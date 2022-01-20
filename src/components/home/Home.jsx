@@ -49,17 +49,17 @@ export default function Home() {
   return (
     <div>
       <Container className="mt-4 pt-32">
-         <Row>
+         <Row className="HomePage-Sections">
           
           
-          <Col md={3}>
+          <Col md={3} className="LeftBar-Col">
             <Row><HomeLeftSideBar/></Row>
             
             {/* <Row><LeftBottomBar/></Row>
              */}
           </Col>
 
-          <Col md={5}>
+          <Col md={5} className="Post-section">
             <Postinput/>
             <GridLoader
               size={10}

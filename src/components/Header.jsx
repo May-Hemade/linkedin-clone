@@ -10,12 +10,9 @@ import ChatIcon from '@material-ui/icons/Chat'
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import { BsGrid3X3GapFill } from "react-icons/bs";
-import DropDownIcon from './DropDownIcon.jsx'
 import { Link,  useLocation, useNavigate } from 'react-router-dom'
 const Header = () => {
-    
-    
-    const location = useLocation()
+     const location = useLocation()
 
     const navigate = useNavigate()
 
@@ -32,20 +29,18 @@ const Header = () => {
 
                 <div className="header_right">
                    
-                <Nav>     
+                <Nav className="Nav-Bar">     
                     
-                    
-                        {/* <div className={location.pathname === '/menu' ? 'nav-link active' : 'nav-link'}>Menu</div> */}
-                    <Link to="/">
-                        <div className={location.pathname === '/' ? 'nav-link active' : 'nav-link'}><HeaderOption Icon={HomeIcon} title='Home'/></div>
+                                <Link to="/" className="Home-Link">
+                        <div className={location.pathname === '/' ? 'nav-link active' : 'nav-link'}>
+                            <HeaderOption Icon={HomeIcon} title='Home'/>
+                        </div>
                      </Link>
 
-                        {/* <Nav.Link href="/home">
-                            <HeaderOption Icon={HomeIcon} title='Home'/>
-                        </Nav.Link> */}
+                        
                               
                     <Nav.Item>
-                        <Nav.Link href="/home" className="Home-Link">
+                        <Nav.Link href="/home">
                             <HeaderOption Icon={SupervisorIcon} title='My Network'/>
                         </Nav.Link>
                     </Nav.Item>
@@ -66,11 +61,9 @@ const Header = () => {
                     </Nav.Item>
                     <Nav.Item>
                         
-                        <Link to='/profile'>
+                        <Link to='/profile' className='Profile-Link'>
                             <div className={location.pathname === '/profile' ? 'nav-link active' : 'nav-link'}><HeaderOption avatar='./Assets/Profile-picture.jpg' title='Me'/></div>
-                        {/* <Nav.Link eventKey="link-2">
-                            <HeaderOption avatar='./Assets/Profile-picture.jpg' title='Me'/>
-                        </Nav.Link> */}
+                       
                         </Link>
                     </Nav.Item>
                    
@@ -78,20 +71,112 @@ const Header = () => {
                         <Nav.Link eventKey="link-2">
                             <HeaderOption Icon= {BsGrid3X3GapFill} title='Work'/>
                         </Nav.Link>
-                        
                     </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="disabled" disabled>
-                    Get Hired Faster, Try Premium Free
-                    </Nav.Link>
-                </Nav.Item>
-                </Nav>
+                    <Nav.Item>
+                        <Nav.Link eventKey="disabled" disabled>
+                        Get Hired Faster, Try Premium Free
+                        </Nav.Link>
+                    </Nav.Item>
 
+                </Nav>
 
                 </div>
         </div>
     )
 }
-
 export default Header
 
+/*
+{
+    //Navbar function 
+    function Navbar(props) {
+  return (
+    <nav className="navbar">
+      <ul className="navbar-nav">{props.children}</ul>
+    </nav>
+        );
+    }
+
+    //NavItem function
+    function NavItem(props) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <li className="nav-item">
+      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+        {props.icon}
+      </a>
+
+      {open && props.children}
+    </li>
+         );
+        }
+
+        //DropDown Menu
+            function DropdownMenu() {
+            const [activeMenu, setActiveMenu] = useState('main');
+            const [menuHeight, setMenuHeight] = useState(null);
+            const dropdownRef = useRef(null);
+
+            useEffect(() => {
+                setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
+            }, [])
+
+            function calcHeight(el) {
+                const height = el.offsetHeight;
+                setMenuHeight(height);
+            }
+
+
+            //DropDownItem
+            function DropdownItem(props) {
+            return (
+                <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+                    <span className="icon-button">{props.leftIcon}</span>
+                    {props.children}
+                    <span className="icon-right">{props.rightIcon}</span>
+                </a>
+                );
+            }
+
+            return(
+             <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
+             
+
+                    <CSSTransition>
+                <DropdownItem>My Profile</DropdownItem>
+                <DropdownItem
+                    leftIcon={<CogIcon />}
+                    rightIcon={<ChevronIcon />}
+                    goToMenu="settings">
+                    Settings
+                </DropdownItem>
+                <DropdownItem
+                    leftIcon="🦧"
+                    rightIcon={<ChevronIcon />}
+                    goToMenu="animals">
+                    Animals
+                </DropdownItem>
+
+                </div>
+            </CSSTransition>
+
+             </div>   
+            )
+
+
+function App() {
+  return (
+    <Navbar>
+      <NavItem icon={</>} />
+      <NavItem icon={<BellIcon />} />
+      <NavItem icon={<MessengerIcon />} />
+
+      <NavItem icon={<CaretIcon />}>
+        <DropdownMenu></DropdownMenu>
+      </NavItem>
+    </Navbar>
+  );
+}
+}
+*/

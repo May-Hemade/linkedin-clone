@@ -6,8 +6,10 @@
   text-align: center;
   height: fit-content;
   text-decoration: none !important;
+  width: 110%;
 }
 .sidebar_avatar {
+  margin: 0 auto;
   margin-bottom: 10px;
 }
 .sidebar_top > h4 {
@@ -15,18 +17,21 @@
   font-size: 12px;
 }
 .sidebar_top > h2 {
-  font-size: 12px;
+  font-size: 17px;
+  color: white !important;
 }
 .sidebar_top {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   border: 1px solid lightgray;
-  border-bottom: 0;
+  border-bottom: 1px solid lightgray;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: #1d2226;
   padding-bottom: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .sidebar_top > img {
   margin-bottom: -20px;
@@ -39,7 +44,7 @@
 
 .sidebar_stats {
   margin-top: 10px;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
 }
 .sidebar_stat > p {
@@ -47,13 +52,13 @@
   font-size: 13px;
   font-weight: 600;
 }
-.sidebat_stats {
+.sidebar_stats {
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   background-color: #1d2226;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  /* border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; */
 }
 .sidebar_statNumber {
   font-weight: bold;
@@ -67,7 +72,14 @@
   border-radius: 10px;
   margin-top: 10px;
 }
-.sidebar_recentItem {
+.side_bottom-heading {
+  color: lightgray;
+  margin: 5px;
+  padding: 5px;
+}
+.sidebar_recentItem,
+.sidebar_groupItem,
+.sidebar_eventItem {
   display: flex;
   font-size: 13px;
   color: lightgray;
@@ -89,4 +101,25 @@
 .sidebar_hash {
   margin-right: 10px;
   margin-left: 5px;
+}
+.LeftBar-Link {
+  text-decoration: none !important;
+}
+.sidebar_stat {
+  display: flex;
+  justify-content: space-between;
+}
+.access {
+  font-size: 13px;
+  color: gray;
+  text-align: left;
+  padding-left: 12px;
+}
+.try-Premium {
+  font-weight: bold;
+  font-size: 14px;
+  color: whitesmoke;
+  width: 100%;
+  text-align: left;
+  padding-left: 5px;
 }

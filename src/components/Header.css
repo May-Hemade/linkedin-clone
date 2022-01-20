@@ -13,9 +13,12 @@
 }
 .header_left > img {
   object-fit: contain;
+  align-items: baseline;
   height: 45px;
   width: 45px;
+  margin-left: 190px;
   margin-right: 0px;
+  margin-top: 10px;
 }
 .header_search {
   padding: 10px;
@@ -30,6 +33,7 @@
   border: none;
   background: none;
   height: 40px;
+  border-radius: 25px;
 }
 .search_Bar_input {
   background-color: darkgray !important;
@@ -38,7 +42,10 @@
 
 .header_right {
   display: flex;
+  margin-left: 0px;
 }
-.Home-Link {
+
+.Home-Link,
+.Profile-Link {
   text-decoration: none !important;
 }
