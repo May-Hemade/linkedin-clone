@@ -58,8 +58,19 @@ export default function SingleExperience({ experience, showBorder }) {
   //
 
   //REACT FORM
-  
-  const { register, handleSubmit, watch, control, formState: { errors } } = useForm(); 
+  const preLoadedValues =  {
+      role: experience.role,
+      company: experience.company,
+      startDate: experience.startDate,
+      endDate: experience.endDate || null,
+      description: experience.description,
+      area: experience.area,
+  }
+
+
+  const { register, handleSubmit, watch, control, formState: { errors } } = useForm({
+    defaultValues: preLoadedValues
+  }); 
   // const onSubmit = data => console.log(data);
 
 
@@ -70,7 +81,7 @@ export default function SingleExperience({ experience, showBorder }) {
   //PUT HANDLESUBMIT
   const submitForm = async (data) => {
     try { 
-      let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences", { //:userId/experience
+      let response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences/${experience._id}`, { //:userId/experience
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
@@ -175,7 +186,7 @@ const DeleteExperience = async () => {
                     <input
                       {...register("role", { required: true, minLength: 4 })}
                       id="role"
-                      value={experience.role}
+                      name="role"
                       className="modal_input"
                       
                     />
@@ -187,7 +198,7 @@ const DeleteExperience = async () => {
                     <input
                       {...register("company", { required: true, minLength: 4 })}
                       id="company"
-                      value={experience.company}
+                      name="company"
                       className="modal_input"
                       
                     />
@@ -199,7 +210,7 @@ const DeleteExperience = async () => {
                     <input
                       {...register("area", { required: true, minLength: 2 })}
                       id="area"
-                      value={experience.area}
+                      name="area"
                       className="modal_input"
                       
                     />
@@ -210,7 +221,7 @@ const DeleteExperience = async () => {
 
                   <div className="form-group d-flex flex-column">
                   <label for="description">Description</label>
-                  <textarea id="description" value={experience.description}  className="modal_input" rows="3" {...register("description", {required:true, minLength: 4})} />
+                  <textarea id="description" name="description" className="modal_input" rows="3" {...register("description", {required:true, minLength: 4})} />
                   </div>
                   
                   <div className="form-group d-flex justify-content-between">
