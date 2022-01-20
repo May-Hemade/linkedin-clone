@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Modal, Button } from "react-bootstrap"
+import { Modal, Button, Form, FormControl, InputGroup } from "react-bootstrap"
 import { Plus, ChevronDown } from "react-bootstrap-icons"
 import SingleExperience from "./SingleExperience"
 import { useForm } from "react-hook-form"
@@ -56,14 +56,14 @@ export default function Experience() {
   } = useForm()
 
     //POST HANDLESUBMIT
-    const onSubmit = async (e, data) => {
-      console.log(data);
+    const submitForm = async (data) => {
+      
        
-      e.preventDefault()
+      
       try { 
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/:61e566c373d5cb0015395aa6/experiences", { //:userId/experience
+        let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/61e566c373d5cb0015395aa6/experiences", { //:userId/experience
         method: 'POST',
-        body: JSON.stringify(register),
+        body: JSON.stringify(data),
         headers: {
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
           'Content-Type': 'application/json',
@@ -90,12 +90,14 @@ export default function Experience() {
   }
   
   //Reset register when state is updated 
-  useEffect(() => {
+  /* useEffect(() => {
     reset(register);
-  },[register]) 
+  },[register])  */
 
-  const submitForm = (data) => {
+  const onSubmit = (data, e) => {
     console.log(data)
+    submitForm(data)
+    e.target.reset()
   }
 
   return (
@@ -115,52 +117,53 @@ export default function Experience() {
                 <Modal.Title>Add experience</Modal.Title>
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
-                <form
-                  onSubmit={handleSubmit((onSubmit),(data) => {
-                    submitForm(data)
-                  })}
-                >
+                <Form
+                  onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="role">Role*</label>
                     <input
+                      {...register("role", { required: true, minLength: 4 })}
                       id="role"
                       placeholder="role..."
                       className="modal_input"
-                      {...register("role", { required: true, minLength: 4 })}
+                      
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="company">Company*</label>
                     <input
+                      {...register("company", { required: true, minLength: 4 })}
                       id="company"
                       placeholder="company..."
                       className="modal_input"
-                      {...register("company", { required: true, minLength: 4 })}
+                      
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="area">Area</label>
                     <input
+                      {...register("area", { required: true, minLength: 2 })}
                       id="area"
                       placeholder="area..."
                       className="modal_input"
-                      {...register("area", { required: true, minLength: 2 })}
+                      
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="description">Description</label>
                     <textarea
+                     {...register("description", {
+                      required: true,
+                      minLength: 4,
+                    })}
                       id="description"
                       placeholder="description..."
                       className="modal_input"
                       rows="3"
-                      {...register("description", {
-                        required: true,
-                        minLength: 4,
-                      })}
+                      
                     />
                   </div>
 
@@ -168,12 +171,13 @@ export default function Experience() {
                     <label htmlFor="start">Start date:</label>
 
                     <input
+                    {...register("startDate", { required: true })}
                       type="date"
                       id="start"
                       name="trip-start"
                       className="modal_input"
                       placeholder="yyyy-MM-dd"
-                      {...register("startDate", { required: true })}
+                      
                     />
                   </div>
                   
@@ -182,12 +186,13 @@ export default function Experience() {
                     <label htmlFor="end">End date:</label>
 
                     <input
+                    {...register("endDate")}
                       type="date"
                       id="end"
                       name="trip-start"
                       className="modal_input"
                       placeholder="yyyy-MM-dd"
-                      {...register("endDate")}
+                     
                       /* min="2018-01-01" max="2018-12-31" */
                     />
                   </div>
@@ -198,15 +203,16 @@ export default function Experience() {
                   {errors.exampleRequired && (
                     <span>This field is required</span>
                   )}
+                  
                   <Modal.Footer>
                     <input
                       type="submit"
                       value={"Save"}
                       className="modal_save_button mt-3"
-                      onClick={handleClose}
+                      /* onClick={handleClose} */
                     />
                   </Modal.Footer>
-                </form>
+                </Form>
               </Modal.Body>
               {/* <Modal.Footer>
                 
