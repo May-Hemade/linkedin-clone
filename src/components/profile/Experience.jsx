@@ -17,6 +17,11 @@ export default function Experience() {
     getExperiences()
   }, [])
 
+  
+  /* useEffect(() => {
+
+  }) */
+
   const getExperiences = async () => {
     setIsLoading(true)
     try {
@@ -69,7 +74,9 @@ export default function Experience() {
 
   const dateReceived = watch("startDate");
     //POST HANDLESUBMIT
-  const submitForm = async (data) => {
+  
+  
+    const submitForm = async (data) => {
       try { 
         let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences", { //:userId/experience
         method: 'POST',
@@ -90,7 +97,7 @@ export default function Experience() {
     }
   }
 
-
+  
 
 
   const onSubmit = (data, e) => {
@@ -294,4 +301,4 @@ export default function Experience() {
       </div>
     </div>
   )
-}
+  }

@@ -32,11 +32,11 @@ const CentralAvatar = (/* { profile } */) => {
           method: "GET",
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
             "Content-type": "application/json",
           },
         }
-      )
+      );
       if (response.ok) {
         let data = await response.json()
         console.log("DATA", data)
@@ -101,7 +101,7 @@ const CentralAvatar = (/* { profile } */) => {
       </div>
       <div className="d-flex">
         {profile && (
-          <div className="central_avatar_info text-left  ml-4">
+          <div className="central_avatar_info text-left w-50 ml-4">
             <h4 className="text-white">
               {profile.name}
               {profile.surname}

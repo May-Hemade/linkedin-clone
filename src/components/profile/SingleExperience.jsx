@@ -175,7 +175,8 @@ const onUploadImage = () => {
   return (
     <div>
       <div className="d-flex inline pt-3">
-        <img src={experience.image} className="card-image ml-3"></img>
+        {experience.image && ( <img src={experience.image} className="card-image ml-3"></img>
+        )}
         <div
           className={`experience-container w-100 ml-4 ${
             showBorder ? "border-experience" : ""

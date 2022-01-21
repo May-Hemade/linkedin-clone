@@ -129,4 +129,12 @@ body {
 .card-image-small {
   width: 65px;
   height: 65px;
+  object-fit: cover;
+}
+
+.card-image {
+  width: 95px;
+  height: 95px;
+  object-fit: cover;
+  
 }
