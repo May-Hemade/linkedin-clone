@@ -1,15 +1,39 @@
 .postinput_container {
-    background-color: #384046;
-    color: white;
-    
-    border-radius: 10px;
-    
-    
-    height: fit-content;
-    margin-bottom: 10px;
-    
-
+  background-color: #1d2226;
+  /* color: white; */
+  border-radius: 10px;
+  height: fit-content;
+  margin-bottom: 10px;
 }
+.Image-Button,
+.Video-Button,
+.Event-Button,
+.Post-Button {
+}
+.Image-Button > span,
+.Video-Button > span,
+.Event-Button > span,
+.Post-Button > span {
+  padding-left: 5px;
+  align-items: baseline;
+  color: white;
+}
+.input-group-lg {
+  border-radius: rounded;
+}
+.post-icon {
+  color: #fc9295 !important;
+}
+.photo-icon {
+  color: #70b5f9 !important;
+}
+.event-icon {
+  color: #e7833e !important;
+}
+.video-icon {
+  color: #7fc15e !important;
+}
+
 /* .postInput > form {
     display: flex;
     width: 100%;
@@ -27,19 +51,19 @@
     
 } */
 
-.input-group-text{
-    background-color: white;
-    border-right: none;
+.input-group-text {
+  background-color: white !important;
+  border-right: none !important;
 }
 
 .form-control {
-    border-left: none;
+  border-left: none !important;
 }
 
 .input-group {
-    border-radius: 23px;
+  border-radius: 23px !important;
 }
 
 .postinput_submit {
-    background-color: white !important;
+  background-color: white !important;
 }

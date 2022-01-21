@@ -57,17 +57,15 @@ class HomeRightSideBar extends Component {
                                                     <img className= "pro-pic" src= {profile.image} alt="pro-pic"/>
                                                 </Col>
                                                 <Col className="viewer-job-description justify-content-left" sm={10}> 
-                                                    <Row>
-                                                        <Col sm={12}>
-                                                            <span className= "profile-name">{profile.name}</span>
-                                                        </Col>
                                                     
-                                                        <Col sm={12}>
-                                                            <span className= "job-title">{profile.title}</span>
-                                                        </Col>
-                                                        
-                                                    </Row>
-                                                <button className="follow"><FiPlus/> Follow</button>
+                                                            <div className= "profile-name">{profile.name}</div>
+                                                            <div className= "job-title">{profile.title}</div>
+                                                       
+                                                <button className="message-button">
+                                                 <span>
+                                                    Message
+                                                </span>
+                                                </button>
                                                 </Col>
 
                                             </Row>  
