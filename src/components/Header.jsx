@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import 'react-bootstrap-icons'
-import {Nav, NavDropdown} from 'react-bootstrap'
+import {Nav,Dropdown} from 'react-bootstrap'
 import SearchIcon from '@material-ui/icons/Search'
 import HeaderOption from './HeaderOption';
 import HomeIcon from '@material-ui/icons/Home'
@@ -11,19 +11,20 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { Link,  useLocation, useNavigate } from 'react-router-dom'
+import { Linkedin } from 'react-bootstrap-icons';
 const Header = () => {
      const location = useLocation()
-
-    const navigate = useNavigate()
+ const navigate = useNavigate()
 
 
     return(
         <div className="header">
                 <div className="header_left">
-                    <img src="./Assets/Linkedin-logo.png" className="Logo" alt="logo"/>
-                        <div className="header_search">
-                            <SearchIcon/>
-                            <input type= "text" className="search_Bar_input"/>
+                    <Linkedin className="linkedin-logo mt-2"/>
+
+                        <div className="header_search  ml-4 ">
+                            <SearchIcon className="Search-icon"/>
+                            <input type= "text" className="search_Bar_input" placeholder="Search"/>
                         </div>
                 </div>
 
@@ -33,7 +34,7 @@ const Header = () => {
                     
                                 <Link to="/" className="Home-Link">
                         <div className={location.pathname === '/' ? 'nav-link active' : 'nav-link'}>
-                            <HeaderOption Icon={HomeIcon} title='Home'/>
+                            <HeaderOption Icon={HomeIcon} title='Home'  className="navbar-icon"/>
                         </div>
                      </Link>
 
@@ -41,22 +42,22 @@ const Header = () => {
                               
                     <Nav.Item>
                         <Nav.Link href="/home">
-                            <HeaderOption Icon={SupervisorIcon} title='My Network'/>
+                            <HeaderOption Icon={SupervisorIcon} title='My Network' className="navbar-icon"/>
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="link-1">
-                            <HeaderOption Icon={BusinessCenterIcon} title='Jobs'/>
+                            <HeaderOption Icon={BusinessCenterIcon} title='Jobs' className="navbar-icon"/>
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="link-2">
-                            <HeaderOption Icon={ChatIcon} title='Messaging'/>
+                            <HeaderOption Icon={ChatIcon} title='Messaging' className="navbar-icon"/>
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="link-2">
-                            <HeaderOption Icon={NotificationsIcon} title='Notifications'/>
+                            <HeaderOption Icon={NotificationsIcon} title='Notifications' className="navbar-icon"/>
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
@@ -69,9 +70,21 @@ const Header = () => {
                    
                     <Nav.Item>
                         <Nav.Link eventKey="link-2">
-                            <HeaderOption Icon= {BsGrid3X3GapFill} title='Work'/>
+                            <Dropdown>
+                             
+                        <Dropdown.Toggle variant="Secondary" id="dropdown-basic" className="nav-dropdown">
+                            <HeaderOption Icon= {BsGrid3X3GapFill} title='Work' className="navbar-icon"/>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                         </Nav.Link>
                     </Nav.Item>
+                    
                     <Nav.Item>
                         <Nav.Link eventKey="disabled" disabled>
                         Get Hired Faster, Try Premium Free
