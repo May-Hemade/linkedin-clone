@@ -1,56 +1,38 @@
 import React from 'react';
 import {Avatar} from '@material-ui/core';
-import {Container} from 'react-bootstrap'
+import {Row, Button} from 'react-bootstrap'
 import {HiUserGroup} from 'react-icons/hi';
-import {BsCalendar4Event} from 'react-icons/bs'
+import {BsCalendar3Event} from 'react-icons/bs'
 import {MdKeyboardArrowDown} from 'react-icons/md'
 import {HiHashtag} from 'react-icons/hi'
 import {Link} from 'react-router-dom'
+import {FiPlus} from 'react-icons/fi'
+import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
 import './HomeLeftSideBar.css';
-import {showMore} from './ShowMoreButton'
-const HomeLeftSideBar = () => {
-    
-    // const showMore = () => {
-    //     const [show,setShow] = useState(true)
-    //     return(
-    //         <div>
-    //         {
-    //             if(show=== true){
-    //                 {recentItem('motivationalquotes')}
-    //             {recentItem('humanresources')}
-    //             {recentItem('datanalytics')}
 
-    //             }else{
-                        
-    //             }
-    //         show?recentItem('motivationalquotes'):null;
-    //             <button onClick= {()=>setShow(true)}> Show more <MdKeyboardArrowDown/></button>
-    //             </div>
-    //         }
-    //         )
-    //         }
+const HomeLeftSideBar = () => {
                     
     const recentItem = (topic) => {
         return(
         <div className="sidebar_recentItem">
-            <span className="sidebar_hash"><HiHashtag/></span>
-            <p>{topic}</p>
+            <span className="sidebar_icon"><HiHashtag/></span>
+            <a className="recentItem">{topic}</a>
         </div>
         )
     }
     const groupItem = (group) => {
         return(
         <div className="sidebar_groupItem">
-            <span className="sidebar_hash"><HiUserGroup/></span>
-            <p>{group}</p>
+            <span className="sidebar_icon"><HiUserGroup/></span>
+            <a className="groupItem">{group}</a>
         </div>
         )
     }
     const eventItem = (event) => {
         return(
             <div className="sidebar_eventItem">
-            <span className="sidebar_hash"><BsCalendar4Event/></span>
-            <p>{event}</p>
+            <span className="sidebar_icon"><BsCalendar3Event className="mr-4"/></span>
+            <a className="eventItem">{event}</a>
         </div>
         )
     }
@@ -85,31 +67,57 @@ const HomeLeftSideBar = () => {
             </div>
 
             <div className="sidebar_bottom">
-                <p className="side_bottom-heading">Recent</p>
+                <a className="recent">Recent
+                <span className="up-arrow">
+                    <MdOutlineKeyboardArrowUp  className="arrowUp-icon"/>
+                </span>
+                </a>
                 {recentItem('reactjs')}
                 {recentItem('programming')}
                 {recentItem('softwareEngineering')}
                 {recentItem('motivationalQuotes')}
                 {recentItem('striveschoolCareerHub')}
            
-                <p className="side_bottom-heading">Groups</p>
+                <a className="groups">Groups
+                    <span className="up-arrow">
+                        <MdOutlineKeyboardArrowUp  className="arrowUp-icon"/>
+                    </span>
+                </a>
                 {groupItem('StriveSchool Career Hub')}
                 {groupItem('StriveSchool Alumni')}
                 {groupItem('Developers 2021')}
                 {groupItem('React Developers Union')}
 
-                <p className="side_bottom-heading">Events</p>
-                {groupItem('PyCon Limerick 2022')}
-                {groupItem('FinanceMan Africa 2021')}
-                {groupItem('PyData Global Conference')}
-                {groupItem('JuliaCon 2021')}
-
-                <p className="side_bottom-heading">Followed Hashtags</p>
+                <Row>
+                    <div>
+                <a className="events ml-3">Events
+                    <span className="plus-link">
+                        <FiPlus className="plus-icon-event"/>
+                    </span>
+                    <span className="up-arrow-event">
+                    <MdOutlineKeyboardArrowUp className="arrowUp-icon"/>
+                    </span>
+                </a>
+                </div>
+                
+                </Row>
+                {eventItem('PyCon Limerick 2022')}
+                {eventItem('FinanceMan Africa 2021')}
+                {eventItem('PyData Global Conference')}
+                {eventItem('JuliaCon 2021')}
+                <Row>
+                <a className="followed-hashtags">Followed Hashtags<FiPlus className="fh-plus-icon"/>
+                   
+                    <span className="fh-up-arrow">
+                    <MdOutlineKeyboardArrowUp className="arrowUp-icon"/>
+                    </span>
+                </a>
+                </Row>
                 {recentItem('motivationalquotes')}
                 {recentItem('humanresources')}
                 {recentItem('datanalytics')}
                 
-               <showMore/>
+               <Button variant="Secondary" className="showMore-button">Show more <MdKeyboardArrowDown/></Button>
                 {/* <div>
     {[DropdownButton].map((DropdownType, idx) => (
       <DropdownType 

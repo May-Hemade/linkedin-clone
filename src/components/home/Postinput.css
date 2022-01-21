@@ -22,14 +22,16 @@
   border-radius: rounded;
 }
 .post-icon {
+  color: #fc9295 !important;
 }
 .photo-icon {
+  color: #70b5f9 !important;
 }
 .event-icon {
-  background-color: #e7833e !important;
+  color: #e7833e !important;
 }
 .video-icon {
-  background-color: #7fc15e !important;
+  color: #7fc15e !important;
 }
 
 /* .postInput > form {

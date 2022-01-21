@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import 'react-bootstrap-icons'
-import {Nav,Dropdown} from 'react-bootstrap'
+import {Nav,Dropdown, Row, Col} from 'react-bootstrap'
 import SearchIcon from '@material-ui/icons/Search'
 import HeaderOption from './HeaderOption';
 import HomeIcon from '@material-ui/icons/Home'
@@ -12,6 +12,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { Link,  useLocation, useNavigate } from 'react-router-dom'
 import { Linkedin } from 'react-bootstrap-icons';
+import {IoMdArrowDropdown} from 'react-icons/io'
 const Header = () => {
      const location = useLocation()
  const navigate = useNavigate()
@@ -63,17 +64,51 @@ const Header = () => {
                     <Nav.Item>
                         
                         <Link to='/profile' className='Profile-Link'>
-                            <div className={location.pathname === '/profile' ? 'nav-link active' : 'nav-link'}><HeaderOption avatar='./Assets/Profile-picture.jpg' title='Me'/></div>
-                       
+                            <div className={location.pathname === '/profile' ? 'nav-link active' : 'nav-link'}>
+                                 <Dropdown  className="nav-dropdown">
+                        <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                            <HeaderOption avatar='./Assets/Profile-picture.jpg' title='Me'/>
+                           <IoMdArrowDropdown className="down-arrow-icon"/>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu class="dropdown-menu">
+                            <div className="dropdown-div">
+                                <Row>
+                                    <Col className="profile-column">
+                                    <img src= "./assets/Profile-picture.jpg" alt="pro-pic" className="profile-picture"/>
+                                    </Col>
+                                    <Col className="profile-bio-column">
+                                    <Row className="profile-bio-row">
+                                         <h6 className="profile-name">Reid Hoffmann</h6>
+                                    <p className="profile-bio">Entrepreneur. Product and Business Strategist. Investor. Podcaster.</p>
+                                    </Row>
+                                   
+                                    </Col>
+                                    
+                                </Row>
+                                <button className="view-profile-button">View Profile</button>
+                            </div>
+                            <h6 className="dropdown-subheading">Account</h6>
+                            <Dropdown.Item id="dropdown-item" href="#/action-1">Settings & Privacy</Dropdown.Item>
+                            <Dropdown.Item id="dropdown-item" href="#/action-2">Help</Dropdown.Item>
+                            <Dropdown.Item id="dropdown-item" href="#/action-3">Language</Dropdown.Item>
+                            <h6 className="dropdown-subheading">Manage</h6>
+                            <Dropdown.Item id="dropdown-item" href="#/action-1">Posts & Activity</Dropdown.Item>
+                            <Dropdown.Item id="dropdown-item" href="#/action-2">Job Posting Account</Dropdown.Item>
+                            <Dropdown.Item id="dropdown-item" href="#/action-3">Sign Out</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    </div>    
                         </Link>
                     </Nav.Item>
                    
                     <Nav.Item>
                         <Nav.Link eventKey="link-2">
-                            <Dropdown>
-                             
-                        <Dropdown.Toggle variant="Secondary" id="dropdown-basic" className="nav-dropdown">
+                            
+                            <Dropdown  className="nav-dropdown">
+                        <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
                             <HeaderOption Icon= {BsGrid3X3GapFill} title='Work' className="navbar-icon"/>
+                           <IoMdArrowDropdown className="down-arrow-icon"/>
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
@@ -86,7 +121,7 @@ const Header = () => {
                     </Nav.Item>
                     
                     <Nav.Item>
-                        <Nav.Link eventKey="disabled" disabled>
+                        <Nav.Link className="get-hired">
                         Get Hired Faster, Try Premium Free
                         </Nav.Link>
                     </Nav.Item>

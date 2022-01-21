@@ -9,6 +9,9 @@
   margin-left: -18px;
   padding-left: 10px;
 }
+.viewers {
+  padding-top: 5px;
+}
 .viewer-profiles {
   background-color: #1d2226;
   margin-left: 12px;
@@ -22,25 +25,32 @@
   margin-left: -18px;
 }
 .profile-name {
+  margin-top: 0px;
   margin-left: -30px;
+  padding-top: -10px;
 }
 .pro-pic {
-  margin-left: -39px;
+  padding-left: 0px;
   margin-right: 0px;
   border-radius: 50%;
   height: 35px;
   width: 35px;
 }
-.follow {
+.message-button {
   border-radius: 25px;
-  width: 80px;
+  width: 100px;
   text-align: center;
   padding: 2px;
   margin-left: -30px;
+  padding-bottom: 2px;
+  border: solid 1px rgb(34, 34, 34);
 }
 .job-title {
   font-size: 12px;
   margin-left: -30px;
-  margin-top: -11px;
+  padding-top: 10px;
   overflow-y: hidden;
+}
+.jobTitle-Column {
+  padding-left: 5px;
 }

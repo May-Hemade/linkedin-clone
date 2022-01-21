@@ -83,7 +83,7 @@
   display: flex;
   font-size: 13px;
   color: lightgray;
-  font-weight: bolder;
+  font-weight: 20px;
   cursor: pointer;
   margin-bottom: 5px;
   padding: 5px;
@@ -92,15 +92,21 @@
   font-size: 13px;
   padding-bottom: 10px;
 }
-.sidebar_recentitem:hover {
-  background-color: gray;
+.sidebar_recentItem:hover,
+.sidebar_groupItem:hover,
+.sidebar_eventItem:hover,
+.recentItem:hover,
+.groupItem:hover,
+.eventItem:hover {
   border-radius: 10px;
   cursor: pointer;
-  color: white;
+  color: gray;
 }
-.sidebar_hash {
+.sidebar_icon {
   margin-right: 10px;
   margin-left: 5px;
+  align-items: baseline;
+  font-size: 20px;
 }
 .LeftBar-Link {
   text-decoration: none !important;
@@ -122,4 +128,52 @@
   width: 100%;
   text-align: left;
   padding-left: 5px;
+}
+.recentItem,
+.groupItem,
+.eventItem {
+  color: white;
+  align-items: baseline;
+  font-weight: 0;
+  text-decoration: none !important;
+  padding-top: 10px;
+  line-height: -20px;
+}
+.recent {
+  color: lightgray;
+  margin: 5px;
+  padding: 5px;
+}
+.groups,
+.events,
+.followed-hashtags {
+  color: #0a66c2;
+  margin: 5px;
+  padding: 5px;
+}
+.plus-link {
+  margin-left: 130px;
+}
+.showMore-button {
+  border-radius: 25px;
+  text-align: center;
+  padding-left: 10px;
+  margin-left: 60px;
+  color: white;
+}
+.up-arrow {
+  margin-left: 130px;
+}
+
+.arrowUp-icon {
+  height: 30px;
+  width: 30px;
+}
+.plus-icon {
+  height: 20px;
+  width: 20px;
+}
+.plus-icon-event,
+.up-arrow-event {
+  align-items: space-between;
 }
