@@ -32,11 +32,11 @@ const CentralAvatar = (/* { profile } */) => {
           method: "GET",
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1NjZjMzczZDVjYjAwMTUzOTVhYTYiLCJpYXQiOjE2NDI1MjM4ODMsImV4cCI6MTY0MzczMzQ4M30.E1_8l22F0P-RytaWCJNQ3thneG9O_OwfEs96qyYCt3I",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
             "Content-type": "application/json",
           },
         }
-      )
+      );
       if (response.ok) {
         let data = await response.json()
         console.log("DATA", data)
@@ -59,7 +59,11 @@ const CentralAvatar = (/* { profile } */) => {
   return (
     <Container className="central_avatar p-0">
       <div className="imagess">
-        <Button className="edit_image_button align-middle" variant="light">
+        <Button
+          id="edit_image_button"
+          className="edit_image_button align-middle"
+          variant="light"
+        >
           <BsCameraFill className="align-baseline text-start" />
         </Button>
         <Image
@@ -74,6 +78,8 @@ const CentralAvatar = (/* { profile } */) => {
             roundedCircle
             alt=""
             className="avatar"
+            
+            id="avatar"
           />
         )}
 
@@ -105,7 +111,7 @@ const CentralAvatar = (/* { profile } */) => {
       </div>
       <div className="d-flex">
         {profile && (
-          <div className="central_avatar_info text-left  ml-4">
+          <div className="central_avatar_info text-left w-50 ml-4">
             <h4 className="text-white">
               {profile.name}
               {profile.surname}
@@ -155,7 +161,7 @@ const CentralAvatar = (/* { profile } */) => {
       </div>
       <div>{/*  <h1 className="text-light">HERE GOES THE CAROUSEL</h1> */}</div>
     </Container>
-  )
+  );
 }
 
 export default CentralAvatar

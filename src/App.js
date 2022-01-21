@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./components/home/Home"
 import Profile from "./components/profile/Profile"
 import "./App.css"
@@ -9,18 +9,18 @@ import Postinput from "./components/home/PostInput"
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <div className="App">
         <Header />
-        
-          
+
         <Routes>
+          <Route path="/me" />
           <Route path="/" element={<Home />}></Route>
-          <Route path="profile" element={<Profile />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
         </Routes>
       </div>
-    </BrowserRouter>
-  )
+    </Router>
+  );
 }
 
 export default App

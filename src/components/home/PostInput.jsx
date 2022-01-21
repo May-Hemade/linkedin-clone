@@ -22,7 +22,7 @@ const Postinput = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try { 
-            let response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", { //:userId/experience
+            let response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", { 
             method: 'POST',
             body: JSON.stringify(postComment),
             headers: {
