@@ -13,9 +13,7 @@ export default function Experience() {
   const [isLoading, setIsLoading] = useState(false)
   const [hasError, setHasError] = useState(false)
 
-  useEffect(() => {
-    getExperiences()
-  }, [])
+  
 
   
   /* useEffect(() => {
@@ -104,8 +102,13 @@ export default function Experience() {
     console.log(data)
     submitForm(data)
     e.target.reset()
+    getExperiences()
   }
   //
+
+  useEffect((data) => {
+    getExperiences();
+  }, []);
 
   return (
     <div>
@@ -124,10 +127,7 @@ export default function Experience() {
                 <Modal.Title>Add experience</Modal.Title>
               </Modal.Header>
               <Modal.Body className="modal_add_experience">
-                <form
-
-                  onSubmit={handleSubmit(onSubmit)}>
-
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="role">Role*</label>
                     <input
@@ -135,7 +135,6 @@ export default function Experience() {
                       id="role"
                       placeholder="role..."
                       className="modal_input"
-                      
                     />
                   </div>
 
@@ -146,93 +145,97 @@ export default function Experience() {
                       id="company"
                       placeholder="company..."
                       className="modal_input"
-                      
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="area">Area</label>
-                    
+
                     <input
                       {...register("area", { required: true, minLength: 2 })}
                       id="area"
                       placeholder="area..."
                       className="modal_input"
-                      
                     />
                   </div>
 
                   <div className="form-group d-flex flex-column">
                     <label htmlFor="description">Description</label>
                     <textarea
-                     {...register("description", {
-                      required: true,
-                      minLength: 4,
-                    })}
+                      {...register("description", {
+                        required: true,
+                        minLength: 4,
+                      })}
                       id="description"
                       placeholder="description..."
                       className="modal_input"
                       rows="3"
-                      
                     />
                   </div>
 
                   <div className="form-group d-flex justify-content-between">
-                    
-                  <div className="d-flex flex-column ">
-                    <label htmlFor="start">Start date:</label>
-                    <Controller className="modal_input"
-                      control={control}
-                      name="startDate"
-                      rules={{ required: true }} //optional
-                      render={({
-                        field: { onChange, name, value },
-                        fieldState: { invalid, isDirty }, //optional
-                        formState: { errors }, //optional, but necessary if you want to show an error message
-                      }) => (
-                        <>
-                          <DatePicker
-                            value={value || ""}
-                            onChange={(startDate) => {
-                              onChange(startDate?.isValid ? startDate : "");
-                            }}
-                            format={"YYYY/MM/DD"}
-                          />
-                          {errors && errors[name] && errors[name].type === "required" && (
-                            //if you want to show an error message
-                            <span>your error message !</span>
-                          )}
-                        </>
-                      )}
-                    />
-                    {/* < errors={errors} name="startDate" as="p" /> */}
+                    <div className="d-flex flex-column ">
+                      <label htmlFor="start">Start date:</label>
+                      <Controller
+                        
+                        className="modal_input"
+                        control={control}
+                        name="startDate"
+                        rules={{ required: true }} //optional
+                        render={({
+                          field: { onChange, name, value },
+                          fieldState: { invalid, isDirty }, //optional
+                          formState: { errors }, //optional, but necessary if you want to show an error message
+                        }) => (
+                          <>
+                            <DatePicker
+                              value={value || ""}
+                              onChange={(startDate) => {
+                                onChange(startDate?.isValid ? startDate : "");
+                              }}
+                              format={"YYYY/MM/DD"}
+                            />
+                            {errors &&
+                              errors[name] &&
+                              errors[name].type === "required" && (
+                                //if you want to show an error message
+                                <span>your error message !</span>
+                              )}
+                          </>
+                        )}
+                      />
+                      {/* < errors={errors} name="startDate" as="p" /> */}
                     </div>
                     <div className="d-flex flex-column">
-                    <label htmlFor="end">End date:</label>          
-                    <Controller className="modal_input"
-                      control={control}
-                      name="endDate"
-                      rules={{ required: true }} //optional
-                      render={({
-                        field: { onChange, name, value },
-                        fieldState: { invalid, isDirty }, //optional
-                        formState: { errors }, //optional, but necessary if you want to show an error message
-                      }) => (
-                        <>
-                          <DatePicker
-                            value={value || ""}
-                            onChange={(endDate) => {
-                              onChange(endDate?.isValid ? endDate : "");
-                            }}
-                            format={"yyyy/MM/dd"}
-                          />
-                          {errors && errors[name] && errors[name].type === "required" && (
-                            //if you want to show an error message
-                            <span>your error message !</span>
-                          )}
-                        </>
-                      )}
-                    />
+                      <label htmlFor="end">End date:</label>
+                      <Controller
+                        className="modal_input"
+                        style={{ color: "black" }}
+                        control={control}
+                        name="endDate"
+                        rules={{ required: true }} //optional
+                        render={({
+                          field: { onChange, name, value },
+                          fieldState: { invalid, isDirty }, //optional
+                          formState: { errors }, //optional, but necessary if you want to show an error message
+                        }) => (
+                          <>
+                            <DatePicker
+                              value={value || ""}
+                              onChange={(endDate) => {
+                                onChange(endDate?.isValid ? endDate : "");
+                              }}
+                              format={"yyyy/MM/dd"}
+                            />
+                            {errors &&
+                              errors[name] &&
+                              errors[name].type === "required" && (
+                                //if you want to show an error message
+                                <span>your error message !</span>
+                              )}
+                          </>
+                        )}
+                      />
                     </div>
                   </div>
 
@@ -255,15 +258,19 @@ export default function Experience() {
                   {/* <input {...register("exampleRequired", { required: true })} /> */}
                   {/* errors will return when field validation fails  */}
 
-                  <label htmlfor="file-upload" className="modal_save_button mb-3">
-                      <input type="file" 
-                      id="file-upload" name="experience_image"
-                      accept="image/png, image/jpeg"/>
-                      + Add media
+                  <label
+                    htmlfor="file-upload"
+                    className="modal_save_button mb-3"
+                  >
+                    <input
+                      type="file"
+                      id="file-upload"
+                      name="experience_image"
+                      accept="image/png, image/jpeg"
+                    />
+                    + Add media
                   </label>
-                 
-                  
-                  
+
                   <Modal.Footer>
                     <input
                       type="submit"
@@ -271,7 +278,6 @@ export default function Experience() {
                       className="modal_save_button mt-3"
                       onClick={handleClose}
                     />
-                    
                   </Modal.Footer>
                 </form>
               </Modal.Body>
@@ -289,6 +295,7 @@ export default function Experience() {
           !hasError &&
           experiences.map((experience, index) => (
             <SingleExperience
+              getExperiences={getExperiences}
               key={experience._id}
               experience={experience}
               showBorder={index == experiences.length - 1 ? false : true}
@@ -300,5 +307,5 @@ export default function Experience() {
         </span>
       </div>
     </div>
-  )
+  );
   }

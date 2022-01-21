@@ -59,7 +59,11 @@ const CentralAvatar = (/* { profile } */) => {
   return (
     <Container className="central_avatar p-0">
       <div className="imagess">
-        <Button className="edit_image_button align-middle" variant="light">
+        <Button
+          id="edit_image_button"
+          className="edit_image_button align-middle"
+          variant="light"
+        >
           <BsCameraFill className="align-baseline text-start" />
         </Button>
         <Image
@@ -74,6 +78,8 @@ const CentralAvatar = (/* { profile } */) => {
             roundedCircle
             alt=""
             className="avatar"
+            
+            id="avatar"
           />
         )}
 
@@ -151,7 +157,7 @@ const CentralAvatar = (/* { profile } */) => {
       </div>
       <div>{/*  <h1 className="text-light">HERE GOES THE CAROUSEL</h1> */}</div>
     </Container>
-  )
+  );
 }
 
 export default CentralAvatar
