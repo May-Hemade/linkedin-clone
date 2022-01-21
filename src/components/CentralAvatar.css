@@ -107,4 +107,12 @@
   border-radius: 15 px !important;
   margin: 3ch;
   color: white;
+  border: 1px solid rgb(68, 65, 65) !important;
+  border-radius: 1.5ch !important;
+}
+
+.modal-header-linkedin {
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  line-height: 1.42857 !important;
 }

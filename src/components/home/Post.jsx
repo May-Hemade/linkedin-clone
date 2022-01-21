@@ -1,6 +1,6 @@
 import { SendOutlined, ThumbUp, ThumbUpOutlined } from "@material-ui/icons"
 import React from "react"
-import { Button } from "react-bootstrap"
+import { Button,Row } from "react-bootstrap"
 import { FaRegCommentDots, FaShare } from "react-icons/fa"
 import "./post.css"
 
@@ -27,14 +27,14 @@ export default function Post({ post }) {
       </div>
       <div className="linkedin-post-buttons linkedin-divider-top">
         <Button className="linkedin-post-button text-center">
-          <ThumbUpOutlined className="flip" />
+          <ThumbUpOutlined className="Like-icon flip" />
           <span className="ml-1">Like</span>
         </Button>
         <Button className="linkedin-post-button">
-          <FaRegCommentDots /> <span className="ml-1">Comment</span>
+          <Row><FaRegCommentDots className="Comment-icon"/> <span className="ml-1">Comment</span></Row>
         </Button>
         <Button className="linkedin-post-button">
-          <FaShare /> <span className="ml-1">Share</span>
+          <FaShare className='Share-icon' /> <span className="ml-1">Share</span>
         </Button>
         <Button className="linkedin-post-button">
           <SendOutlined className="rotate-icon" />{" "}

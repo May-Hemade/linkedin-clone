@@ -1,14 +1,11 @@
 import React,{Component} from 'react'
-import './RightSideBar.css'
+import './HomeRightSideBar.css'
 import {Col, Container, Row,} from 'react-bootstrap'
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import {FiPlus} from "react-icons/fi"
-// import {Footer} from './profile/Footer.jsx'
+import HomeFooter from './HomeFooter'
 
-
-
-
-class RightSideBar extends Component {
+class HomeRightSideBar extends Component {
     constructor(props){
     super(props)
         this.state =
@@ -82,16 +79,16 @@ class RightSideBar extends Component {
         
             <hr className="horizontal-row"/>
           
-          {/* <div>
-            <Footer/>
-        </div> */}
+          <div>
+            <HomeFooter/>
+        </div>
         </Container>
         
      
     )
         }
  }
-export default RightSideBar
+export default HomeRightSideBar
 
 
 // <Container>

@@ -88,12 +88,16 @@ const CentralAvatar = (/* { profile } */) => {
           onHide={() => setShow(false)}
           aria-labelledby="example-custom-modal-styling-title"
         >
-          <Modal.Header closeButton className="linkedin-modal">
+          <Modal.Header
+            closeButton
+            className="linkedin-modal modal-header-linkedin"
+          >
             <Modal.Title
               id="example-custom-modal-styling-title"
               className="modal-dropdown"
+              className="linkedin-modal modal-header-linkedin"
             >
-              Upload Image
+              Profile Picture
             </Modal.Title>
           </Modal.Header>
           {profile && (

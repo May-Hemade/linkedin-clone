@@ -1,0 +1,46 @@
+.content-div1 {
+  margin-top: 8px;
+  background-color: #1d2226;
+  color: white;
+  width: 100%;
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: -18px;
+  padding-left: 10px;
+}
+.viewer-profiles {
+  background-color: #1d2226;
+  margin-left: 12px;
+  margin-top: 10px;
+  height: fit-content;
+  width: 100%;
+  color: white;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: -18px;
+}
+.profile-name {
+  margin-left: -30px;
+}
+.pro-pic {
+  margin-left: -39px;
+  margin-right: 0px;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+}
+.follow {
+  border-radius: 25px;
+  width: 80px;
+  text-align: center;
+  padding: 2px;
+  margin-left: -30px;
+}
+.job-title {
+  font-size: 12px;
+  margin-left: -30px;
+  margin-top: -11px;
+  overflow-y: hidden;
+}

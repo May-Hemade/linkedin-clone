@@ -43,6 +43,15 @@
   padding-top: 0.5ch;
   padding-bottom: 0.5ch;
 }
+.Comment-icon {
+  margin-top: 0.6ch;
+}
+.Share-icon {
+  margin-bottom: 0.5ch;
+}
+.Like-icon {
+  margin-bottom: 0.4ch;
+}
 
 .linkedin-post-button {
   background-color: transparent !important;

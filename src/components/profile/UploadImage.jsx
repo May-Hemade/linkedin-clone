@@ -73,6 +73,7 @@ const UploadImage = ({ url, property, onSuccess }) => {
       {!isLoading && (
         <Form onSubmit={(e) => upload(e)}>
           <FormControl
+            className="menu_button_open"
             type="file"
             name={property}
             onChange={(event) => {

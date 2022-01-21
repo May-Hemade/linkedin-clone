@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react"
 import { Col, Row, Container } from "react-bootstrap"
 import { CircleLoader, GridLoader } from "react-spinners"
 import Footer from "../Footer"
-import RightSideBar from "../RightSideBar"
+import HomeLeftSideBar from './HomeLeftSideBar'
+import HomeRightSideBar from './HomeRightSideBar'
 import { css } from "@emotion/react"
 import Post from "./Post"
 import Postinput from "./PostInput"
@@ -48,10 +49,17 @@ export default function Home() {
   return (
     <div>
       <Container className="mt-4 pt-32">
-        <Row>
-          <Col md={2}></Col>
+         <Row className="HomePage-Sections">
+          
+          
+          <Col md={3} className="LeftBar-Col">
+            <Row><HomeLeftSideBar/></Row>
+            
+            {/* <Row><LeftBottomBar/></Row>
+             */}
+          </Col>
 
-          <Col>
+          <Col md={5} className="Post-section">
             <Postinput/>
             <GridLoader
               size={10}
@@ -66,8 +74,13 @@ export default function Home() {
                 .slice(0, 100)
                 .map((post) => <Post key={post._id} post={post} />)}
           </Col>
-          <Col md={3}></Col>
+          <Col md={4}>
+            <HomeRightSideBar/>
+          </Col>
+          <Col></Col>
+          
         </Row>
+      
       </Container>
       <Footer />
     </div>
