@@ -33,7 +33,7 @@
 }
 .follow {
   border-radius: 25px;
-  width: 80px;
+  width: 100px;
   text-align: center;
   padding: 2px;
   margin-left: -30px;
@@ -43,4 +43,7 @@
   margin-left: -30px;
   margin-top: -11px;
   overflow-y: hidden;
+}
+.plus-icon {
+  margin-top: 2px;
 }

@@ -70,7 +70,7 @@ class RightSideBar extends Component {
                                                         </Col>
                                                         
                                                     </Row>
-                                                <button className="follow"><FiPlus/> Follow</button>
+                                                <button className="follow"><FiPlus class="plus-icon"/> Follow</button>
                                                 </Col>
 
                                             </Row>  
