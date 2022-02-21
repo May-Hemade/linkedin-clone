@@ -24,14 +24,10 @@ export default function Experience() {
     setIsLoading(true)
     try {
       const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences",
+        "http://localhost:3001/profile/mayhemade/experiences",
         {
           method: "GET",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
-            "Content-Type": "application/json",
-          },
+         
         }
       )
 
