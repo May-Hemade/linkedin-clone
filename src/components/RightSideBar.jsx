@@ -55,26 +55,40 @@ class RightSideBar extends Component {
                     <ul>
                         {this.state.profiles.map((profile) => {
                                     return (
-                                    <Row className="viewers">
-                                                <Col className="viewer-picture align-items-center" sm={2}>
-                                                    <img className= "pro-pic" src= {profile.image} alt="pro-pic"/>
-                                                </Col>
-                                                <Col className="viewer-job-description justify-content-left" sm={10}> 
-                                                    <Row>
-                                                        <Col sm={12}>
-                                                            <span className= "profile-name">{profile.name}</span>
-                                                        </Col>
-                                                    
-                                                        <Col sm={12}>
-                                                            <span className= "job-title">{profile.title}</span>
-                                                        </Col>
-                                                        
-                                                    </Row>
-                                                <button className="follow"><FiPlus class="plus-icon"/> Follow</button>
-                                                </Col>
-
-                                            </Row>  
-                                    )
+                                      <Row className="viewers">
+                                        <Col
+                                          className="viewer-picture align-items-center"
+                                          sm={2}
+                                        >
+                                          <img
+                                            className="pro-pic"
+                                            src={profile.image}
+                                            alt="pro-pic"
+                                          />
+                                        </Col>
+                                        <Col
+                                          className="viewer-job-description justify-content-left"
+                                          sm={10}
+                                        >
+                                          <Row>
+                                            <Col sm={12}>
+                                              <span className="profile-name">
+                                                {profile.name}
+                                              </span>
+                                            </Col>
+                                            
+                                            <Col sm={12}>
+                                              <span className="job-title">
+                                                {profile.title}
+                                              </span>
+                                            </Col>
+                                          </Row>
+                                          <button className="follow">
+                                            <FiPlus class="plus-icon" /> Follow
+                                          </button>
+                                        </Col>
+                                      </Row>
+                                    );
                                     })}
                     </ul>
                 </Col>

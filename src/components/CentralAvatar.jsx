@@ -121,7 +121,7 @@ const CentralAvatar = (profile) => {
           </Modal.Header>
           {profile && (
             <UploadImage
-              property="profile"
+              property="image"
               url={`http://localhost:3001/profile/${profile._id}/image`}
               onSuccess={onUploadImage}
             />
@@ -174,7 +174,7 @@ const CentralAvatar = (profile) => {
         <Button className="menu_button" variant="outline-light mr-3">
           Add Section
         </Button>
-        <a href="http://localhost:3001/profile/6214d3f49bddf0961915d20a/CV">
+        <a href={`http://localhost:3001/profile/${profile._id}/CV`}>
           <Button className="menu_button" variant="outline-light mr-3">
             Download PDF
           </Button>
