@@ -21,7 +21,7 @@ function Profile() {
             <Dashboard />
             <About />
             <Activity />
-            <Experience />
+            <Experience username="mayhemade" />
             <Education />
             <Skills />
             <Interests />
