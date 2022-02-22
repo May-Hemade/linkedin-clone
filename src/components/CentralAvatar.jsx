@@ -5,8 +5,9 @@ import { Pen } from "react-bootstrap-icons"
 import React, { useEffect, useState } from "react"
 import UploadImage from "./profile/UploadImage"
 import { useForm } from "react-hook-form"
-
+import pdfMake from "pdfmake/build/pdfmake";
 import { Form, FormControl, InputGroup, Modal } from "react-bootstrap"
+//import {base64} from "base64topdf"
 
 const CentralAvatar = (profile) => {
   //const [profile, setProfile] = useState(null)
@@ -51,6 +52,25 @@ const CentralAvatar = (profile) => {
   // useEffect(() => {
   //   fetchData()
   // }, [])
+
+  
+  // const downloadPDF = async () => {
+  //   let win = window.open('', '_blank'); 
+  //   try {
+  //      const apiUrl = "http://localhost:3001";//process.env.REACT_APP_BE_URL;
+  //      let response = await fetch(`${apiUrl}/profile/${profile._id}/CV`);
+  //      console.log(response);
+  //      if (response.ok) {
+  //        /* pdfMake.createPdf(response).open({}, win); */
+  //        let data = response.arrayBuffer()
+  //        let base64Str = Buffer.from(data).toString('base64')
+  //        base64.base64Decode(base64Str, "filename")
+  //      }
+  //    } catch (error) {
+  //      console.log(error);
+  //    }
+  //  };
+
 
   const onUploadImage = () => {
     setShow(false)
@@ -101,7 +121,7 @@ const CentralAvatar = (profile) => {
           </Modal.Header>
           {profile && (
             <UploadImage
-              property="profile"
+              property="image"
               url={`http://localhost:3001/profile/${profile._id}/image`}
               onSuccess={onUploadImage}
             />
@@ -154,9 +174,11 @@ const CentralAvatar = (profile) => {
         <Button className="menu_button" variant="outline-light mr-3">
           Add Section
         </Button>
-        <Button className="menu_button" variant="outline-light mr-3">
-          More
-        </Button>
+        <a href={`http://localhost:3001/profile/${profile._id}/CV`}>
+          <Button className="menu_button" variant="outline-light mr-3">
+            Download PDF
+          </Button>
+        </a>
       </div>
       <div>{/*  <h1 className="text-light">HERE GOES THE CAROUSEL</h1> */}</div>
     </Container>
