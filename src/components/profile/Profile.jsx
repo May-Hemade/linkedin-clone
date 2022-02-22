@@ -9,7 +9,7 @@ import CentralAvatar from "../CentralAvatar"
 import Dashboard from "./Dashboard"
 import Footer from "../Footer"
 import RightSideBar from "../RightSideBar"
-
+import { css } from "@emotion/react";
 import { useState } from "react"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
@@ -25,7 +25,7 @@ const loadingStyle = css`
 function Profile() {
   const {profileId} = useParams()
   const [profile,setProfile]=useState(null)
-  const [loading,setLoading]=useState(true)
+  const [isLoading,setIsLoading]=useState(true)
   
   const fetchProfile = async () => {
     try {
@@ -34,7 +34,7 @@ function Profile() {
         let data = await response.json();
         console.log(data);
         setProfile(data);
-        setLoading(false);
+        setIsLoading(false);
       } else {
         console.log(`something went wrong`);
       }
@@ -45,9 +45,9 @@ function Profile() {
   
   useEffect(()=>{
     fetchProfile()
-  },[])
+  }, [])
   
-  if(loading) {
+  if (isLoading) {
     return (
       <GridLoader
         size={10}
@@ -56,13 +56,13 @@ function Profile() {
         css={loadingStyle}
       />
     );
-  }
+  } else {
   return (
     <div>
       <Container className="mt-4 pt-32">
         <Row>
           <Col>
-            <CentralAvatar />
+            <CentralAvatar {...profile}/>
             <Dashboard />
             <About />
             <Activity />
@@ -78,7 +78,7 @@ function Profile() {
       </Container>
       <Footer />
     </div>
-  )
+  )}
 }
 
 export default Profile
