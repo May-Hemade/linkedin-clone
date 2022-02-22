@@ -8,8 +8,8 @@ import { useForm } from "react-hook-form"
 
 import { Form, FormControl, InputGroup, Modal } from "react-bootstrap"
 
-const CentralAvatar = (/* { profile } */) => {
-  const [profile, setProfile] = useState(null)
+const CentralAvatar = (profile) => {
+  //const [profile, setProfile] = useState(null)
 
   const {
     register,
@@ -24,37 +24,37 @@ const CentralAvatar = (/* { profile } */) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const fetchData = async () => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
-        {
-          method: "GET",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
-            "Content-type": "application/json",
-          },
-        }
-      );
-      if (response.ok) {
-        let data = await response.json()
-        console.log("DATA", data)
-        // now I want to safely store these details in my state!
-        setProfile(data)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const fetchData = async () => {
+  //   try {
+  //     let response = await fetch(
+  //       "https://striveschool-api.herokuapp.com/api/profile/me",
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           Authorization:
+  //             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
+  //           "Content-type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     if (response.ok) {
+  //       let data = await response.json()
+  //       console.log("DATA", data)
+  //       // now I want to safely store these details in my state!
+  //       setProfile(data)
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
-  useEffect(() => {
-    fetchData()
-  }, [])
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
 
   const onUploadImage = () => {
     setShow(false)
-    fetchData()
+    // fetchData()
   }
   return (
     <Container className="central_avatar p-0">
@@ -78,7 +78,6 @@ const CentralAvatar = (/* { profile } */) => {
             roundedCircle
             alt=""
             className="avatar"
-            
             id="avatar"
           />
         )}
@@ -103,7 +102,7 @@ const CentralAvatar = (/* { profile } */) => {
           {profile && (
             <UploadImage
               property="profile"
-              url={`https://striveschool-api.herokuapp.com/api/profile/${profile._id}/picture`}
+              url={`http://localhost:3001/profile/${profile._id}/image`}
               onSuccess={onUploadImage}
             />
           )}
