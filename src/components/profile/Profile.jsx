@@ -9,9 +9,11 @@ import CentralAvatar from "../CentralAvatar"
 import Dashboard from "./Dashboard"
 import Footer from "../Footer"
 import RightSideBar from "../RightSideBar"
-import Header from "../Header"
+import { useParams } from "react-router-dom"
 
 function Profile() {
+  const { username } = useParams()
+
   return (
     <div>
       <Container className="mt-4 pt-32">
@@ -21,7 +23,7 @@ function Profile() {
             <Dashboard />
             <About />
             <Activity />
-            <Experience username="mayhemade" />
+            <Experience username={username} />
             <Education />
             <Skills />
             <Interests />

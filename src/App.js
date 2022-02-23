@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Header from "./components/Header"
 import Postinput from "./components/home/PostInput"
 
-
 function App() {
   return (
     <Router>
@@ -14,13 +13,13 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/me" />
           <Route path="/" element={<Home />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/profile/:username" element={<Profile />}></Route>
         </Routes>
       </div>
     </Router>
-  );
+  )
 }
 
 export default App

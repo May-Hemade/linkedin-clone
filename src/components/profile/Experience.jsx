@@ -13,9 +13,12 @@ export default function Experience({ username }) {
 
   const getExperiences = async () => {
     setIsLoading(true)
+    console.log(
+      `${process.env.REACT_APP_BE_URL}/profile/${username}/experiences`
+    )
     try {
       const response = await fetch(
-        `http://localhost:3001/profile/${username}/experiences`,
+        `${process.env.REACT_APP_BE_URL}/profile/${username}/experiences`,
         {
           method: "GET",
         }
@@ -63,7 +66,7 @@ export default function Experience({ username }) {
   const submitForm = async (data) => {
     try {
       let response = await fetch(
-        `http://localhost:3001/profile/${username}/experiences`,
+        `${process.env.REACT_APP_BE_URL}/profile/${username}/experiences`,
         {
           //:userId/experience
           method: "POST",
@@ -106,7 +109,7 @@ export default function Experience({ username }) {
           <div className="d-flex">
             <div className="linkedin-icon display-5 mr-2">
               <a
-                href={`http://localhost:3001/profile/${username}/experiences/csv`}
+                href={`${process.env.REACT_APP_BE_URL}/profile/${username}/experiences/csv`}
               >
                 <Download />
               </a>

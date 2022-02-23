@@ -94,7 +94,7 @@ export default function SingleExperience({
   const submitForm = async (data) => {
     try {
       let response = await fetch(
-        `http://localhost:3001/profile/${username}/experiences/${experience._id}`,
+        `${process.env.REACT_APP_BE_URL}/profile/${username}/experiences/${experience._id}`,
         {
           //:userId/experience
           method: "PUT",
@@ -135,7 +135,7 @@ export default function SingleExperience({
   const DeleteExperience = async () => {
     try {
       let response = await fetch(
-        `http://localhost:3001/profile/${username}/experiences/${experience._id}`,
+        `${process.env.REACT_APP_BE_URL}/profile/${username}/experiences/${experience._id}`,
         {
           method: "DELETE",
 
@@ -336,7 +336,7 @@ export default function SingleExperience({
                   </form>
                   <UploadImage
                     property="image"
-                    url={`http://localhost:3001/profile/${username}/experiences/${experience._id}/picture`}
+                    url={`${process.env.REACT_APP_BE_URL}/profile/${username}/experiences/${experience._id}/picture`}
                     onSuccess={onUploadImage}
                   />
                 </Modal.Body>
