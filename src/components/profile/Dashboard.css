@@ -19,3 +19,12 @@
   text-decoration-color: #70b5f9;
   color: #70b5f9;
 }
+
+.dashboard_top_table_cell{
+
+}
+
+.dashboard_link {
+  padding-right: 110px !important;
+  display: block !important;
+}

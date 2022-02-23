@@ -1,0 +1,72 @@
+.footer_logo {
+  width: 100px;
+  width: 60px;
+  align-items: baseline;
+}
+footer {
+  font-size: 10px !important;
+  text-align: center;
+  line-height: 25px;
+  cursor: pointer;
+  display: flex;
+}
+.footer_link {
+  color: lightgray !important;
+  font-size: 14px;
+}
+.footer_link_Button {
+  color: lightgray !important;
+  font-size: 10px;
+  width: 170px;
+}
+
+.copy-right {
+  margin-left: -15px !important;
+}
+
+.Row1,
+.Row2,
+.Row3,
+.Row4 {
+  width: 100%;
+}
+/* .keyboard_arrow_down {
+  visibility: hidden !important;
+} */
+/* footer .col-2 {
+  padding-left: 0px !important;
+  margin-right: 5px;
+}
+footer .content {
+  margin-top: 10px;
+}
+.footer_dropdown {
+  display: block;
+  padding: 0px !important;
+}
+.footer_dropdown {
+  display: block;
+  padding: 0px !important;
+}
+
+#dropdown-basic-button {
+  background-color: transparent !important;
+  border-color: white;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-right: 10px;
+  padding-left: 4px;
+}
+.footer_link:hover {
+  color: white !important;
+  text-decoration-color: #70b5f9;
+}
+.footer_label {
+  color: lightgray;
+  font-weight: 2;
+  font-size: 10px;
+}
+.dropdown-toggle::after {
+  margin-left: 5em;
+}
+ */

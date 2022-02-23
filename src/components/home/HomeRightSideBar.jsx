@@ -1,14 +1,11 @@
 import React,{Component} from 'react'
-import './RightSideBar.css'
+import './HomeRightSideBar.css'
 import {Col, Container, Row,} from 'react-bootstrap'
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import {FiPlus} from "react-icons/fi"
-// import {Footer} from './profile/Footer.jsx'
+import HomeFooter from './HomeFooter'
 
-
-
-
-class RightSideBar extends Component {
+class HomeRightSideBar extends Component {
     constructor(props){
     super(props)
         this.state =
@@ -60,17 +57,15 @@ class RightSideBar extends Component {
                                                     <img className= "pro-pic" src= {profile.image} alt="pro-pic"/>
                                                 </Col>
                                                 <Col className="viewer-job-description justify-content-left" sm={10}> 
-                                                    <Row>
-                                                        <Col sm={12}>
-                                                            <span className= "profile-name">{profile.name}</span>
-                                                        </Col>
                                                     
-                                                        <Col sm={12}>
-                                                            <span className= "job-title">{profile.title}</span>
-                                                        </Col>
-                                                        
-                                                    </Row>
-                                                <button className="follow"><FiPlus class="plus-icon"/> Follow</button>
+                                                            <div className= "profile-name">{profile.name}</div>
+                                                            <div className= "job-title">{profile.title}</div>
+                                                       
+                                                <button className="message-button">
+                                                 <span>
+                                                    Message
+                                                </span>
+                                                </button>
                                                 </Col>
 
                                             </Row>  
@@ -82,16 +77,16 @@ class RightSideBar extends Component {
         
             <hr className="horizontal-row"/>
           
-          {/* <div>
-            <Footer/>
-        </div> */}
+          <div>
+            <HomeFooter/>
+        </div>
         </Container>
         
      
     )
         }
  }
-export default RightSideBar
+export default HomeRightSideBar
 
 
 // <Container>

@@ -1,39 +1,130 @@
 .header {
-    display: flex;
-    justify-content: space-evenly;
-    border-bottom: 0.1px solid gray;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 100%;
-    z-index: 999;
-    margin-left: 35px;
-  }
-  .header_left {
-    display: flex;
-  }
-  .header_left > img {
-    object-fit: contain;
-    height: 45px;
-    margin-right: 10px;
-  }
-  .header_search {
-    padding: 10px;
-    display: flex;
-    align-items: baseline;
-    border-radius: 5px;
-    height: 2px;
-    color: gray;
-  }
-  .header_search > input {
-    outline: none;
-    border: none;
-    background: none;
-    height: 40px;
-  }
-  .search_Bar_input {
-    color: white;
-  }
-  
-  .header_right {
-    display: flex;
-  }
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 0.1px solid gray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  z-index: 999;
+}
+.header_left {
+  display: flex;
+  padding-left: 100px;
+}
+.linkedin-logo {
+  height: 45px;
+  width: 45px;
+  color: white;
+  align-items: baseline;
+  display: flex;
+  margin-left: 170px;
+}
+.header_search {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  height: fit-content;
+  border: 1px solid rgb(82, 82, 82);
+  background-color: rgb(82, 82, 82) !important;
+  padding-left: 7px;
+  margin-top: 12px;
+}
+.header_search > input {
+  outline: none;
+  border: none;
+  height: 40px;
+
+  border-radius: 5px;
+}
+.search_Bar_input {
+  outline: none;
+  border: none;
+
+  background-color: rgb(82, 82, 82) !important;
+  border-radius: 10px;
+
+  color: lightgray;
+}
+
+.header_right {
+  display: flex;
+  margin-left: 0px;
+}
+
+.Home-Link,
+.Profile-Link {
+  text-decoration: none !important;
+}
+.Search-icon {
+  color: lightgray !important;
+}
+.navbar-icon {
+  height: 50px;
+  width: 50px;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+.nav-dropdown {
+  margin-top: -4px;
+}
+.down-arrow-icon {
+  color: white;
+  height: 25px;
+  width: 25px;
+  margin-top: 26px;
+  margin-left: -23px;
+}
+#dropdown-basic {
+  display: flex;
+}
+.profile-picture {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  padding-left: 2px;
+}
+.dropdown-menu {
+  width: 250px;
+}
+.profile-name {
+  font-weight: bold;
+}
+.profile-bio {
+  font-size: 14px;
+  margin-left: -30px;
+}
+.profile-bio-column {
+  margin-left: -50px;
+}
+.view-profile-button {
+  border-radius: 25px;
+  background-color: white;
+  border: 1px solid rgb(87, 86, 86);
+  width: 100%;
+}
+.dropdown-div {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.get-hired {
+  color: rgb(138, 114, 78);
+}
+.dropdown-subheading {
+  font-weight: bold;
+  padding-left: 13px;
+}
+#dropdown-item {
+  padding-top: 0px;
+  padding-left: 12px;
+}
+#dropdown-item:hover {
+  color: gray;
+}
+.profile-bio-row {
+  padding-top: 0px;
+  padding-left: 0px;
+}
+.dropdown-item.active {
+  background-color: white;
+}
