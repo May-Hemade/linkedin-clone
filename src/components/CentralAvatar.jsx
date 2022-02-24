@@ -132,8 +132,9 @@ const CentralAvatar = (profile) => {
         {profile && (
           <div className="central_avatar_info text-left w-50 ml-4">
             <h4 className="text-white">
-              {profile.name}
+              {profile.name} {}
               {profile.surname}
+
             </h4>
             <h6 className="text-white">{profile.title}</h6>
             <span className="central_avatar_city mr-1">

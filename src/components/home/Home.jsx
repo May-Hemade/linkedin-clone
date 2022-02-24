@@ -3,7 +3,7 @@ import { Col, Row, Container } from "react-bootstrap"
 import { CircleLoader, GridLoader } from "react-spinners"
 import Footer from "../Footer"
 import HomeLeftSideBar from './HomeLeftSideBar'
-import HomeRightSideBar from './HomeRightSideBar'
+import RightSideBar from '../RightSideBar.jsx'
 import { css } from "@emotion/react"
 import Post from "./Post"
 import Postinput from "./PostInput"
@@ -26,16 +26,13 @@ export default function Home() {
   const getPosts = async () => {
     setIsLoading(true)
 
-    const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/posts",
-      {
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
-        },
-      }
-    )
+    const response = await fetch("http://localhost:3001/posts", {
+      method: "GET",
+      // headers: {
+      //   Authorization:
+      //     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
+      // },
+    });
 
     if (response.ok) {
       setPosts(await response.json())
@@ -75,7 +72,7 @@ export default function Home() {
                 .map((post) => <Post key={post._id} post={post} />)}
           </Col>
           <Col md={4}>
-            <HomeRightSideBar/>
+            <RightSideBar/>
           </Col>
           <Col></Col>
           

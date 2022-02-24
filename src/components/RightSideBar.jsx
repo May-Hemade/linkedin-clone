@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 // import {Footer} from './profile/Footer.jsx'
 import { GridLoader } from 'react-spinners';
 import { css } from "@emotion/react";
+import { Dice6Fill } from 'react-bootstrap-icons';
 
 const loadingStyle = css`
   display: block;
@@ -69,56 +70,58 @@ const RightSideBar = () => {
         <div className="content-div1">
           <Col className="content-Col">
             <Row className="content-Row">
-              <p>
+              <p className="mt-3">
                 Edit public profile & URL <FaRegQuestionCircle />
               </p>
             </Row>
-
+            <div className="lineeee"></div>
             <Row className="content-Row">
-              <p>
+              <p className="mt-3">
                 Add profile in another language <FaRegQuestionCircle />
               </p>
             </Row>
           </Col>
         </div>
         <div className="viewer-profiles">
-          <Col>
-            <p>People also viewed</p>
-            <ul>
-              {profiles.map((profile) => {
-                return (
-                  <Row className="viewers" key={profile._id}>
-                    <Link to={`/profile/${profile._id}`}>
-                      <Col className="viewer-picture align-items-center" sm={2}>
-                        <img
-                          className="pro-pic"
-                          src={profile.image}
-                          alt="pro-pic"
-                        />
-                      </Col>
-                    </Link>
-                    <Col
-                      className="viewer-job-description justify-content-left"
-                      sm={10}
-                    >
-                      <Row>
-                        <Col sm={12}>
-                          <span className="profile-name">{profile.name}</span>
-                        </Col>
+          <Col className="pl-2">
+            <p className="text-light">People also viewed</p>
 
-                        <Col sm={12}>
-                          <span className="job-title">{profile.title}</span>
-                        </Col>
-                      </Row>
+            {profiles.map((profile) => {
+              return (
+                <div
+                  className="viewers d-flex flex-column pt-0 mb-3"
+                  key={profile._id}
+                >
+                  <div className="d-flex ">
+                    <div className="viewer-picture">
+                      <img
+                        className="linkedin-user-image pro-pic"
+                        src={profile.image}
+                        alt="pro-pic"
+                      />
+                    </div>
 
-                      <button className="follow">
-                        <FiPlus class="plus-icon" /> Follow
-                      </button>
-                    </Col>
-                  </Row>
-                );
-              })}
-            </ul>
+                    <div className="viewer-job-description">
+                      <Link to={`/profile/${profile._id}`}>
+                        <div className=" ml-2">
+                          <p className=" align-top text-light mb-0">
+                            {profile.name} {profile.surname}
+                          </p>
+                          <p className="sidebartitle align-top pt-0 mb-1 text-secondary">
+                            {profile.title}
+                          </p>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                  <span className="align-self-center">
+                    <button className="follow">
+                      {/* <FiPlus class="plus-icon" /> */} + Follow
+                    </button>
+                  </span>
+                </div>
+              );
+            })}
           </Col>
         </div>
 
