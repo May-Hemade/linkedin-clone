@@ -15,15 +15,9 @@ class HomeRightSideBar extends Component {
     }
     componentDidMount= async()=>
     {
-    let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", 
-            {
-                "method": "GET",
-                "headers":
-                {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU2ZDBmOGMyYzE4ODAwMTVhYjk0YWIiLCJpYXQiOjE2NDI1MTY3MjgsImV4cCI6MTY0MzcyNjMyOH0.msOy2MRPmK0k_B06OcTKa4FsMqg8FwsMHxYGAXa8M6E",
-                    "Content-type": "application/json",
-                }
-            })
+    let response = await fetch("http://localhost:3001/profile/", {
+      method: "GET",
+    });
     let parsedJson = await response.json()
     //slice the profile upto 10 profiles
     let slicedProfiles = parsedJson.slice(0, 10)
