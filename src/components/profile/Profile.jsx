@@ -14,6 +14,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { GridLoader } from "react-spinners";
+/* import {VANTA} from 'vanta' */
 
 const loadingStyle = css`
   display: block;
@@ -58,7 +59,7 @@ function Profile() {
     );
   } else {
   return (
-    <div>
+    <div id="progilepage">
       <Container className="mt-4 pt-32">
         <Row>
           <Col>
@@ -71,12 +72,31 @@ function Profile() {
             <Skills />
             <Interests />
           </Col>
-          <Col md={3}>
+          <Col md={4}>
             <RightSideBar />
           </Col>
         </Row>
+
       </Container>
       <Footer />
+      {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+      <script>
+      VANTA.WAVES({
+        el: "#progilepage",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x9103c,
+        shininess: 76.00,
+        waveSpeed: 0.50,
+        zoom: 1.16
+      })
+      </script> */}
     </div>
   )}
 }

@@ -37,6 +37,7 @@ export default function Home() {
     if (response.ok) {
       setPosts(await response.json())
       setIsLoading(false)
+      console.log(posts)
     } else {
       setIsLoading(false)
       setHasError(true)
@@ -49,14 +50,14 @@ export default function Home() {
          <Row className="HomePage-Sections">
           
           
-          <Col md={3} className="LeftBar-Col">
+          <Col md={3} className="LeftBar-Col ">
             <Row><HomeLeftSideBar/></Row>
             
             {/* <Row><LeftBottomBar/></Row>
              */}
           </Col>
 
-          <Col md={5} className="Post-section">
+          <Col md={5} className="Post-section px-1 ">
             <Postinput/>
             <GridLoader
               size={10}
@@ -71,7 +72,7 @@ export default function Home() {
                 .slice(0, 100)
                 .map((post) => <Post key={post._id} post={post} />)}
           </Col>
-          <Col md={4}>
+          <Col md={4} className="pl-0 ml-0">
             <RightSideBar/>
           </Col>
           <Col></Col>
