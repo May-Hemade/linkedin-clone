@@ -6,6 +6,9 @@ import "./post.css";
 import { useState, useEffect } from "react";
 import { set } from "date-fns";
 import { BsEmojiSmile, BsCardImage, BsThreeDots } from "react-icons/bs";
+import Comment from "./Comment.jsx"
+
+
 export default function Post({ post }) {
   const getDateString = () => {
     return "1d";
@@ -14,15 +17,19 @@ export default function Post({ post }) {
   const isAlreadyLiked = post.likes.find(
     (_id) => _id.toString() === userLogged
   );
+  console.log(isAlreadyLiked)
 
   const likesLength = post.likes.length;
   const [numberOfLikes, setNumberOfLikes] = useState(likesLength);
   const [isLiked, setIsliked] = useState(isAlreadyLiked ? true : false);
-    const [showComments, setShowComments] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+  const [arrayOfComments, setArrayOfComments] = useState(null)
 
 
   let likeBody = { user: userLogged };
   let postId = post._id;
+
+
 
   const likeDislike = async () => {
     try {
@@ -55,6 +62,24 @@ export default function Post({ post }) {
     changeNumberOfLikes();
     toogleLike();
   };
+
+  const fetchComments = async()=> {
+    try {
+      let response = await fetch(`http://localhost:3001/posts/${postId}/comments`);
+      if (response.ok) {
+        let data = await response.json()
+        console.log (data)
+        setArrayOfComments(data)
+      } else {
+        console.log("something went wrong")
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
   return (
     <div className="linkedin-post-container linkedin-card">
@@ -149,7 +174,8 @@ export default function Post({ post }) {
             <option value="Most recent">Most recent</option>
           </select>
         </div>
-        <div className="commentcomponent my-4 mr-3 d-flex">
+        
+        {arrayOfComments && arrayOfComments.map((comment) => {return( <div className="commentcomponent my-4 mr-3 d-flex">
           <img
             className="linkedin-user-image pro-pic"
             src="https://i.pravatar.cc/300"
@@ -177,7 +203,7 @@ export default function Post({ post }) {
               officiis qui modi et neque!
             </p>
           </div>
-        </div>
+        </div>)})}
       </div>
     </div>
   );
