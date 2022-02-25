@@ -13,7 +13,7 @@ export default function Post({ post }) {
   const getDateString = () => {
     return "1d";
   };
-  let userLogged = "6214d3f49bddf0961915d20a";
+  let userLogged = "62161671523d0c1bc14b6e93";
   const isAlreadyLiked = post.likes.find(
     (_id) => _id.toString() === userLogged
   );
