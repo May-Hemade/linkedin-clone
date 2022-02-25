@@ -26,7 +26,7 @@ export default function Home() {
   const getPosts = async () => {
     setIsLoading(true)
 
-    const response = await fetch("http://localhost:3001/posts", {
+    const response = await fetch(`${process.env.REACT_APP_BE_URL}/posts`, {
       method: "GET",
       // headers: {
       //   Authorization:
