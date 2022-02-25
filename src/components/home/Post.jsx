@@ -33,13 +33,16 @@ export default function Post({ post }) {
 
   const likeDislike = async () => {
     try {
-      let response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
-        method: "PUT",
-        body: JSON.stringify(likeBody),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      let response = await fetch(
+        `${process.env.REACT_APP_BE_URL}/posts/${postId}/like`,
+        {
+          method: "PUT",
+          body: JSON.stringify(likeBody),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
       if (response.ok) {
         console.log("post liked or unliked");
       } else {
@@ -65,7 +68,9 @@ export default function Post({ post }) {
 
   const fetchComments = async()=> {
     try {
-      let response = await fetch(`http://localhost:3001/posts/${postId}/comments`);
+      let response = await fetch(
+        `${process.env.REACT_APP_BE_URL}/posts/${postId}/comments`
+      );
       if (response.ok) {
         let data = await response.json()
         console.log (data)

@@ -33,7 +33,7 @@ const RightSideBar = () => {
   const [isLoading, setIsLoading] = useState(true);
   const fetchProfiles = async () => {
   try {
-    let response = await fetch("http://localhost:3001/profile");
+    let response = await fetch(`${process.env.REACT_APP_BE_URL}/profile`);
     if (response.ok) {
       let data = await response.json();
       console.log(data);

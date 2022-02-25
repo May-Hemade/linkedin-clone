@@ -24,13 +24,13 @@ const loadingStyle = css`
 
 
 function Profile() {
-  const {profileId} = useParams()
+  const {username} = useParams()
   const [profile,setProfile]=useState(null)
   const [isLoading,setIsLoading]=useState(true)
   
   const fetchProfile = async () => {
     try {
-      let response = await fetch(`http://localhost:3001/profile/${profileId}`);
+      let response = await fetch(`${process.env.REACT_APP_BE_URL}/profile/${username}`);
       if (response.ok) {
         let data = await response.json();
         console.log(data);
@@ -58,10 +58,9 @@ function Profile() {
       />
     );
   } else {
-import { useParams } from "react-router-dom"
 
-function Profile() {
-  const { username } = useParams()
+
+
 
   return (
     <div id="progilepage">
