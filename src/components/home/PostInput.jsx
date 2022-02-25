@@ -15,26 +15,23 @@ const Postinput = () => {
       formState: { errors },
     } = useForm();
     
-    const submitForm = async (data) => {
-    try {
-        let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/posts/",
-          {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
-              "Content-Type": "application/json",
-            },
-          }
-        );
-    console.log(data)
+    const submitForm = async (register) => {
+    let userlogged = "62161671523d0c1bc14b6e93";
+    let datawithuser = {...register, 'user': userlogged, 'username': 'this is not supose to be here' };
+      try {
+        let response = await fetch(`${process.env.REACT_APP_BE_URL}/posts/`, {
+          method: "POST",
+          body: JSON.stringify(datawithuser),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+    console.log(datawithuser);
     console.log(response);
     if (response.ok) {
-        alert("Your comment was posted")
+        alert("Your post was posted")
     } else {
-      alert("There was a problem saving your experience");
+      alert("There was a problem posting your post");
     } } catch (error) {
     console.log(error);
   }
