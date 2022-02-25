@@ -3,94 +3,137 @@ import './RightSideBar.css'
 import {Col, Container, Row,} from 'react-bootstrap'
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import {FiPlus} from "react-icons/fi"
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 // import {Footer} from './profile/Footer.jsx'
+import { GridLoader } from 'react-spinners';
+import { css } from "@emotion/react";
+import { Dice6Fill } from 'react-bootstrap-icons';
+
+const loadingStyle = css`
+  display: block;
+  margin: 0 auto;
+  border-color: #70b5f9;
+`;
 
 
-
-
-class RightSideBar extends Component {
-    constructor(props){
-    super(props)
-        this.state =
-        {
-        profiles:[]
-        }
+const RightSideBar = () => {
+//class RightSideBar extends Component {
+  // constructor(props){
+  // super(props)
+  //     this.state =
+  //     {
+  //     profiles:[]
+  //     }
+  // }
+  // state = {
+  //   profiles: [],
+  // };
+  const [profiles, setProfiles] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const fetchProfiles = async () => {
+  try {
+    let response = await fetch(`${process.env.REACT_APP_BE_URL}/profile`);
+    if (response.ok) {
+      let data = await response.json();
+      console.log(data);
+      console.log(data.profiles)
+      //let slicedData = data.slice(0,10)
+      setProfiles(data.profiles)
+      setIsLoading(false)
+    } else {
+      console.log(`something went wrong`);
     }
-    componentDidMount= async()=>
-    {
-    let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", 
-            {
-                "method": "GET",
-                "headers":
-                {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU2ZDBmOGMyYzE4ODAwMTVhYjk0YWIiLCJpYXQiOjE2NDI1MTY3MjgsImV4cCI6MTY0MzcyNjMyOH0.msOy2MRPmK0k_B06OcTKa4FsMqg8FwsMHxYGAXa8M6E",
-                    "Content-type": "application/json",
-                }
-            })
-    let parsedJson = await response.json()
-    //slice the profile upto 10 profiles
-    let slicedProfiles = parsedJson.slice(0, 10)
-    this.setState({profiles:slicedProfiles})
-    console.log(this.state.profiles)
-    
-    }
-        render(){
-        return(
-    
-        <Container className="RideSideBar">
-            <div className="content-div1">
-                <Col className="content-Col">
-                    <Row className="content-Row">
-                            <p>Edit public profile & URL <FaRegQuestionCircle/></p>
-                    </Row>
+  } catch (error) {
+    console.log(error);
+  }
+};
+  useEffect(()=>{
+    fetchProfiles()
+  }, [])
+  // componentDidMount = async () => {
+  //   fetchProfiles();
+  // };
+  //render() {
+  if (isLoading) {
+    return (
+      <GridLoader
+        size={10}
+        loading={isLoading}
+        color="#70b5f9"
+        css={loadingStyle}
+      />
+    );
+  } else {
+    return (
+      <Container className="RideSideBar">
+        <div className="content-div1">
+          <Col className="content-Col">
+            <Row className="content-Row">
+              <p className="mt-3">
+                Edit public profile & URL <FaRegQuestionCircle />
+              </p>
+            </Row>
+            <div className="lineeee"></div>
+            <Row className="content-Row">
+              <p className="mt-3">
+                Add profile in another language <FaRegQuestionCircle />
+              </p>
+            </Row>
+          </Col>
+        </div>
+        <div className="viewer-profiles">
+          <Col className="pl-2">
+            <p className="text-light">People also viewed</p>
 
-                    <Row className="content-Row">
-                        <p>Add profile in another language <FaRegQuestionCircle/></p>
-                    </Row>
-                </Col>
-            </div>
-            <div className="viewer-profiles">
-                <Col>
-                    <p>People also viewed</p>
-                    <ul>
-                        {this.state.profiles.map((profile) => {
-                                    return (
-                                    <Row className="viewers">
-                                                <Col className="viewer-picture align-items-center" sm={2}>
-                                                    <img className= "pro-pic" src= {profile.image} alt="pro-pic"/>
-                                                </Col>
-                                                <Col className="viewer-job-description justify-content-left" sm={10}> 
-                                                    <Row>
-                                                        <Col sm={12}>
-                                                            <span className= "profile-name">{profile.name}</span>
-                                                        </Col>
-                                                    
-                                                        <Col sm={12}>
-                                                            <span className= "job-title">{profile.title}</span>
-                                                        </Col>
-                                                        
-                                                    </Row>
-                                                <button className="follow"><FiPlus class="plus-icon"/> Follow</button>
-                                                </Col>
+            {profiles.map((profile) => {
+              return (
+                <div
+                  className="viewers d-flex flex-column pt-0 mb-3"
+                  key={profile._id}
+                >
+                  <div className="d-flex ">
+                    <div className="viewer-picture">
+                      <img
+                        className="linkedin-user-image pro-pic"
+                        src={profile.image}
+                        alt="pro-pic"
+                      />
+                    </div>
 
-                                            </Row>  
-                                    )
-                                    })}
-                    </ul>
-                </Col>
-            </div>
-        
-            <hr className="horizontal-row"/>
-          
-          {/* <div>
+                    <div className="viewer-job-description">
+                      <Link to={`/profile/${profile._id}`}>
+                        <div className=" ml-2">
+                          <p className=" align-top text-light mb-0">
+                            {profile.name} {profile.surname}
+                          </p>
+                          <p className="sidebartitle align-top pt-0 mb-1 text-secondary">
+                            {profile.title}
+                          </p>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                  <span className="align-self-center">
+                    <button className="follow">
+                      {/* <FiPlus class="plus-icon" /> */} + Follow
+                    </button>
+                  </span>
+                </div>
+              );
+            })}
+          </Col>
+        </div>
+
+        <hr className="horizontal-row" />
+
+        {/* <div>
             <Footer/>
         </div> */}
-        </Container>
-        
-     
-    )
-        }
- }
+      </Container>
+    );
+  }
+}
 export default RightSideBar
 
 

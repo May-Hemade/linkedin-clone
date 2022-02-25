@@ -3,7 +3,7 @@ import { Col, Row, Container } from "react-bootstrap"
 import { CircleLoader, GridLoader } from "react-spinners"
 import Footer from "../Footer"
 import HomeLeftSideBar from './HomeLeftSideBar'
-import HomeRightSideBar from './HomeRightSideBar'
+import RightSideBar from '../RightSideBar.jsx'
 import { css } from "@emotion/react"
 import Post from "./Post"
 import Postinput from "./PostInput"
@@ -26,20 +26,18 @@ export default function Home() {
   const getPosts = async () => {
     setIsLoading(true)
 
-    const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/posts",
-      {
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
-        },
-      }
-    )
+    const response = await fetch(`${process.env.REACT_APP_BE_URL}/posts`, {
+      method: "GET",
+      // headers: {
+      //   Authorization:
+      //     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
+      // },
+    });
 
     if (response.ok) {
       setPosts(await response.json())
       setIsLoading(false)
+      console.log(posts)
     } else {
       setIsLoading(false)
       setHasError(true)
@@ -52,14 +50,14 @@ export default function Home() {
          <Row className="HomePage-Sections">
           
           
-          <Col md={3} className="LeftBar-Col">
+          <Col md={3} className="LeftBar-Col ">
             <Row><HomeLeftSideBar/></Row>
             
             {/* <Row><LeftBottomBar/></Row>
              */}
           </Col>
 
-          <Col md={5} className="Post-section">
+          <Col md={5} className="Post-section px-1 ">
             <Postinput/>
             <GridLoader
               size={10}
@@ -74,8 +72,8 @@ export default function Home() {
                 .slice(0, 100)
                 .map((post) => <Post key={post._id} post={post} />)}
           </Col>
-          <Col md={4}>
-            <HomeRightSideBar/>
+          <Col md={4} className="pl-0 ml-0">
+            <RightSideBar/>
           </Col>
           <Col></Col>
           

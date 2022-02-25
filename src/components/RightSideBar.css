@@ -1,28 +1,45 @@
-.content-div1 {
-  margin-top: 8px;
-  background-color: #1d2226;
+.RideSideBar{
+  
+  
   color: white;
-  width: 100%;
+  width: fit-content;
   font-size: 15px;
   border-radius: 10px;
-  padding: 5px;
-  margin-left: -18px;
+  
+  
+  
+}
+.content-div1 {
+  background-color: #1d2226;
+  width:90%;
+  font-size: 15px;
+  border-radius: 10px;
   padding-left: 10px;
+  margin-left: 0px;
 }
 .viewer-profiles {
   background-color: #1d2226;
-  margin-left: 12px;
+  padding-left: 10px;
   margin-top: 10px;
   height: fit-content;
-  width: 100%;
-  color: white;
+  width:90%;
+
   border-radius: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-left: -18px;
+ 
 }
+.lineeee{
+  border: rgb(145, 144, 144) 1px solid;
+  border-radius: 23px;
+  width: 90%;
+  ;
+}
+/* 
+
+
 .profile-name {
-  margin-left: -30px;
+  
 }
 .pro-pic {
   margin-left: -39px;
@@ -36,14 +53,36 @@
   width: 100px;
   text-align: center;
   padding: 2px;
-  margin-left: -30px;
+  
 }
 .job-title {
   font-size: 12px;
-  margin-left: -30px;
-  margin-top: -11px;
+  
   overflow-y: hidden;
 }
 .plus-icon {
   margin-top: 2px;
 }
+ */
+
+ .follow{
+  color:white ;
+  border-radius: 23px;
+   padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+   background-color: transparent;
+   border: 2px solid white;
+ }
+
+ .follow:hover{
+   background-color: white;
+   color: black;
+   border:black 2px solid;
+   /* transform:scale(1.1); */
+   cursor: pointer;
+   transform: none;
+ }
+
+
+ .sidebartitle {
+   font-size: 0.8rem;
+ }

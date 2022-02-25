@@ -18,119 +18,175 @@ const Header = () => {
  const navigate = useNavigate()
 
 
-    return(
-        <div className="header">
-                <div className="header_left">
-                    <Linkedin className="linkedin-logo mt-2"/>
+    return (
+      <div className="header">
+        <div className="header_left">
+          <Linkedin className="linkedin-logo mt-2" />
 
-                        <div className="header_search  ml-4 ">
-                            <SearchIcon className="Search-icon"/>
-                            <input type= "text" className="search_Bar_input" placeholder="Search"/>
-                        </div>
-                </div>
-
-                <div className="header_right">
-                   
-                <Nav className="Nav-Bar">     
-                    
-                                <Link to="/" className="Home-Link">
-                        <div className={location.pathname === '/' ? 'nav-link active' : 'nav-link'}>
-                            <HeaderOption Icon={HomeIcon} title='Home'  className="navbar-icon"/>
-                        </div>
-                     </Link>
-
-                        
-                              
-                    <Nav.Item>
-                        <Nav.Link href="/home">
-                            <HeaderOption Icon={SupervisorIcon} title='My Network' className="navbar-icon"/>
-                        </Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-1">
-                            <HeaderOption Icon={BusinessCenterIcon} title='Jobs' className="navbar-icon"/>
-                        </Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-2">
-                            <HeaderOption Icon={ChatIcon} title='Messaging' className="navbar-icon"/>
-                        </Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-2">
-                            <HeaderOption Icon={NotificationsIcon} title='Notifications' className="navbar-icon"/>
-                        </Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        
-                        <Link to='/profile' className='Profile-Link'>
-                            <div className={location.pathname === '/profile' ? 'nav-link active' : 'nav-link'}>
-                                 <Dropdown  className="nav-dropdown">
-                        <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
-                            <HeaderOption avatar='./Assets/Profile-picture.jpg' title='Me'/>
-                           <IoMdArrowDropdown className="down-arrow-icon"/>
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu class="dropdown-menu">
-                            <div className="dropdown-div">
-                                <Row>
-                                    <Col className="profile-column">
-                                    <img src= "./assets/Profile-picture.jpg" alt="pro-pic" className="profile-picture"/>
-                                    </Col>
-                                    <Col className="profile-bio-column">
-                                    <Row className="profile-bio-row">
-                                         <h6 className="profile-name">Reid Hoffmann</h6>
-                                    <p className="profile-bio">Entrepreneur. Product and Business Strategist. Investor. Podcaster.</p>
-                                    </Row>
-                                   
-                                    </Col>
-                                    
-                                </Row>
-                                <button className="view-profile-button">View Profile</button>
-                            </div>
-                            <h6 className="dropdown-subheading">Account</h6>
-                            <Dropdown.Item id="dropdown-item" href="#/action-1">Settings & Privacy</Dropdown.Item>
-                            <Dropdown.Item id="dropdown-item" href="#/action-2">Help</Dropdown.Item>
-                            <Dropdown.Item id="dropdown-item" href="#/action-3">Language</Dropdown.Item>
-                            <h6 className="dropdown-subheading">Manage</h6>
-                            <Dropdown.Item id="dropdown-item" href="#/action-1">Posts & Activity</Dropdown.Item>
-                            <Dropdown.Item id="dropdown-item" href="#/action-2">Job Posting Account</Dropdown.Item>
-                            <Dropdown.Item id="dropdown-item" href="#/action-3">Sign Out</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    </div>    
-                        </Link>
-                    </Nav.Item>
-                   
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-2">
-                            
-                            <Dropdown  className="nav-dropdown">
-                        <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
-                            <HeaderOption Icon= {BsGrid3X3GapFill} title='Work' className="navbar-icon"/>
-                           <IoMdArrowDropdown className="down-arrow-icon"/>
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                        </Nav.Link>
-                    </Nav.Item>
-                    
-                    <Nav.Item>
-                        <Nav.Link className="get-hired">
-                        Get Hired Faster, Try Premium Free
-                        </Nav.Link>
-                    </Nav.Item>
-
-                </Nav>
-
-                </div>
+          <div className="header_search  ml-4 ">
+            <SearchIcon className="Search-icon" />
+            <input
+              type="text"
+              className="search_Bar_input"
+              placeholder="Search"
+            />
+          </div>
         </div>
-    )
+
+        <div className="header_right">
+          <Nav className="Nav-Bar">
+            <Link to="/" className="Home-Link">
+              <div
+                className={
+                  location.pathname === "/" ? "nav-link active" : "nav-link"
+                }
+              >
+                <HeaderOption
+                  Icon={HomeIcon}
+                  title="Home"
+                  className="navbar-icon"
+                />
+              </div>
+            </Link>
+
+            <Nav.Item>
+              <Nav.Link href="/home">
+                <HeaderOption
+                  Icon={SupervisorIcon}
+                  title="My Network"
+                  className="navbar-icon"
+                />
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="link-1">
+                <HeaderOption
+                  Icon={BusinessCenterIcon}
+                  title="Jobs"
+                  className="navbar-icon"
+                />
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="link-2">
+                <HeaderOption
+                  Icon={ChatIcon}
+                  title="Messaging"
+                  className="navbar-icon"
+                />
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="link-2">
+                <HeaderOption
+                  Icon={NotificationsIcon}
+                  title="Notifications"
+                  className="navbar-icon"
+                />
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link to="/profile/:profileId" className="Profile-Link">
+                <div
+                  className={
+                    location.pathname === "/profile"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
+                  <Dropdown className="nav-dropdown">
+                    <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                      <HeaderOption
+                        avatar="./Assets/Profile-picture.jpg"
+                        title="Me"
+                      />
+                      <IoMdArrowDropdown className="down-arrow-icon" />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu class="dropdown-menu">
+                      <div className="dropdown-div">
+                        <Row>
+                          <Col className="profile-column">
+                            <img
+                              src="./assets/Profile-picture.jpg"
+                              alt="pro-pic"
+                              className="profile-picture"
+                            />
+                          </Col>
+                          <Col className="profile-bio-column">
+                            <Row className="profile-bio-row">
+                              <h6 className="profile-name">Reid Hoffmann</h6>
+                              <p className="profile-bio">
+                                Entrepreneur. Product and Business Strategist.
+                                Investor. Podcaster.
+                              </p>
+                            </Row>
+                          </Col>
+                        </Row>
+                        <button className="view-profile-button">
+                          View Profile
+                        </button>
+                      </div>
+                      <h6 className="dropdown-subheading">Account</h6>
+                      <Dropdown.Item id="dropdown-item" href="#/action-1">
+                        Settings & Privacy
+                      </Dropdown.Item>
+                      <Dropdown.Item id="dropdown-item" href="#/action-2">
+                        Help
+                      </Dropdown.Item>
+                      <Dropdown.Item id="dropdown-item" href="#/action-3">
+                        Language
+                      </Dropdown.Item>
+                      <h6 className="dropdown-subheading">Manage</h6>
+                      <Dropdown.Item id="dropdown-item" href="#/action-1">
+                        Posts & Activity
+                      </Dropdown.Item>
+                      <Dropdown.Item id="dropdown-item" href="#/action-2">
+                        Job Posting Account
+                      </Dropdown.Item>
+                      <Dropdown.Item id="dropdown-item" href="#/action-3">
+                        Sign Out
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+              </Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link eventKey="link-2">
+                <Dropdown className="nav-dropdown">
+                  <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                    <HeaderOption
+                      Icon={BsGrid3X3GapFill}
+                      title="Work"
+                      className="navbar-icon"
+                    />
+                    <IoMdArrowDropdown className="down-arrow-icon" />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                      Another action
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      Something else
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link className="get-hired">
+                Get Hired Faster, Try Premium Free
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </div>
+      </div>
+    );
 }
 export default Header
 
