@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { set } from "date-fns";
 import { BsEmojiSmile, BsCardImage, BsThreeDots } from "react-icons/bs";
 import Comment from "./Comment.jsx"
-
+import { useForm } from "react-hook-form";
 
 export default function Post({ post }) {
   const getDateString = () => {
@@ -18,13 +18,50 @@ export default function Post({ post }) {
     (_id) => _id.toString() === userLogged
   );
   console.log(isAlreadyLiked)
-
+  console.log(post._id)
   const likesLength = post.likes.length;
   const [numberOfLikes, setNumberOfLikes] = useState(likesLength);
   const [isLiked, setIsliked] = useState(isAlreadyLiked ? true : false);
   const [showComments, setShowComments] = useState(false);
   const [arrayOfComments, setArrayOfComments] = useState(null)
-
+  //comment form
+     const {
+       register,
+       handleSubmit,
+       formState: { errors },
+     } = useForm();
+     
+     const submitForm = async (data) => {
+      let data1 = {...data, 'user': userLogged, 'post':post._id} 
+      try {
+         let response = await fetch(
+           `${process.env.REACT_APP_BE_URL}/posts/${post._id}/comments`,
+           {
+             
+             method: "POST",
+             body: JSON.stringify(data1),
+             headers: {
+               "Content-Type": "application/json",
+             },
+           }
+         );
+         console.log(response);
+         if (response.ok) {
+           alert("comment was send");
+           
+         } else {
+           alert("There was a problem sending your comment");
+         }
+       } catch (error) {
+         console.log(error);
+       }
+     };
+     const onSubmit =(data,e) => {
+       submitForm(data);
+       e.target.reset()
+       fetchComments();
+     }
+  //
 
   let likeBody = { user: userLogged };
   let postId = post._id;
@@ -114,7 +151,7 @@ export default function Post({ post }) {
             setShowComments(!showComments);
           }}
         >
-          1234 comments
+          {post.comments.length} {post.comments.length > 1 ? "comments" : "comment"}
         </div>
       </div>
       <div className="linkedin-post-buttons linkedin-divider-top">
@@ -158,16 +195,25 @@ export default function Post({ post }) {
               alt="pro-pic"
             />
           </div>
-          <div className="inputinput-comments align-self-center">
-            <input
-              type="text"
-              className="search_Bar_input"
-              placeholder="Add a comment..."
-            />
-            <BsEmojiSmile className="input-icon mr-3" />
 
-            <BsCardImage className="input-icon mr-3" />
-          </div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="inputinput-comments mt-2 align-self-center">
+              <input
+                type="text"
+                {...register("comments", { required: true, minLength: 2 })}
+                className="search_Bar_input"
+                placeholder="Add a comment..."
+              />
+              <BsEmojiSmile className="input-icon mr-3" />
+
+              <BsCardImage className="input-icon mr-3" />
+              <input
+                type="submit"
+                value={"Send"}
+                className="sendcomment align-self-center"
+              />
+            </div>
+          </form>
         </div>
         <div className="order-comment-selector">
           <select
@@ -179,36 +225,41 @@ export default function Post({ post }) {
             <option value="Most recent">Most recent</option>
           </select>
         </div>
-        
-        {arrayOfComments && arrayOfComments.map((comment) => {return( <div className="commentcomponent my-4 mr-3 d-flex">
-          <img
-            className="linkedin-user-image pro-pic"
-            src="https://i.pravatar.cc/300"
-            alt="pro-pic"
-          />
-          <div className="comment_container">
-            <div className="comment_info d-flex justify-content-between">
-              <div className="comment_author">
-                <p className="comment_author_name">
-                  <b>Diana Ortega</b>
-                </p>
-                <p className="comment_author_title">
-                  Expertologa en lo que quieras
-                </p>
+
+        {arrayOfComments &&
+          arrayOfComments.map((comment) => {
+            return (
+              <div className="commentcomponent my-4 mr-3 d-flex">
+                <img
+                  className="linkedin-user-image pro-pic"
+                  src="https://i.pravatar.cc/300"
+                  alt="pro-pic"
+                />
+                <div className="comment_container">
+                  <div className="comment_info d-flex justify-content-between">
+                    <div className="comment_author">
+                      <p className="comment_author_name">
+                        <b>Diana Ortega</b>
+                      </p>
+                      <p className="comment_author_title">
+                        Expertologa en lo que quieras
+                      </p>
+                    </div>
+                    <div className="comment_options">
+                      <span className="comment_creation">6d</span>{" "}
+                      <BsThreeDots className="comment_creation" />
+                    </div>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quis expedita pariatur culpa non? Itaque aperiam ut, harum
+                    inventore alias iusto voluptatibus molestias laborum quia,
+                    voluptatem officiis qui modi et neque!
+                  </p>
+                </div>
               </div>
-              <div className="comment_options">
-                <span className="comment_creation">6d</span>{" "}
-                <BsThreeDots className="comment_creation" />
-              </div>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-              expedita pariatur culpa non? Itaque aperiam ut, harum inventore
-              alias iusto voluptatibus molestias laborum quia, voluptatem
-              officiis qui modi et neque!
-            </p>
-          </div>
-        </div>)})}
+            );
+          })}
       </div>
     </div>
   );

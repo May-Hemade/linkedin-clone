@@ -97,13 +97,15 @@
   margin-right: 0.8rem;
   
 }
-.inputinput-comments > input {
+.inputinput-comments > input[type=text]
+ {
   outline: none;
   border: none;
   height: 40px;
   width: 100%;
   background-color: rgb(255, 255, 255) !important;
   border-radius: 50px;
+  color: black;
 }
 
 .input-icon{
@@ -147,4 +149,13 @@
   font-size: 14px;
   color: #ffffffe6;
   font-weight: 200;
+}
+
+.sendcomment{
+  border: none;
+  border-radius: 23px;
+  background-color: transparent;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0 1rem 0 0;
 }
