@@ -2,60 +2,64 @@ import React from "react"
 import "./experience.css"
 import { Pen, List } from "react-bootstrap-icons"
 import { format, differenceInMonths } from "date-fns"
-import {Modal, Button} from "react-bootstrap"
+import { Modal, Button } from "react-bootstrap"
 import { useState, useEffect } from "react"
-import { useForm, Controller, useRef } from "react-hook-form";
-import "react-datepicker/dist/react-datepicker.css";
-import DatePicker from "react-multi-date-picker";
+import { useForm, Controller, useRef } from "react-hook-form"
+import "react-datepicker/dist/react-datepicker.css"
+import DatePicker from "react-multi-date-picker"
 import UploadImage from "./UploadImage"
 
-
-export default function SingleExperience({ experience, showBorder, getExperiences }) {
-  const [, updateState] = React.useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
+export default function SingleExperience({
+  experience,
+  showBorder,
+  getExperiences,
+  username,
+}) {
+  const [, updateState] = React.useState()
+  const forceUpdate = React.useCallback(() => updateState({}), [])
   //modal
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   //
 
   //years dif
   const getDuration = () => {
-    const startDate = new Date(experience.startDate);
+    const startDate = new Date(experience.startDate)
     const endDate =
-      experience.endDate == null ? new Date() : new Date(experience.endDate);
-    const months = differenceInMonths(endDate, startDate);
+      experience.endDate == null ? new Date() : new Date(experience.endDate)
+    const months = differenceInMonths(endDate, startDate)
 
-    const years = Math.floor(months / 12);
-    const remaining = months % 12;
+    const years = Math.floor(months / 12)
+    const remaining = months % 12
 
     const yearsString =
-      years > 0 ? (years > 1 ? `${years} years` : `${years} year`) : "";
+      years > 0 ? (years > 1 ? `${years} years` : `${years} year`) : ""
     const monthsString =
       remaining > 0
         ? remaining > 1
           ? `${remaining} mos`
           : `${remaining} mo`
-        : "";
+        : ""
 
-    return `${yearsString} ${monthsString}`;
-  };
+    return `${yearsString} ${monthsString}`
+  }
 
   const getStartEnd = () => {
-    const startDate = new Date(experience.startDate);
+    const startDate = new Date(experience.startDate)
 
-    let startEnd = format(startDate, "MMM yyyy");
+    let startEnd = format(startDate, "MMM yyyy")
 
     if (experience.endDate != null) {
-      const endDate = new Date(experience.endDate);
-      startEnd += ` - ${format(endDate, "MMM yyyy")}`;
+      const endDate = new Date(experience.endDate)
+      startEnd += ` - ${format(endDate, "MMM yyyy")}`
     } else {
-      startEnd += " - Present";
+      startEnd += " - Present"
     }
 
-    return startEnd;
-  };
+    return startEnd
+  }
   //
 
   //REACT FORM
@@ -66,7 +70,7 @@ export default function SingleExperience({ experience, showBorder, getExperience
     endDate: experience.endDate || null,
     description: experience.description,
     area: experience.area,
-  };
+  }
 
   const {
     register,
@@ -76,52 +80,50 @@ export default function SingleExperience({ experience, showBorder, getExperience
     formState: { errors },
   } = useForm({
     defaultValues: preLoadedValues,
-  });
+  })
   // const onSubmit = data => console.log(data);
 
   //console.log(watch("example")); // watch input value by passing the name of it
 
   /* const [reloadToggle,setReloadToggle] = (false) */
-  const [reloadToggle, setReloadToggle] = useState(false);
+  const [reloadToggle, setReloadToggle] = useState(false)
 
-  const toggle = () => setReloadToggle(!reloadToggle);
+  const toggle = () => setReloadToggle(!reloadToggle)
 
   //PUT HANDLESUBMIT
   const submitForm = async (data) => {
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences/${experience._id}`,
+        `${process.env.REACT_APP_BE_URL}/profile/${username}/experiences/${experience._id}`,
         {
           //:userId/experience
           method: "PUT",
           body: JSON.stringify(data),
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
             "Content-Type": "application/json",
           },
         }
-      );
-      console.log(response);
+      )
+      console.log(response)
       if (response.ok) {
-        alert("Experience was saved");
-        getExperiences();
+        alert("Experience was saved")
+        getExperiences()
       } else {
-        alert("There was a problem saving your experience");
+        alert("There was a problem saving your experience")
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   const onSubmit = (data, e) => {
-    console.log(data);
-    submitForm(data);
-    toggle();
-    forceUpdate();
-    
+    console.log(data)
+    submitForm(data)
+    toggle()
+    forceUpdate()
+
     /* e.target.reset() */
-  };
+  }
   //
 
   //Reset register when state is updated
@@ -133,71 +135,41 @@ export default function SingleExperience({ experience, showBorder, getExperience
   const DeleteExperience = async () => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences/" +
-          experience._id,
+        `${process.env.REACT_APP_BE_URL}/profile/${username}/experiences/${experience._id}`,
         {
-          /* +  */ //:userId/experience/:expId
           method: "DELETE",
 
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU1MzE4ODczZDVjYjAwMTUzOTVhOWYiLCJpYXQiOjE2NDI0MTAzNzYsImV4cCI6MTY0MzYxOTk3Nn0.qDjDBTYnXI7X3Y3eWLOaKSMaVRFITbDsAwrjjesIIMc",
             "Content-Type": "application/json",
           },
         }
-      );
-      console.log(response);
+      )
+      console.log(response)
       if (response.ok) {
-        
-        alert("Experience was deleted");
-        getExperiences();
-        /* setregister({
-            role: '',
-            company: '',
-            area: '',
-            description: '',
-            startDate: '',
-            endDate: '',
-        }) */
+        alert("Experience was deleted")
+        getExperiences()
       } else {
-        alert("There was a problem deleting your experience");
+        alert("There was a problem deleting your experience")
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
 
-    handleClose();
-    toggle();
-    forceUpdate();
-    
-  };
+    handleClose()
+    toggle()
+    forceUpdate()
+  }
 
-  //upload pic function
-
-  /* const [picture,setPicture] = useState('')
-
-const submitPicture = async (data, e) => {
-  e.preventdefault()
-  const formData = new FormData()
-  formData.append(picture, data.picture[0])
-
-  const res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences/${experience._id}/picture`, {
-    method: "POST",
-    body: formData
-  }).then(res => res.json())
-  alert(JSON.stringify(res))
-}
- */
   const onUploadImage = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
 
-  useEffect(() => {}, [reloadToggle, experience]);
+  useEffect(() => {}, [reloadToggle, experience])
 
   useEffect(() => {
-    register();
+    register()
     // eslint-disable-next-line
-  }, []);
+  }, [])
 
   return (
     <div>
@@ -294,30 +266,28 @@ const submitPicture = async (data, e) => {
                           className="modal_input"
                           control={control}
                           name="startDate"
-                          rules={{ required: true }} //optional
+                          rules={{ required: true }}
                           render={({
                             field: { onChange, name, value },
-                            fieldState: { invalid, isDirty }, //optional
-                            formState: { errors }, //optional, but necessary if you want to show an error message
+                            fieldState: { invalid, isDirty },
+                            formState: { errors },
                           }) => (
                             <>
                               <DatePicker
                                 value={value || ""}
                                 onChange={(startDate) => {
-                                  onChange(startDate?.isValid ? startDate : "");
+                                  onChange(startDate?.isValid ? startDate : "")
                                 }}
                                 format={"YYYY/MM/DD"}
                               />
                               {errors &&
                                 errors[name] &&
                                 errors[name].type === "required" && (
-                                  //if you want to show an error message
                                   <span>your error message !</span>
                                 )}
                             </>
                           )}
                         />
-                        {/* < errors={errors} name="startDate" as="p" /> */}
                       </div>
                       <div className="d-flex flex-column">
                         <label htmlFor="end">End date:</label>
@@ -325,17 +295,17 @@ const submitPicture = async (data, e) => {
                           className="modal_input"
                           control={control}
                           name="endDate"
-                          rules={{ required: true }} //optional
+                          rules={{ required: true }}
                           render={({
                             field: { onChange, name, value },
-                            fieldState: { invalid, isDirty }, //optional
-                            formState: { errors }, //optional, but necessary if you want to show an error message
+                            fieldState: { invalid, isDirty },
+                            formState: { errors },
                           }) => (
                             <>
                               <DatePicker
                                 value={value || ""}
                                 onChange={(endDate) => {
-                                  onChange(endDate?.isValid ? endDate : "");
+                                  onChange(endDate?.isValid ? endDate : "")
                                 }}
                                 format={"yyyy/MM/dd"}
                               />
@@ -364,29 +334,11 @@ const submitPicture = async (data, e) => {
                       />
                     </Modal.Footer>
                   </form>
-
-                  {/* <form onSubmit={submitPicture}>               
-                
-                
-                <label htmlfor="file-updload" className=" mb-3"> */}
                   <UploadImage
-                    property="experience"
-                    url={`https://striveschool-api.herokuapp.com/api/profile/61e5318873d5cb0015395a9f/experiences/${experience._id}/picture`}
+                    property="image"
+                    url={`${process.env.REACT_APP_BE_URL}/profile/${username}/experiences/${experience._id}/picture`}
                     onSuccess={onUploadImage}
                   />
-                  {/* 
-                      <input type="file" value={picture}
-                onChange={(e) =>
-                  setPicture(
-                    e.target.value,
-                  )}
-                      id="file-updload" name="experience_image"
-                      accept="image/png, image/jpeg"/>
-                      
-                      
-
-                </label>
-                <input type="submit" value="Submit" /> */}
                 </Modal.Body>
               </Modal>
             </div>
@@ -397,5 +349,5 @@ const submitPicture = async (data, e) => {
         </div>
       </div>
     </div>
-  );
+  )
 }

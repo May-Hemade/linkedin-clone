@@ -58,6 +58,11 @@ function Profile() {
       />
     );
   } else {
+import { useParams } from "react-router-dom"
+
+function Profile() {
+  const { username } = useParams()
+
   return (
     <div id="progilepage">
       <Container className="mt-4 pt-32">
@@ -67,7 +72,7 @@ function Profile() {
             <Dashboard />
             <About />
             <Activity />
-            <Experience />
+            <Experience username={username} />
             <Education />
             <Skills />
             <Interests />
