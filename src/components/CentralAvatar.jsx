@@ -122,7 +122,7 @@ const CentralAvatar = (profile) => {
           {profile && (
             <UploadImage
               property="image"
-              url={`http://localhost:3001/profile/${profile._id}/image`}
+              url={`${process.env.REACT_APP_BE_URL}/profile/${profile._id}/image`}
               onSuccess={onUploadImage}
             />
           )}
@@ -134,7 +134,6 @@ const CentralAvatar = (profile) => {
             <h4 className="text-white">
               {profile.name} {}
               {profile.surname}
-
             </h4>
             <h6 className="text-white">{profile.title}</h6>
             <span className="central_avatar_city mr-1">
@@ -175,7 +174,7 @@ const CentralAvatar = (profile) => {
         <Button className="menu_button" variant="outline-light mr-3">
           Add Section
         </Button>
-        <a href={`http://localhost:3001/profile/${profile._id}/CV`}>
+        <a href={`${process.env.REACT_APP_BE_URL}/profile/${profile._id}/CV`}>
           <Button className="menu_button" variant="outline-light mr-3">
             Download PDF
           </Button>
