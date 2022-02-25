@@ -15,9 +15,9 @@ export default function Post({ post }) {
   };
   let userLogged = "62161671523d0c1bc14b6e93";
   const isAlreadyLiked = post.likes.find(
-    (_id) => _id.toString() === userLogged
+    (o) => o._id === userLogged
   );
-  console.log(isAlreadyLiked)
+  console.log("eeeeeeeeeeeeeeeeeeeeeeee" + isAlreadyLiked)
   console.log(post._id)
   const likesLength = post.likes.length;
   const [numberOfLikes, setNumberOfLikes] = useState(likesLength);
